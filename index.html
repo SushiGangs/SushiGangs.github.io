@@ -1,124 +1,82 @@
-<!DOCTYPE html>
-<html lang="vi">
+﻿<!DOCTYPE html>
+<html lang=""vi"">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
     <title>SushiGang Studio</title>
-    <!-- SEO and Meta Tags -->
-    <meta name="description" content="SushiGang Studio - Nơi cung cấp các plugin Minecraft và wiki cao cấp.">
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel=""preconnect"" href=""https://fonts.googleapis.com"">
+    <link rel=""preconnect"" href=""https://fonts.gstatic.com"" crossorigin>
+    <link href=""https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"" rel=""stylesheet"">
     <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel=""stylesheet"" href=""https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel=""stylesheet"" href=""styles.css"">
 </head>
 <body>
     <!-- Top Bar -->
-    <header class="topbar">
-        <div class="topbar-left">
-            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
-            <h1 class="logo">Sushi<span>Gang</span></h1>
+    <header class=""topbar"">
+        <div class=""topbar-left"">
+            <button id=""sidebar-toggle"" aria-label=""Hiện Menu Bên""><i class=""fa-solid fa-bars""></i></button>
+            <a href=""index.html"" class=""logo"">Sushi<span>Gang</span></a>
         </div>
-        <div class="topbar-right">
-            <div class="search-container">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm wiki...">
-            </div>
-            <button id="login-btn" class="btn-primary">
-                <i class="fa-solid fa-user"></i> Đăng nhập
+        <div class=""topbar-right"">
+            <button id=""login-btn"" class=""btn-primary"">
+                <i class=""fa-solid fa-user""></i> Đăng nhập
             </button>
         </div>
     </header>
 
     <!-- App Container -->
-    <div class="app-container">
+    <div class=""app-container"">
         <!-- Sidebar -->
-        <nav id="sidebar" class="sidebar">
-            <ul class="nav-links">
-                <li class="active"><a href="#"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
-                <li><a href="plugins.html"><i class="fa-solid fa-cube"></i> Plugin</a></li>
-                <li><a href="#"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
-                <li><a href="#"><i class="fa-solid fa-star"></i> Đánh Giá</a></li>
-                <li class="nav-divider"></li>
-                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
-                <li><a href="#"><i class="fa-solid fa-language"></i> Tool Việt Hóa</a></li>
-                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+        <nav id=""sidebar"" class=""sidebar"">
+            <ul class=""nav-links"">
+                <li class=""active""><a href=""index.html""><i class=""fa-solid fa-house""></i> Trang Chủ</a></li>
+                <li><a href=""plugins.html""><i class=""fa-solid fa-cube""></i> Plugin</a></li>
+                <li><a href=""about.html""><i class=""fa-solid fa-users""></i> Về Chúng Tôi</a></li>
+                <li><a href=""#""><i class=""fa-solid fa-star""></i> Đánh Giá</a></li>
+                <li class=""nav-divider""></li>
+                <li><a href=""smallcap.html""><i class=""fa-solid fa-font""></i> Tool SmallCap</a></li>
+                <li><a href=""#""><i class=""fa-solid fa-language""></i> Tool Việt Hóa</a></li>
+                <li><a href=""symbols.html""><i class=""fa-solid fa-icons""></i> Symbol</a></li>
             </ul>
         </nav>
 
         <!-- Main Content -->
-        <main class="main-content">
-            <section class="hero">
-                <h2>Chào mừng đến với <span class="highlight">SushiGang</span></h2>
-                <p>Trung tâm cung cấp các plugin Minecraft tùy chỉnh cao cấp, wiki chi tiết và các công cụ máy chủ hiệu suất cao.</p>
-                <div class="hero-actions">
-                    <a href="https://discord.gg/5fjcJtpKc5" target="_blank" class="btn-discord large">
-                        <i class="fa-brands fa-discord"></i> Tham gia Discord
-                    </a>
-                </div>
-            </section>
-
-            <section class="featured-plugins">
-                <h3 class="section-title">Plugin Nổi Bật</h3>
-                <div class="cards-grid">
-                    <a href="sushilib.html" class="plugin-card" style="display: block;">
-                        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h4>SushiGuard</h4>
-                        <p>Hệ thống bảo vệ và chống gian lận tiên tiến cho máy chủ của bạn.</p>
-                        <span class="card-link">Đọc Wiki <i class="fa-solid fa-arrow-right"></i></span>
-                    </a>
-                    <a href="#" class="plugin-card" style="display: block;">
-                        <div class="card-icon"><i class="fa-solid fa-gem"></i></div>
-                        <h4>SushiEconomy</h4>
-                        <p>Hệ thống quản lý kinh tế ổn định và có khả năng tùy chỉnh cao.</p>
-                        <span class="card-link">Đọc Wiki <i class="fa-solid fa-arrow-right"></i></span>
-                    </a>
-                    <a href="#" class="plugin-card" style="display: block;">
-                        <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                        <h4>SushiMagic</h4>
-                        <p>Thêm các phép thuật, đũa phép và cơ chế ma thuật tùy chỉnh vào sinh tồn.</p>
-                        <span class="card-link">Đọc Wiki <i class="fa-solid fa-arrow-right"></i></span>
-                    </a>
+        <main class=""main-content"">
+            <!-- Hero Section -->
+            <section class=""hero-section"">
+                <div class=""hero-content"">
+                    <h1 class=""hero-title"">Hệ Sinh Thái <span class=""text-gradient"">SushiGang</span></h1>
+                    <p class=""hero-subtitle"">Nơi cung cấp các plugin Minecraft chất lượng cao, tối ưu hóa và mang tính năng độc đáo cho máy chủ của bạn.</p>
+                    <div class=""hero-buttons"">
+                        <a href=""plugins.html"" class=""btn-primary large""><i class=""fa-solid fa-rocket""></i> Khám Phá Plugins</a>
+                        <a href=""#"" class=""btn-secondary large""><i class=""fa-brands fa-discord""></i> Tham Gia Cộng Đồng</a>
+                    </div>
                 </div>
             </section>
         </main>
     </div>
 
     <!-- Login Modal -->
-    <div id="login-modal" class="modal hidden">
-        <div class="modal-content">
-            <button id="close-modal" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-header">
-                <h2>Chào Mừng Trở Lại</h2>
-                <p>Đăng nhập vào SushiGang để quản lý các plugin của bạn.</p>
-            </div>
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="username">Tên đăng nhập / Email</label>
-                    <input type="text" id="username" placeholder="Nhập tên đăng nhập của bạn" required>
+    <div id=""login-modal"" class=""modal hidden"">
+        <div class=""modal-content"">
+            <span id=""close-modal"" class=""close-btn"">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form id=""login-form"">
+                <div class=""input-group"">
+                    <label for=""username"">Tên người dùng</label>
+                    <input type=""text"" id=""username"" placeholder=""Nhập tên của bạn..."" required>
                 </div>
-                <div class="input-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" placeholder="Nhập mật khẩu của bạn" required>
+                <div class=""input-group"">
+                    <label for=""password"">Mật khẩu</label>
+                    <input type=""password"" id=""password"" placeholder=""••••••••"" required>
                 </div>
-                <div class="form-options">
-                    <label class="remember-me">
-                        <input type="checkbox"> Ghi nhớ đăng nhập
-                    </label>
-                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
-                </div>
-                <button type="submit" class="btn-primary full-width">Đăng nhập</button>
+                <button type=""submit"" class=""btn-primary w-100"">Đăng Nhập</button>
             </form>
-            <div class="modal-footer">
-                <p>Chưa có tài khoản? <a href="#">Đăng ký</a></p>
-            </div>
         </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src=""script.js""></script>
 </body>
 </html>

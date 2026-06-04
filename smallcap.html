@@ -1,114 +1,70 @@
-<!DOCTYPE html>
-<html lang="vi">
+﻿<!DOCTYPE html>
+<html lang=""vi"">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
     <title>Tool SmallCap | SushiGang Studio</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel=""preconnect"" href=""https://fonts.googleapis.com"">
+    <link rel=""preconnect"" href=""https://fonts.gstatic.com"" crossorigin>
+    <link href=""https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"" rel=""stylesheet"">
+    <link rel=""stylesheet"" href=""https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"">
+    <link rel=""stylesheet"" href=""styles.css"">
 </head>
 <body>
     <!-- Top Bar -->
-    <header class="topbar">
-        <div class="topbar-left">
-            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
-            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+    <header class=""topbar"">
+        <div class=""topbar-left"">
+            <button id=""sidebar-toggle"" aria-label=""Hiện Menu Bên""><i class=""fa-solid fa-bars""></i></button>
+            <a href=""index.html"" class=""logo"">Sushi<span>Gang</span></a>
         </div>
-        <div class="topbar-right">
-            <div class="search-container">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm...">
-            </div>
-            <button id="login-btn" class="btn-primary">
-                <i class="fa-solid fa-user"></i> Đăng nhập
+        <div class=""topbar-right"">
+            <button id=""login-btn"" class=""btn-primary"">
+                <i class=""fa-solid fa-user""></i> Đăng nhập
             </button>
         </div>
     </header>
 
     <!-- App Container -->
-    <div class="app-container">
+    <div class=""app-container"">
         <!-- Sidebar -->
-        <nav id="sidebar" class="sidebar">
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
-                <li><a href="plugins.html"><i class="fa-solid fa-cube"></i> Plugin</a></li>
-                <li><a href="#"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
-                <li><a href="#"><i class="fa-solid fa-star"></i> Đánh Giá</a></li>
-                <li class="nav-divider"></li>
-                <li class="active"><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
-                <li><a href="#"><i class="fa-solid fa-language"></i> Tool Việt Hóa</a></li>
-                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+        <nav id=""sidebar"" class=""sidebar"">
+            <ul class=""nav-links"">
+                <li><a href=""index.html""><i class=""fa-solid fa-house""></i> Trang Chủ</a></li>
+                <li class=""active""><a href=""plugins.html""><i class=""fa-solid fa-cube""></i> Plugin</a></li>
+                <li><a href=""about.html""><i class=""fa-solid fa-users""></i> Về Chúng Tôi</a></li>
+                <li><a href=""#""><i class=""fa-solid fa-star""></i> Đánh Giá</a></li>
+                <li class=""nav-divider""></li>
+                <li><a href=""smallcap.html""><i class=""fa-solid fa-font""></i> Tool SmallCap</a></li>
+                <li><a href=""#""><i class=""fa-solid fa-language""></i> Tool Việt Hóa</a></li>
+                <li><a href=""symbols.html""><i class=""fa-solid fa-icons""></i> Symbol</a></li>
             </ul>
         </nav>
-
         <!-- Main Content -->
-        <main class="main-content">
-            <div class="page-header">
-                <h2>Tool SmallCap Converter</h2>
-                <p>Chuyển đổi văn bản chữ thường sang định dạng Sᴍᴀʟʟ Cᴀᴘs (In hoa nhỏ) dễ dàng.</p>
+        <main class=""main-content"">
+            <div class=""page-header"">
+                <h2>Tool SmallCap</h2>
+                <p>Chuyển đổi chữ thường thành SᴍᴀʟʟCᴀᴘs nhanh chóng.</p>
             </div>
-
-            <div class="tool-layout">
-                <!-- Left Panel -->
-                <div class="tool-panel">
-                    <div class="tool-tabs">
-                        <div class="tool-tab active">Plain text</div>
+            <div class=""symbols-container"">
+                <div class=""tool-layout"">
+                    <div class=""tool-panel"">
+                        <label style=""margin-bottom: 10px; color: var(--text-secondary);"">Nhập Văn Bản:</label>
+                        <textarea id=""smallcap-input"" placeholder=""Nhập nội dung vào đây..."" style=""width: 100%; height: 200px; padding: 15px; border-radius: 12px; background: var(--bg-tertiary); border: 1px solid var(--border-color); color: white; resize: vertical;""></textarea>
                     </div>
-                    <textarea id="smallcap-input" class="tool-textarea" placeholder="Type or paste your content here..."></textarea>
-                    <div class="tool-footer">
-                        <span class="examples-link">EXAMPLES</span>
-                    </div>
-                </div>
-
-                <!-- Right Panel -->
-                <div class="tool-panel">
-                    <div class="tool-tabs">
-                        <div class="tool-tab active highlight">Small Caps</div>
-                        <div class="tool-tab">Common uses</div>
-                    </div>
-                    <div class="tool-output-box">
-                        <textarea id="smallcap-output" class="tool-textarea output" readonly placeholder="Sᴍᴀʟʟ ᴄᴀᴘs ᴡɪʟʟ ᴀᴘᴘᴇᴀʀ ʜᴇʀᴇ..."></textarea>
-                    </div>
-                    <div class="tool-actions">
-                        <button class="btn-secondary outline"><i class="fa-solid fa-download"></i> DOWNLOAD ALL</button>
-                        <button class="btn-primary outline" id="copy-smallcap-btn"><i class="fa-solid fa-copy"></i> COPY ALL</button>
+                    <div class=""tool-panel"">
+                        <label style=""margin-bottom: 10px; color: var(--text-secondary);"">Kết Quả:</label>
+                        <textarea id=""smallcap-output"" readonly placeholder=""Kết quả sẽ hiển thị ở đây..."" style=""width: 100%; height: 200px; padding: 15px; border-radius: 12px; background: var(--bg-main); border: 1px solid var(--border-color); color: var(--accent-secondary); resize: vertical; font-size: 1.1rem;""></textarea>
+                        <button id=""copy-smallcap-btn"" class=""btn-primary"" style=""margin-top: 15px;""><i class=""fa-solid fa-copy""></i> COPY TOÀN BỘ</button>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-
-    <!-- Login Modal (Mock) -->
-    <div id="login-modal" class="modal hidden">
-        <div class="modal-content">
-            <span id="close-modal" class="close-btn">&times;</span>
-            <h2>Đăng nhập</h2>
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="username">Tên người dùng</label>
-                    <input type="text" id="username" placeholder="Nhập tên của bạn..." required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="btn-primary w-100">Đăng Nhập</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast hidden">
-        <i class="fa-solid fa-circle-check"></i> <span id="toast-message">Đã sao chép!</span>
-    </div>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    
+    <div id=""toast"" class=""toast hidden""><i class=""fa-solid fa-check""></i> <span id=""toast-message""></span></div>
+    
+    <!-- Login Modal -->
+    <div id=""login-modal"" class=""modal hidden""><div class=""modal-content""><span id=""close-modal"" class=""close-btn"">&times;</span><h2>Đăng nhập</h2><form id=""login-form""><div class=""input-group""><label>Tên</label><input type=""text"" id=""username"" required></div><div class=""input-group""><label>Pass</label><input type=""password"" id=""password"" required></div><button type=""submit"" class=""btn-primary w-100"">Đăng Nhập</button></form></div></div>
+    <script src=""script.js""></script>
 </body>
 </html>

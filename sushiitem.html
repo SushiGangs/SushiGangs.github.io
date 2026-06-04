@@ -1,141 +1,119 @@
-<!DOCTYPE html>
-<html lang="vi">
+﻿<!DOCTYPE html>
+<html lang=""vi"">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
     <title>SushiItems | SushiGang Studio</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel=""preconnect"" href=""https://fonts.googleapis.com"">
+    <link rel=""preconnect"" href=""https://fonts.gstatic.com"" crossorigin>
+    <link href=""https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"" rel=""stylesheet"">
+    <link rel=""stylesheet"" href=""https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"">
+    <link rel=""stylesheet"" href=""styles.css"">
 </head>
 <body>
-    <!-- Top Bar -->
-    <header class="topbar">
-        <div class="topbar-left">
-            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
-            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+    <header class=""topbar"">
+        <div class=""topbar-left"">
+            <button id=""sidebar-toggle""><i class=""fa-solid fa-bars""></i></button>
+            <a href=""index.html"" class=""logo"">Sushi<span>Gang</span></a>
         </div>
-        <div class="topbar-right">
-            <div class="search-container">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm...">
-            </div>
-            <button id="login-btn" class="btn-primary">
-                <i class="fa-solid fa-user"></i> Đăng nhập
-            </button>
-        </div>
+        <div class=""topbar-right""><button id=""login-btn"" class=""btn-primary""><i class=""fa-solid fa-user""></i> Đăng nhập</button></div>
     </header>
 
-    <!-- App Container -->
-    <div class="app-container">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="sidebar">
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
-                <li class="active"><a href="plugins.html"><i class="fa-solid fa-cube"></i> Plugin</a></li>
-                <li><a href="#"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
-                <li><a href="#"><i class="fa-solid fa-star"></i> Đánh Giá</a></li>
-                <li class="nav-divider"></li>
-                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
-                <li><a href="#"><i class="fa-solid fa-language"></i> Tool Việt Hóa</a></li>
-                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+    <div class=""app-container"">
+        <nav id=""sidebar"" class=""sidebar"">
+            <ul class=""nav-links"">
+                <li><a href=""index.html""><i class=""fa-solid fa-house""></i> Trang Chủ</a></li>
+                <li class=""active""><a href=""plugins.html""><i class=""fa-solid fa-cube""></i> Plugin</a></li>
+                <li><a href=""about.html""><i class=""fa-solid fa-users""></i> Về Chúng Tôi</a></li>
+                <li><a href=""#""><i class=""fa-solid fa-star""></i> Đánh Giá</a></li>
+                <li class=""nav-divider""></li>
+                <li><a href=""smallcap.html""><i class=""fa-solid fa-font""></i> Tool SmallCap</a></li>
+                <li><a href=""#""><i class=""fa-solid fa-language""></i> Tool Việt Hóa</a></li>
+                <li><a href=""symbols.html""><i class=""fa-solid fa-icons""></i> Symbol</a></li>
             </ul>
         </nav>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="page-header">
-                <h2>SushiItems</h2>
-                <p>Hệ thống tạo và quản lý vật phẩm tùy chỉnh (Custom Items) vô cùng mạnh mẽ.</p>
-                <div class="plugin-meta">
-                    <span class="badge version">v1.0.0</span>
-                    <span class="badge require">Yêu cầu: SushiLib, SushiCore</span>
+        <main class=""main-content"">
+            <div class=""plugin-header"">
+                <div class=""plugin-title"">
+                    <div class=""plugin-icon""><i class=""fa-solid fa-sword""></i></div>
+                    <div>
+                        <h2>SushiItems</h2>
+                        <p class=""subtitle"">Hệ thống vật phẩm RPG với thuộc tính tùy chỉnh và tối ưu hóa cực cao thông qua PDC.</p>
+                    </div>
+                </div>
+                <div class=""plugin-actions-box"">
+                    <div class=""action-buttons""><a href=""downloads/SushiItems-1.0.0.jar"" download class=""btn-primary large download-btn""><i class=""fa-solid fa-download""></i> Tải Xuống</a><button class=""btn-review large""><i class=""fa-solid fa-star""></i> Đánh Giá</button></div>
+                    <div class=""plugin-info-box"">
+                        <div class=""info-row""><span class=""info-label"">Phiên bản:</span><span class=""info-value highlight-badge"">1.20+</span></div>
+                        <div class=""info-row""><span class=""info-label"">Yêu cầu:</span><span class=""info-value""><a href=""sushilib.html"" class=""dependency-link"">SushiLib</a></span></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="wiki-container">
-                <div class="wiki-header">
-                    <h3><i class="fa-solid fa-book"></i> Mô Tả</h3>
-                    <div class="plugin-actions-box">
-                        <div class="action-buttons">
-                            <a href="downloads/SushiItems-1.0.0.jar" download class="btn-primary" style="text-decoration: none;">
-                                <i class="fa-solid fa-download"></i> Tải Xuống Ngay
-                            </a>
-                            <button class="btn-secondary" onclick="alert('Tính năng đánh giá đang được phát triển!')">
-                                <i class="fa-solid fa-star"></i> Đánh Giá
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="wiki-layout">
-                    <!-- Wiki Content -->
-                    <div class="wiki-main">
-                        <h4 id="overview">1. Tổng Quan Custom Items</h4>
+            <div class=""wiki-container"">
+                <div class=""wiki-header""><h3><i class=""fa-solid fa-file-lines""></i> Mô Tả</h3></div>
+                <div class=""wiki-layout"">
+                    <div class=""wiki-main"">
+                        <h4 id=""overview"">1. Tổng Quan Custom Items</h4>
                         <p><strong>SushiItems</strong> là một framework hỗ trợ thiết kế, quản lý và sử dụng Custom Items mạnh mẽ cho Server Minecraft, hướng tới việc tối ưu hóa hiệu suất (NBT/PDC) và khả năng tùy chỉnh linh hoạt thông qua cấu hình YAML.</p>
                         <ul>
-                            <li><strong>Persistent Data Container (PDC):</strong> Gắn dữ liệu trực tiếp vào NBT tag ẩn của item, không bị mất khi giao dịch hay rớt đồ.</li>
-                            <li><strong>Custom Model Data:</strong> Hỗ trợ gọi các resource pack tùy chỉnh 2D, 3D thông qua NBT ModelData.</li>
-                            <li><strong>Stat Injector:</strong> Nhúng (inject) trực tiếp các chỉ số RPG (Damage, Health, Defense) từ SushiLib vào vật phẩm.</li>
-                            <li><strong>Skill Binding:</strong> Trói buộc một kỹ năng cụ thể từ SushiSkills vào vật phẩm.</li>
+                            <li>Quản lý Item bằng hệ thống <strong>ID Độc Nhất (NamespacedKey)</strong>.</li>
+                            <li>Tương thích hoàn hảo với tài nguyên gói hình ảnh (Custom Model Data / Oraxen / ItemsAdder).</li>
                         </ul>
 
-                        <h4 id="item-config">2. Cấu Trúc File Vật Phẩm</h4>
-                        <p>Dễ dàng tạo vũ khí, áo giáp, nguyên liệu bằng YAML:</p>
-                        <pre><code>items:
-  dragon_sword:
-    material: DIAMOND_SWORD
-    model_data: 1024
-    name: "&c&lKiếm Hỏa Long"
-    lore:
-      - "&7Thanh kiếm rèn từ dung nham."
-      - ""
-      - "&c⚔ Sát Thương Lửa: 250"
-    
-    # Kết nối với SushiLib Stats
-    rpg_stats:
-      PHYSICAL_DAMAGE: 150
-      FIRE_DAMAGE: 100
-      CRIT_CHANCE: 15
-    
-    # Kết nối kỹ năng (SushiSkills)
-    bound_skill: "dragon_breath"</code></pre>
+                        <h4 id=""yaml-config"">2. Cấu trúc YAML Item Cơ Bản</h4>
+                        <p>Sử dụng YAML để định nghĩa vật phẩm, tích hợp trực tiếp với hệ thống chỉ số của SushiLib.</p>
+                        <pre><code># Mẫu vật phẩm: Thanh Gươm Của Rồng
+dragon_sword:
+  material: DIAMOND_SWORD
+  custom_model_data: 1001
+  display_name: "&amp;c&amp;lThanh Gươm Của Rồng"
+  lore:
+    - "&amp;7Thanh gươm được rèn từ lửa rồng."
+    - ""
+    - "&amp;c✦ Sát thương: +50"
+    - "&amp;6✦ Chí mạng: +15%"
+  rpg_stats:
+    DAMAGE: 50
+    CRIT_CHANCE: 15
+  requirements:
+    level: 20
+    class: "warrior"</code></pre>
 
-                        <h4 id="api-integration">3. Dành Cho Dev (API)</h4>
-                        <p>Bạn có thể lấy hoặc tạo Item thông qua API của hệ thống:</p>
-                        <pre><code>import com.sushiitems.api.SushiItemAPI;
+                        <h4 id=""pdc-nbt"">3. Tối ưu hóa Dữ Liệu (PDC)</h4>
+                        <p>SushiItems <strong>không</strong> sử dụng NBT (Named Binary Tag) truyền thống vốn gây nặng Server. Thay vào đó, toàn bộ dữ liệu Item (ID, Stats, Custom Flags) được lưu trữ qua <strong>PersistentDataContainer (PDC)</strong> - API gốc của Spigot/Paper, mang lại hiệu năng cao nhất và chống copy/hack nbt.</p>
 
-// Lấy vật phẩm theo ID
-ItemStack dragonSword = SushiItemAPI.getItem("dragon_sword");
+                        <h4 id=""api"">4. API cho Developer</h4>
+                        <pre><code>// Lấy dữ liệu Custom Item từ ItemStack
+ItemStack item = player.getInventory().getItemInMainHand();
+SushiItem sItem = SushiItems.getAPI().getSushiItem(item);
 
-// Kiểm tra xem item trên tay người chơi có phải custom item không
-if (SushiItemAPI.isCustomItem(itemStack)) {
-    String itemId = SushiItemAPI.getItemId(itemStack);
-    // ... xử lý logic
-}</code></pre>
+if (sItem != null) {
+    String id = sItem.getId();
+    double dmg = sItem.getStat(StatType.DAMAGE);
+}
 
-                        <h4 id="commands">4. Lệnh Hệ Thống</h4>
+// Chế tạo Item mới
+ItemStack generatedItem = SushiItems.getAPI().buildItem("dragon_sword");</code></pre>
+
+                        <h4 id=""commands"">5. Lệnh & Permissions</h4>
                         <ul>
-                            <li><code>/si give &lt;player&gt; &lt;item_id&gt; [amount]</code>: Cấp vật phẩm trực tiếp (Hỗ trợ gọi từ Console cho các plugin Vote/Donate).</li>
-                            <li><code>/si browse</code>: Mở Menu UI xem toàn bộ danh sách vật phẩm đang có trên Server.</li>
-                            <li><code>/si reload</code>: Quét lại toàn bộ thư mục cấu hình và cập nhật vật phẩm lập tức mà không cần khởi động lại.</li>
+                            <li><code>/sushiitem get &lt;id&gt; [amount]</code> - Lấy vật phẩm. (<code>sushiitems.admin</code>)</li>
+                            <li><code>/sushiitem give &lt;player&gt; &lt;id&gt; [amount]</code> - Phát vật phẩm cho người chơi.</li>
+                            <li><code>/sushiitem list</code> - Mở GUI danh sách toàn bộ vật phẩm.</li>
+                            <li><code>/sushiitem update</code> - Cập nhật lại chỉ số của vật phẩm đang cầm trên tay theo config mới nhất.</li>
                         </ul>
                     </div>
-                    
-                    <!-- Table of Contents Sidebar -->
-                    <div class="wiki-toc">
-                        <div class="toc-container">
-                            <h4>Mục lục</h4>
+                    <div class=""wiki-toc"">
+                        <div class=""toc-container"">
+                            <h4>Mục Lục</h4>
                             <ul>
-                                <li><a href="#overview">1. Tổng Quan Custom Items</a></li>
-                                <li><a href="#item-config">2. Cấu Trúc Vật Phẩm</a></li>
-                                <li><a href="#api-integration">3. Dành Cho Dev (API)</a></li>
-                                <li><a href="#commands">4. Lệnh Hệ Thống</a></li>
+                                <li><a href=""#overview"">1. Tổng Quan Custom Items</a></li>
+                                <li><a href=""#yaml-config"">2. Cấu trúc YAML Item</a></li>
+                                <li><a href=""#pdc-nbt"">3. Tối ưu hóa Dữ Liệu (PDC)</a></li>
+                                <li><a href=""#api"">4. API cho Developer</a></li>
+                                <li><a href=""#commands"">5. Lệnh & Permissions</a></li>
                             </ul>
                         </div>
                     </div>
@@ -143,27 +121,8 @@ if (SushiItemAPI.isCustomItem(itemStack)) {
             </div>
         </main>
     </div>
-
-    <!-- Login Modal (Mock) -->
-    <div id="login-modal" class="modal hidden">
-        <div class="modal-content">
-            <span id="close-modal" class="close-btn">&times;</span>
-            <h2>Đăng nhập</h2>
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="username">Tên người dùng</label>
-                    <input type="text" id="username" placeholder="Nhập tên của bạn..." required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="btn-primary w-100">Đăng Nhập</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    
+    <div id=""login-modal"" class=""modal hidden""><div class=""modal-content""><span id=""close-modal"" class=""close-btn"">&times;</span><h2>Đăng nhập</h2><form id=""login-form""><div class=""input-group""><label>Tên</label><input type=""text"" id=""username"" required></div><div class=""input-group""><label>Pass</label><input type=""password"" id=""password"" required></div><button type=""submit"" class=""btn-primary w-100"">Đăng Nhập</button></form></div></div>
+    <script src=""script.js""></script>
 </body>
 </html>

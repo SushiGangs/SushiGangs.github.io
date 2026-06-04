@@ -1,93 +1,63 @@
-<!DOCTYPE html>
-<html lang="vi">
+﻿<!DOCTYPE html>
+<html lang=""vi"">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kí Tự Đặc Biệt (Symbols) | SushiGang Studio</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>Symbols | SushiGang Studio</title>
+    <link rel=""preconnect"" href=""https://fonts.googleapis.com"">
+    <link rel=""preconnect"" href=""https://fonts.gstatic.com"" crossorigin>
+    <link href=""https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"" rel=""stylesheet"">
+    <link rel=""stylesheet"" href=""https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"">
+    <link rel=""stylesheet"" href=""styles.css"">
 </head>
 <body>
     <!-- Top Bar -->
-    <header class="topbar">
-        <div class="topbar-left">
-            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
-            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+    <header class=""topbar"">
+        <div class=""topbar-left"">
+            <button id=""sidebar-toggle"" aria-label=""Hiện Menu Bên""><i class=""fa-solid fa-bars""></i></button>
+            <a href=""index.html"" class=""logo"">Sushi<span>Gang</span></a>
         </div>
-        <div class="topbar-right">
-            <div class="search-container">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" id="symbol-search" placeholder="Tìm kiếm symbol...">
-            </div>
-            <button id="login-btn" class="btn-primary">
-                <i class="fa-solid fa-user"></i> Đăng nhập
+        <div class=""topbar-right"">
+            <button id=""login-btn"" class=""btn-primary"">
+                <i class=""fa-solid fa-user""></i> Đăng nhập
             </button>
         </div>
     </header>
 
     <!-- App Container -->
-    <div class="app-container">
+    <div class=""app-container"">
         <!-- Sidebar -->
-        <nav id="sidebar" class="sidebar">
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
-                <li><a href="plugins.html"><i class="fa-solid fa-cube"></i> Plugin</a></li>
-                <li><a href="#"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
-                <li><a href="#"><i class="fa-solid fa-star"></i> Đánh Giá</a></li>
-                <li class="nav-divider"></li>
-                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
-                <li><a href="#"><i class="fa-solid fa-language"></i> Tool Việt Hóa</a></li>
-                <li class="active"><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+        <nav id=""sidebar"" class=""sidebar"">
+            <ul class=""nav-links"">
+                <li><a href=""index.html""><i class=""fa-solid fa-house""></i> Trang Chủ</a></li>
+                <li class=""active""><a href=""plugins.html""><i class=""fa-solid fa-cube""></i> Plugin</a></li>
+                <li><a href=""about.html""><i class=""fa-solid fa-users""></i> Về Chúng Tôi</a></li>
+                <li><a href=""#""><i class=""fa-solid fa-star""></i> Đánh Giá</a></li>
+                <li class=""nav-divider""></li>
+                <li><a href=""smallcap.html""><i class=""fa-solid fa-font""></i> Tool SmallCap</a></li>
+                <li><a href=""#""><i class=""fa-solid fa-language""></i> Tool Việt Hóa</a></li>
+                <li><a href=""symbols.html""><i class=""fa-solid fa-icons""></i> Symbol</a></li>
             </ul>
         </nav>
-
         <!-- Main Content -->
-        <main class="main-content">
-            <div class="page-header">
-                <h2>Kí Tự Đặc Biệt (Symbols)</h2>
-                <p>Danh sách các kí tự đặc biệt đẹp mắt để trang trí server. Nhấp vào bất kỳ kí tự nào để sao chép!</p>
-            </div>
-
-            <!-- Symbols Container -->
-            <div class="symbols-container">
-                <div class="symbols-grid" id="symbols-grid">
-                    <!-- Symbols will be injected here via JS -->
+        <main class=""main-content"">
+            <div class=""page-header"">
+                <h2>Ký Hiệu & Biểu Tượng (Symbols)</h2>
+                <p>Danh sách các biểu tượng để sao chép nhanh.</p>
+                <div style=""margin-top: 15px;"">
+                    <input type=""text"" id=""symbol-search"" placeholder=""Tìm kiếm biểu tượng..."" style=""padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-tertiary); color: white; width: 100%; max-width: 400px;"">
                 </div>
+            </div>
+            <div class=""symbols-container"">
+                <div id=""symbols-grid"" class=""symbols-grid""></div>
             </div>
         </main>
     </div>
-
-    <!-- Login Modal (Mock) -->
-    <div id="login-modal" class="modal hidden">
-        <div class="modal-content">
-            <span id="close-modal" class="close-btn">&times;</span>
-            <h2>Đăng nhập</h2>
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="username">Tên người dùng</label>
-                    <input type="text" id="username" placeholder="Nhập tên của bạn..." required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="btn-primary w-100">Đăng Nhập</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast hidden">
-        <i class="fa-solid fa-circle-check"></i> <span id="toast-message">Đã sao chép!</span>
-    </div>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    
+    <div id=""toast"" class=""toast hidden""><i class=""fa-solid fa-check""></i> <span id=""toast-message""></span></div>
+    
+    <!-- Login Modal -->
+    <div id=""login-modal"" class=""modal hidden""><div class=""modal-content""><span id=""close-modal"" class=""close-btn"">&times;</span><h2>Đăng nhập</h2><form id=""login-form""><div class=""input-group""><label>Tên</label><input type=""text"" id=""username"" required></div><div class=""input-group""><label>Pass</label><input type=""password"" id=""password"" required></div><button type=""submit"" class=""btn-primary w-100"">Đăng Nhập</button></form></div></div>
+    <script src=""script.js""></script>
 </body>
 </html>
