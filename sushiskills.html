@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SushiSkills | SushiGang Studio</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+        </div>
+        <div class="topbar-right">
+            <div class="search-container">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm...">
+            </div>
+            <button id="login-btn" class="btn-primary">
+                <i class="fa-solid fa-user"></i> Đăng nhập
+            </button>
+        </div>
+    </header>
+
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
+                <li class="active"><a href="plugins.html"><i class="fa-solid fa-cube"></i> Plugin</a></li>
+                <li><a href="#"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
+                <li><a href="#"><i class="fa-solid fa-star"></i> Đánh Giá</a></li>
+                <li class="nav-divider"></li>
+                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
+                <li><a href="#"><i class="fa-solid fa-language"></i> Tool Việt Hóa</a></li>
+                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h2>SushiSkills</h2>
+                <p>Core skill engine for Sushi Ecosystem - Tạo và quản lý kỹ năng chiến đấu đỉnh cao.</p>
+                <div class="plugin-meta">
+                    <span class="badge version">v1.0.0</span>
+                    <span class="badge require">Yêu cầu: SushiLib, SushiCore</span>
+                </div>
+            </div>
+
+            <div class="wiki-container">
+                <div class="wiki-header">
+                    <h3><i class="fa-solid fa-book"></i> Mô Tả</h3>
+                    <div class="plugin-actions-box">
+                        <div class="action-buttons">
+                            <a href="downloads/SushiSkills-1.0.0.jar" download class="btn-primary" style="text-decoration: none;">
+                                <i class="fa-solid fa-download"></i> Tải Xuống Ngay
+                            </a>
+                            <button class="btn-secondary" onclick="alert('Tính năng đánh giá đang được phát triển!')">
+                                <i class="fa-solid fa-star"></i> Đánh Giá
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wiki-layout">
+                    <!-- Wiki Content -->
+                    <div class="wiki-main">
+                        <h4 id="overview">1. Tổng Quan Kỹ Năng (Skill Engine)</h4>
+                        <p><strong>SushiSkills</strong> là một skill engine hoàn chỉnh được thiết kế đặc biệt cho hệ sinh thái Sushi MMORPG. Hỗ trợ hệ thống combat đa dạng:</p>
+                        <ul>
+                            <li>⚔️ <strong>Damage System</strong> với Stat Scaling và Critical hits (Chí mạng).</li>
+                            <li>💚 <strong>Healing System</strong> dành cho các class Hỗ trợ (Healers).</li>
+                            <li>🔵 Quản lý tiêu hao <strong>Mana / Stamina</strong>.</li>
+                            <li>✨ Hệ thống <strong>Aura & Buff</strong> (Trạng thái và sát thương theo thời gian).</li>
+                            <li>🎯 <strong>Advanced Targeting:</strong> Hỗ trợ target theo bán kính, nón (cone), đường thẳng.</li>
+                        </ul>
+
+                        <h4 id="expression-syntax">2. Cú Pháp Công Thức (Expression Syntax)</h4>
+                        <p>Bạn có thể sử dụng biểu thức toán học trực tiếp trong cấu hình kỹ năng:</p>
+                        <pre><code>// Tính sát thương dựa trên chỉ số người chơi
+"50 + @STRENGTH * 2.5"
+"clamp(50 + @INT * 3, 10, 200)"
+"@skill:combo >= 3 ? 100 : 50"</code></pre>
+                        
+                        <h4 id="skill-config">3. Cấu hình Kỹ năng (Configuration)</h4>
+                        <p>Mỗi kỹ năng được định nghĩa rõ ràng với <code>conditions</code> (điều kiện) và <code>mechanics</code> (chuỗi hành động):</p>
+                        <pre><code>skills:
+  fireball:
+    name: "§c§lFireball"
+    icon: FIRE_CHARGE
+    cooldown: 5.0
+    conditions:
+      - "mana{cost=30}"
+      - "talent{node=mage_fire}"
+    mechanics:
+      - "damage{amount=60+@INT*3.5;element=FIRE;target=@target}"
+      - "dot{damage=10;interval=1s;duration=5s;type=FIRE;target=@target}"
+      - "particle{type=FLAME;count=20;target=@target}"</code></pre>
+
+                        <h4 id="api-integration">4. Tích Hợp Hệ Sinh Thái (Integration)</h4>
+                        <p>SushiSkills gọi trực tiếp các API của hệ sinh thái:</p>
+                        <ul>
+                            <li><strong>SushiLib:</strong> Sử dụng <code>ResourceAPI</code> để trừ Mana, <code>StatAPI</code> để lấy thuộc tính, <code>AuraManager</code> để gắn hiệu ứng đốt cháy.</li>
+                            <li><strong>SushiCore:</strong> Kiểm tra người chơi đã mở khóa kỹ năng đó trên Cây Kỹ Năng (Talent Tree) hay chưa.</li>
+                        </ul>
+
+                        <h4 id="performance">5. Tối ưu Hiệu Suất</h4>
+                        <ul>
+                            <li>Caching các công thức toán (Expression Engine).</li>
+                            <li>Giới hạn số lượng Particle hiển thị.</li>
+                            <li>Sử dụng khoảng cách bình phương (Distance-squared) để tính toán vùng AOE siêu mượt.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Table of Contents Sidebar -->
+                    <div class="wiki-toc">
+                        <div class="toc-container">
+                            <h4>Mục lục</h4>
+                            <ul>
+                                <li><a href="#overview">1. Tổng Quan Kỹ Năng</a></li>
+                                <li><a href="#expression-syntax">2. Cú Pháp Công Thức</a></li>
+                                <li><a href="#skill-config">3. Cấu Hình Kỹ Năng</a></li>
+                                <li><a href="#api-integration">4. Tích Hợp API</a></li>
+                                <li><a href="#performance">5. Tối Ưu Hiệu Suất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Login Modal (Mock) -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Tên người dùng</label>
+                    <input type="text" id="username" placeholder="Nhập tên của bạn..." required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary w-100">Đăng Nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

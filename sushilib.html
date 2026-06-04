@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SushiLib | SushiGang Studio</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+        </div>
+        <div class="topbar-right">
+            <div class="search-container">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm wiki...">
+            </div>
+            <button id="login-btn" class="btn-primary">
+                <i class="fa-solid fa-user"></i> Đăng nhập
+            </button>
+        </div>
+    </header>
+
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
+                <li class="active"><a href="plugins.html"><i class="fa-solid fa-cube"></i> Plugin</a></li>
+                <li><a href="#"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
+                <li><a href="#"><i class="fa-solid fa-star"></i> Đánh Giá</a></li>
+                <li class="nav-divider"></li>
+                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
+                <li><a href="#"><i class="fa-solid fa-language"></i> Tool Việt Hóa</a></li>
+                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header & Download Section -->
+            <div class="plugin-header">
+                <div class="plugin-title">
+                    <div class="plugin-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
+                    <div>
+                        <h2>SushiLib</h2>
+                        <p class="subtitle">Thư viện (Core Plugin) xương sống của toàn bộ Hệ sinh thái Sushi.</p>
+                    </div>
+                </div>
+                
+                <div class="plugin-actions-box">
+                    <div class="action-buttons">
+                        <a href="downloads/SushiLib-3.0.0.jar" download class="btn-primary large download-btn">
+                            <i class="fa-solid fa-download"></i> Tải Xuống Ngay
+                        </a>
+                        <button class="btn-review large">
+                            <i class="fa-solid fa-star"></i> Đánh Giá
+                        </button>
+                    </div>
+                    
+                    <div class="plugin-info-box">
+                        <div class="info-row">
+                            <span class="info-label">Phiên bản:</span>
+                            <span class="info-value highlight-badge">1.20+</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Yêu cầu (Dependencies):</span>
+                            <span class="info-value">Vault, PlaceholderAPI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wiki Content -->
+            <div class="wiki-container">
+                <div class="wiki-header">
+                    <h3><i class="fa-solid fa-file-lines"></i> Mô Tả</h3>
+                </div>
+                <div class="wiki-layout">
+                    <div class="wiki-main">
+                        <h1>SushiLib v3.0</h1>
+                        <p><strong>SushiLib</strong> là thư viện (Core Plugin) xương sống của toàn bộ Hệ sinh thái Sushi. Plugin này không chỉ đóng vai trò là một thư viện cung cấp API cho lập trình viên, mà còn sở hữu một hệ thống Chỉ số (RPG Stats), Hiệu ứng (Aura), Phòng thủ/Sát thương và Quản lý tiền tệ mạnh mẽ cho Server Minecraft.</p>
+                        
+                        <hr>
+
+                        <h2 id="tinh-nang">🌟 Tính Năng Nổi Bật</h2>
+                        <ul>
+                            <li><strong>Hệ thống Chỉ số RPG Cốt lõi (Stats API):</strong>
+                                <ul>
+                                    <li>Quản lý máu, năng lượng, thể lực, tốc độ di chuyển, sát thương, chí mạng, đỡ đòn, v.v.</li>
+                                    <li>Hỗ trợ công thức tính toán tuỳ chỉnh hoàn toàn thông qua file <code>stats.yml</code> (Sử dụng biểu thức toán học thay vì hard-code).</li>
+                                    <li>Hệ thống giới hạn chỉ số (<code>min-max-values</code>), quy định base-stat (<code>base-stat-value</code>) và định dạng số thập phân (<code>decimal-format</code>).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Hệ thống Nguyên Tố (Element System):</strong> Hệ thống cộng hưởng sát thương hệ Lửa, Nước, Đất, Gió thông qua file <code>elements.yml</code>.</li>
+                            <li><strong>Hệ thống Combat (DamageManager):</strong> Tính toán sát thương tự động với xuyên giáp, kháng hệ, phòng thủ, lifesteal (hút máu) và phản đòn.</li>
+                            <li><strong>Hệ thống Hiệu ứng Tạm thời (Aura & Temp Stat):</strong> Thêm chỉ số hoặc hiệu ứng tạm thời trong thời gian nhất định (Hỗ trợ qua lệnh Admin).</li>
+                            <li><strong>Hệ Thống Tiền Tệ & Hồi Chiêu (Economy & Cooldown):</strong> Tích hợp sâu vào Vault. Cung cấp API quản lý hồi chiêu thời gian thực.</li>
+                            <li><strong>Tối ưu Cơ Sở Dữ Liệu:</strong> Sử dụng SQLite local hoặc MySQL (HikariCP) để lưu trữ chỉ số. Đồng bộ đa luồng.</li>
+                            <li><strong>Tương thích PlaceholderAPI:</strong> Cung cấp hàng loạt biến số cho Holograms, Scoreboard.</li>
+                        </ul>
+
+                        <hr>
+
+                        <h2 id="danh-sach-lenh">📝 Danh Sách Lệnh (Commands)</h2>
+                        <p>Alias khả dụng: <code>/sushilib</code> hoặc <code>/sl</code></p>
+                        
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Lệnh</th>
+                                        <th>Quyền hạn (Permission)</th>
+                                        <th>Chức năng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>/sl help</code></td>
+                                        <td>Tất cả</td>
+                                        <td>Hiển thị danh sách lệnh.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>/sl attributes</code></td>
+                                        <td>Tất cả</td>
+                                        <td>Mở bảng cộng điểm tiềm năng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>/sl points give &lt;player&gt; &lt;amount&gt;</code></td>
+                                        <td><code>sushilib.command.points</code></td>
+                                        <td>Phát điểm tiềm năng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>/sl aura give &lt;player&gt; &lt;type&gt; &lt;seconds&gt;</code></td>
+                                        <td><code>sushilib.admin</code></td>
+                                        <td>Ép hiệu ứng Aura.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>/eco &lt;give/take/set&gt; &lt;player&gt; &lt;currency&gt; &lt;amount&gt;</code></td>
+                                        <td><code>sushilib.command.eco</code></td>
+                                        <td>Quản lý tiền tệ.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr>
+
+                        <h2 id="cau-hinh">⚙️ Hệ Thống Cấu Hình (Configuration Files)</h2>
+                        <p>Khi tải plugin lần đầu, 3 file chính sẽ được tạo trong thư mục <code>plugins/SushiLib/</code>:</p>
+                        
+                        <h3>1. config.yml</h3>
+                        <p>Quản lý các kết nối Database, cấu hình cơ bản, Placeholder hiển thị Holograms.</p>
+                        
+                        <h3>2. stats.yml (Quan trọng nhất)</h3>
+                        <p>File quyết định toàn bộ sức mạnh và cân bằng (Balance) của server.</p>
+                        <ul>
+                            <li><code>decimal-format:</code> Quy định cách làm tròn số trong Menu/GUI (VD: <code>CRITICAL_CHANCE: '0.##'</code>).</li>
+                            <li><code>min-max-values:</code> Khống chế sức mạnh tuyệt đối, ngăn chặn lạm phát.</li>
+                            <li><code>base-stat-value:</code> Chỉ số cơ bản mặc định.</li>
+                            <li><code>formulas:</code> Nơi định nghĩa công thức tính toán toán học sát thương.</li>
+                        </ul>
+
+                        <hr>
+
+                        <h2 id="developer">🛠️ Dành cho Lập Trình Viên (For Developers)</h2>
+                        <p>Nếu bạn code một plugin Add-on cho Sushi, bạn có thể gọi API thông qua:</p>
+                        
+                        <pre><code>import com.sushilib.SushiLib;
+
+// Lấy máu tối đa của người chơi
+double maxHP = SushiLib.getAPI().getStats().getStat(player, "MAX_HEALTH");
+
+// Thêm buff cho người chơi trong 1 khoảng thời gian (StatModifier)
+StatModifier buff = new StatModifier("BUFF_SUC_MANH", 50.0, ModifierType.FLAT);
+SushiLib.getAPI().getStats().addModifier(player, "WEAPON_DAMAGE", buff);</code></pre>
+
+                    </div>
+                    
+                    <!-- Right Sidebar TOC -->
+                    <div class="wiki-toc">
+                        <div class="toc-container">
+                            <h4>Mục Lục</h4>
+                            <ul>
+                                <li><a href="#tinh-nang">Tính Năng Nổi Bật</a></li>
+                                <li><a href="#danh-sach-lenh">Danh Sách Lệnh</a></li>
+                                <li><a href="#cau-hinh">Cấu Hình (Configs)</a></li>
+                                <li><a href="#developer">Dành cho Developer</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Login Modal (Mock) -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Tên người dùng</label>
+                    <input type="text" id="username" placeholder="Nhập tên của bạn..." required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary w-100">Đăng Nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
