@@ -287,6 +287,8 @@ function initSmallCapLogic() {
 }
 
 // --- SPA ROUTER & ANIMATIONS ---
+let currentPath = window.location.pathname;
+
 function initRouter() {
     document.body.addEventListener('click', (e) => {
         const link = e.target.closest('a');
@@ -300,7 +302,10 @@ function initRouter() {
     });
 
     window.addEventListener('popstate', () => {
-        navigateTo(window.location.pathname.split('/').pop() || 'index.html', false);
+        if (window.location.pathname !== currentPath) {
+            currentPath = window.location.pathname;
+            navigateTo(window.location.pathname.split('/').pop() || 'index.html', false);
+        }
     });
 }
 
@@ -325,6 +330,7 @@ async function navigateTo(url, pushState = true) {
             // Update History
             if (pushState) {
                 history.pushState(null, newTitle, url);
+                currentPath = window.location.pathname;
             }
             document.title = newTitle;
 
