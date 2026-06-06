@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Mechanics | SushiGang Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .mechanic-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        .mechanic-card:hover {
+            border-color: rgba(255, 51, 102, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .mechanic-title {
+            font-size: 1.4rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .mechanic-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .mechanic-title a:hover {
+            text-decoration: underline;
+        }
+        .mechanic-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .params-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .params-table th, .params-table td {
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+        .params-table th {
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .params-table td {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .params-table code {
+            background: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: var(--accent-secondary);
+        }
+        .mechanic-example {
+            background: #1e1e24;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-primary);
+            font-family: monospace;
+            color: #e0e0e0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-left">
+            <button id="sidebar-toggle"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+            <nav class="topbar-nav">
+                <a href="sushilib.html" class="topbar-nav-link active"><i class="fa-solid fa-book"></i> SushiLib</a>
+            </nav>
+        </div>
+        <div class="topbar-right">
+            <div class="search-container">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm wiki...">
+            </div>
+            <button id="login-btn" class="btn-primary">
+                <i class="fa-solid fa-user"></i> Đăng nhập
+            </button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <nav id="sidebar" class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
+                <li class="nav-divider"></li>
+                <div class="nav-section-header">
+                    <span class="nav-section-label">SushiLib</span>
+                    <button class="nav-section-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                <div class="nav-section-items">
+                    <li><a href="sushilib.html"><i class="fa-solid fa-book"></i> Tổng Quan</a></li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-skills.html"><i class="fa-solid fa-bolt"></i> Skills</a>
+                            <button class="nav-subsection-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items">
+                            <li class="active"><a href="sushilib-mechanics.html"><i class="fa-solid fa-cogs"></i> Mechanics</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-items.html"><i class="fa-solid fa-khanda"></i> Items</a>
+                            <button class="nav-subsection-toggle collapsed"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items collapsed">
+                            <li><a href="sushilib-item-types.html"><i class="fa-solid fa-box"></i> Các Loại Item</a></li>
+                            <li><a href="sushilib-item-stats.html"><i class="fa-solid fa-chart-simple"></i> Chỉ Số & Độ Bền</a></li>
+                            <li><a href="sushilib-item-skills.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Kỹ Năng Trang Bị</a></li>
+                            <li><a href="sushilib-item-upgrades.html"><i class="fa-solid fa-hammer"></i> Nâng Cấp & Khảm</a></li>
+                        </ul>
+                    </li>
+                </div>
+                <li class="nav-divider"></li>
+                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
+                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="wiki-container">
+                <div class="wiki-header">
+                    <h2><i class="fa-solid fa-cogs"></i> Skills Mechanics</h2>
+                    <p>Danh sách các Mechanic (Hành động) khả dụng trong SushiLib để xây dựng kỹ năng. Bấm vào tên mechanic để lấy đường dẫn trực tiếp.</p>
+                </div>
+                
+                <div class="wiki-layout">
+                    <div class="wiki-main">
+                        
+                        <!-- Damage Mechanic -->
+                        <div id="damage-mechanic" class="mechanic-card">
+                            <h3 class="mechanic-title"><a href="#damage-mechanic"><i class="fa-solid fa-burst"></i> Damage Mechanic</a></h3>
+                            <p class="mechanic-desc">Gây sát thương trực tiếp lên mục tiêu. Hỗ trợ biểu thức toán học và Placeholder.</p>
+                            <table class="params-table">
+                                <thead><tr><th>Tham số</th><th>Kiểu dữ liệu</th><th>Mặc định</th><th>Mô tả</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>amount</code></td><td>Toán học/Placeholder</td><td><code>5.0</code></td><td>Lượng sát thương gây ra.</td></tr>
+                                    <tr><td><code>ignoreArmor</code></td><td>Boolean</td><td><code>false</code></td><td>Xuyên giáp mục tiêu hay không.</td></tr>
+                                </tbody>
+                            </table>
+                            <h4>Mẫu cấu hình:</h4>
+                            <div class="mechanic-example">
+                                - damage{amount="10 + %player_level%"; ignoreArmor=true}
+                            </div>
+                        </div>
+
+                        <!-- Projectile Mechanic -->
+                        <div id="projectile-mechanic" class="mechanic-card">
+                            <h3 class="mechanic-title"><a href="#projectile-mechanic"><i class="fa-solid fa-meteor"></i> Projectile Mechanic</a></h3>
+                            <p class="mechanic-desc">Bắn ra một luồng đạn vô hình theo hướng nhìn. Kích hoạt chuỗi hành động <code>onhit</code> khi chạm mục tiêu hoặc tường.</p>
+                            <table class="params-table">
+                                <thead><tr><th>Tham số</th><th>Kiểu dữ liệu</th><th>Mặc định</th><th>Mô tả</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>speed</code></td><td>Double</td><td><code>1.0</code></td><td>Tốc độ bay của Projectile (mỗi tick).</td></tr>
+                                    <tr><td><code>radius</code> / <code>hitradius</code></td><td>Double</td><td><code>1.5</code></td><td>Bán kính nhận diện va chạm.</td></tr>
+                                    <tr><td><code>maxticks</code></td><td>Long</td><td><code>60</code></td><td>Thời gian tồn tại tối đa (tick) trước khi biến mất.</td></tr>
+                                    <tr><td><code>onhit</code></td><td>Mechanic List</td><td>-</td><td>Các mechanic sẽ chạy khi projectile chạm thực thể hoặc tường (bọc trong <code>[]</code>, cách nhau bằng <code>;</code>).</td></tr>
+                                </tbody>
+                            </table>
+                            <h4>Mẫu cấu hình:</h4>
+                            <div class="mechanic-example">
+                                - projectile{speed=1.5; radius=2.0; maxticks=100; onhit=[damage{amount=5}; particle{type=EXPLOSION_LARGE}]}
+                            </div>
+                        </div>
+
+                        <!-- Particle Mechanic -->
+                        <div id="particle-mechanic" class="mechanic-card">
+                            <h3 class="mechanic-title"><a href="#particle-mechanic"><i class="fa-solid fa-wand-magic-sparkles"></i> Particle Mechanic</a></h3>
+                            <p class="mechanic-desc">Hiển thị hiệu ứng hạt (Particle) tại vị trí mục tiêu hoặc vị trí chạy chiêu.</p>
+                            <table class="params-table">
+                                <thead><tr><th>Tham số</th><th>Kiểu dữ liệu</th><th>Mặc định</th><th>Mô tả</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>type</code> / <code>particle</code></td><td>String (Enum)</td><td><code>FLAME</code></td><td>Tên loại particle (Chuẩn Bukkit Particle).</td></tr>
+                                    <tr><td><code>amount</code></td><td>Integer</td><td><code>1</code></td><td>Số lượng hạt tạo ra.</td></tr>
+                                    <tr><td><code>speed</code></td><td>Double</td><td><code>0.0</code></td><td>Tốc độ lan tỏa của hạt.</td></tr>
+                                    <tr><td><code>offsetx, offsety, offsetz</code></td><td>Double</td><td><code>0.0</code></td><td>Độ lệch vị trí ngẫu nhiên của hạt.</td></tr>
+                                </tbody>
+                            </table>
+                            <h4>Mẫu cấu hình:</h4>
+                            <div class="mechanic-example">
+                                - particle{type=FLAME; amount=50; speed=0.1; offsetx=0.5; offsety=0.5; offsetz=0.5}
+                            </div>
+                        </div>
+
+                        <!-- Potion Mechanic -->
+                        <div id="potion-mechanic" class="mechanic-card">
+                            <h3 class="mechanic-title"><a href="#potion-mechanic"><i class="fa-solid fa-flask"></i> Potion Mechanic</a></h3>
+                            <p class="mechanic-desc">Thêm hiệu ứng Potion cho mục tiêu.</p>
+                            <table class="params-table">
+                                <thead><tr><th>Tham số</th><th>Kiểu dữ liệu</th><th>Mặc định</th><th>Mô tả</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>type</code> / <code>effect</code></td><td>String (Enum)</td><td><code>SPEED</code></td><td>Tên hiệu ứng (Chuẩn Bukkit PotionEffectType).</td></tr>
+                                    <tr><td><code>level</code> / <code>amplifier</code></td><td>Integer</td><td><code>1</code></td><td>Cấp độ hiệu ứng (Bắt đầu từ 1).</td></tr>
+                                    <tr><td><code>duration</code></td><td>Integer / String</td><td><code>60</code></td><td>Thời gian tồn tại (tick). Thêm <code>s</code> để dùng giây (VD: <code>3s</code>).</td></tr>
+                                </tbody>
+                            </table>
+                            <h4>Mẫu cấu hình:</h4>
+                            <div class="mechanic-example">
+                                - potion{type=INCREASE_DAMAGE; level=2; duration=5s}
+                            </div>
+                        </div>
+
+                        <!-- Sound Mechanic -->
+                        <div id="sound-mechanic" class="mechanic-card">
+                            <h3 class="mechanic-title"><a href="#sound-mechanic"><i class="fa-solid fa-volume-high"></i> Sound Mechanic</a></h3>
+                            <p class="mechanic-desc">Phát âm thanh tại vị trí hiện tại.</p>
+                            <table class="params-table">
+                                <thead><tr><th>Tham số</th><th>Kiểu dữ liệu</th><th>Mặc định</th><th>Mô tả</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>type</code> / <code>sound</code></td><td>String (Enum)</td><td><code>ENTITY_PLAYER_LEVELUP</code></td><td>Tên âm thanh (Chuẩn Bukkit Sound).</td></tr>
+                                    <tr><td><code>volume</code> / <code>v</code></td><td>Float</td><td><code>1.0</code></td><td>Âm lượng.</td></tr>
+                                    <tr><td><code>pitch</code> / <code>p</code></td><td>Float</td><td><code>1.0</code></td><td>Độ thanh/trầm của âm thanh (0.5 đến 2.0).</td></tr>
+                                </tbody>
+                            </table>
+                            <h4>Mẫu cấu hình:</h4>
+                            <div class="mechanic-example">
+                                - sound{type=ENTITY_GENERIC_EXPLODE; v=1.0; p=0.8}
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="wiki-toc">
+                        <div class="toc-container">
+                            <div class="toc-header">
+                                <h4>Mục Lục Mechanics</h4>
+                                <div class="toc-toggle-btn"><i class="fa-solid fa-chevron-up"></i></div>
+                            </div>
+                            <div class="toc-list-wrapper">
+                                <ul class="toc-list">
+                                    <li><a href="#damage-mechanic"><i class="fa-solid fa-burst"></i> Damage</a></li>
+                                    <li><a href="#projectile-mechanic"><i class="fa-solid fa-meteor"></i> Projectile</a></li>
+                                    <li><a href="#particle-mechanic"><i class="fa-solid fa-wand-magic-sparkles"></i> Particle</a></li>
+                                    <li><a href="#potion-mechanic"><i class="fa-solid fa-flask"></i> Potion</a></li>
+                                    <li><a href="#sound-mechanic"><i class="fa-solid fa-volume-high"></i> Sound</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form id="login-form">
+                <div class="input-group"><label for="username">Tên</label><input type="text" id="username" required></div>
+                <div class="input-group"><label for="password">Mật khẩu</label><input type="password" id="password" required></div>
+                <button type="submit" class="btn-primary w-100">Đăng Nhập</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

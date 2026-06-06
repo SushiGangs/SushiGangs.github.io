@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SushiLib Skills | SushiGang Studio</title>
+    <meta name="description" content="SushiLib Skills System - Hướng dẫn sử dụng hệ thống kỹ năng RPG cho Minecraft Server.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-left">
+            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+            <nav class="topbar-nav">
+                <a href="sushilib.html" class="topbar-nav-link active"><i class="fa-solid fa-book"></i> SushiLib</a>
+            </nav>
+        </div>
+        <div class="topbar-right">
+            <div class="search-container">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm wiki...">
+            </div>
+            <button id="login-btn" class="btn-primary">
+                <i class="fa-solid fa-user"></i> Đăng nhập
+            </button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <nav id="sidebar" class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
+                <li class="nav-divider"></li>
+                <div class="nav-section-header">
+                    <span class="nav-section-label">SushiLib</span>
+                    <button class="nav-section-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                <div class="nav-section-items">
+                    <li><a href="sushilib.html"><i class="fa-solid fa-book"></i> Tổng Quan</a></li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-skills.html" class="active"><i class="fa-solid fa-bolt"></i> Skills</a>
+                            <button class="nav-subsection-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items">
+                            <li><a href="sushilib-mechanics.html"><i class="fa-solid fa-cogs"></i> Mechanics</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-items.html"><i class="fa-solid fa-khanda"></i> Items</a>
+                            <button class="nav-subsection-toggle collapsed"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items collapsed">
+                            <li><a href="sushilib-item-types.html"><i class="fa-solid fa-box"></i> Các Loại Item</a></li>
+                            <li><a href="sushilib-item-stats.html"><i class="fa-solid fa-chart-simple"></i> Chỉ Số & Độ Bền</a></li>
+                            <li><a href="sushilib-item-skills.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Kỹ Năng Trang Bị</a></li>
+                            <li><a href="sushilib-item-upgrades.html"><i class="fa-solid fa-hammer"></i> Nâng Cấp & Khảm</a></li>
+                        </ul>
+                    </li>
+                </div>
+                <li class="nav-divider"></li>
+                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
+                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <!-- Plugin Header -->
+            <div class="plugin-header">
+                <div class="plugin-title">
+                    <div class="plugin-icon" style="background: rgba(255, 51, 102, 0.1);"><i class="fa-solid fa-bolt"></i></div>
+                    <div>
+                        <h2>SushiLib Skills System</h2>
+                        <p class="subtitle">Hệ thống kỹ năng RPG mạnh mẽ - Tạo skills phức tạp và thú vị chỉ bằng file YAML đơn giản!</p>
+                    </div>
+                </div>
+                <div class="plugin-actions-box">
+                    <div class="plugin-info-box">
+                        <div class="info-row"><span class="info-label">Minecraft:</span><span class="info-value highlight-badge">1.16+</span></div>
+                        <div class="info-row"><span class="info-label">Java:</span><span class="info-value">Java 8+</span></div>
+                        <div class="info-row"><span class="info-label">Dependencies:</span><span class="info-value"><a href="sushilib.html" class="dependency-link">SushiLib</a>, Vault</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wiki Content -->
+            <div class="wiki-container">
+                <div class="wiki-header"><h3><i class="fa-solid fa-file-lines"></i> Skills Admin Guide</h3></div>
+                <div class="wiki-layout">
+                    <div class="wiki-main">
+
+                        <!-- Tổng Quan -->
+                        <h2 id="tong-quan">🌟 Tổng Quan</h2>
+                        <p>SushiLib Skills System là plugin kỹ năng RPG cho server Minecraft. Plugin cho phép bạn tạo skills phức tạp và thú vị mà <strong>không cần biết code</strong>, chỉ cần chỉnh sửa file YAML đơn giản!</p>
+
+                        <!-- Cài Đặt -->
+                        <h2 id="cai-dat">📦 Cài Đặt Plugin</h2>
+                        <h3>1. Yêu Cầu Hệ Thống</h3>
+                        <ul>
+                            <li><strong>Minecraft Version:</strong> 1.16+</li>
+                            <li><strong>Java Version:</strong> Java 8+</li>
+                            <li><strong>Dependencies:</strong> Vault (bắt buộc), WorldGuard (tùy chọn)</li>
+                        </ul>
+
+                        <h3>2. Cài Đặt</h3>
+                        <ol>
+                            <li>Tải file <code>SushiLib.jar</code> vào thư mục <code>plugins/</code></li>
+                            <li>Khởi động lại server</li>
+                            <li>Plugin tự động tạo thư mục và file config</li>
+                        </ol>
+
+                        <h3>3. Cấu Trúc File</h3>
+<pre><code>plugins/SushiLib/
+├── config.yml              # Cấu hình chính
+├── skills/                  # Thư mục chứa các skill
+│   ├── combat_skills.yml   # Skills chiến đấu
+│   ├── magic_skills.yml    # Skills phép thuật
+│   └── utility_skills.yml  # Skills tiện ích
+├── skilltrees/             # Cây kỹ năng
+│   └── default_tree.yml    
+└── data/                   # Dữ liệu người chơi
+    └── players/</code></pre>
+
+                        <!-- Commands & Permissions -->
+                        <h2 id="commands">⚙️ Commands & Permissions</h2>
+                        <h3>Admin Commands</h3>
+<pre><code># Quản lý skills
+/sushilib reload skills              # Reload tất cả skills
+/skill reload &lt;skill_name&gt;           # Reload skill cụ thể
+/skill validate                      # Kiểm tra lỗi cấu hình
+/skill give &lt;player&gt; &lt;skill_name&gt;    # Cho skill cho player
+/skill reset &lt;player&gt;                # Reset skills của player
+
+# Debug
+/skill debug &lt;player&gt;                # Bật/tắt debug mode
+/skill info &lt;skill_name&gt;             # Thông tin chi tiết skill</code></pre>
+
+                        <div class="table-responsive">
+                            <table>
+                                <thead><tr><th>Permission</th><th>Mô tả</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>sushilib.admin.*</code></td><td>Tất cả quyền admin</td></tr>
+                                    <tr><td><code>sushilib.skill.reload</code></td><td>Reload skills</td></tr>
+                                    <tr><td><code>sushilib.skill.give</code></td><td>Cho skill cho người khác</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Player Commands</h3>
+<pre><code>/skills                    # Mở GUI skills
+/cast &lt;skill_name&gt;         # Cast skill
+/skilltree                 # Mở cây kỹ năng
+/mana                     # Xem mana hiện tại</code></pre>
+
+                        <div class="table-responsive">
+                            <table>
+                                <thead><tr><th>Permission</th><th>Mô tả</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>sushilib.skill.use</code></td><td>Sử dụng skills</td></tr>
+                                    <tr><td><code>sushilib.skill.&lt;skill_name&gt;</code></td><td>Permission skill cụ thể</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Tạo Skills Đầu Tiên -->
+                        <h2 id="tao-skill">📝 Tạo Skills Đầu Tiên</h2>
+                        <h3>Bước 1: Tạo File Skill</h3>
+                        <p>Tạo file mới trong <code>skills/my_skills.yml</code>:</p>
+<pre><code># Skills của tôi
+fireball:
+  display-name: "&amp;c&amp;lQuả Cầu Lửa"
+  icon: "FIRE_CHARGE"
+  cooldown: 8.0
+  mana-cost: 30.0
+  
+  description:
+    - "&amp;7Bắn một quả cầu lửa"
+    - "&amp;7gây 40 sát thương"
+  
+  mechanics:
+    - "sound{type=ENTITY_BLAZE_SHOOT; volume=1.0} @self"
+    - "projectile{type=FIREBALL; velocity=2.0} @crosshair{range=25.0}"
+    - "damage{amount=40.0; type=FIRE} @radius{r=3.0}"
+    - "particle{type=EXPLOSION_LARGE; amount=3} @impact"</code></pre>
+
+                        <h3>Bước 2: Reload Skills</h3>
+<pre><code>/sushilib reload skills</code></pre>
+
+                        <h3>Bước 3: Test Skill</h3>
+<pre><code>/skill give &lt;yourname&gt; fireball
+/cast fireball</code></pre>
+
+                        <!-- Skill Configuration -->
+                        <h2 id="config">🎯 Skill Configuration Basics</h2>
+                        <h3>Thuộc Tính Cơ Bản</h3>
+<pre><code>skill_name:
+  display-name: "&amp;cTên Hiển Thị"     # Tên skill (hỗ trợ color codes)
+  icon: "FIRE_CHARGE"                 # Icon trong GUI
+  cooldown: 5.0                       # Thời gian hồi chiêu (giây)
+  mana-cost: 25.0                     # Mana cần thiết
+  charges: 1                          # Số lần tích trữ (optional)
+  
+  description:                        # Mô tả skill
+    - "&amp;7Dòng mô tả 1"
+    - "&amp;7Dòng mô tả 2"
+    
+  permission: "my.skill.fireball"     # Permission cần thiết (optional)
+  level-requirement: 10               # Level tối thiểu (optional)</code></pre>
+
+                        <h3>Mechanics - Hiệu Ứng Skill</h3>
+<pre><code>mechanics:
+  - "damage{amount=30.0} @target"                    # Gây sát thương
+  - "heal{amount=25.0} @self"                        # Hồi máu
+  - "particle{type=FLAME; amount=20} @self"          # Hiệu ứng visual
+  - "sound{type=ENTITY_EXPLODE; volume=2.0} @self"   # Âm thanh
+  - "potion{type=STRENGTH; duration=200} @self"      # Buff effect</code></pre>
+
+                        <!-- Mechanics List -->
+                        <h2 id="mechanic-list">⚙️ Danh Sách Mechanics</h2>
+                        <p>SushiLib hỗ trợ đa dạng các loại Mechanic (hành động/hiệu ứng) khác nhau như <strong>Damage</strong>, <strong>Projectile</strong>, <strong>Particle</strong>, <strong>Potion</strong>, v.v. Nhấn vào nút bên dưới để xem danh sách đầy đủ chi tiết các thông số, cách thiết lập và ví dụ mẫu cấu hình cho từng loại:</p>
+                        <div style="margin-top: 15px; margin-bottom: 30px;">
+                            <a href="sushilib-mechanics.html" class="btn-secondary" style="display:inline-block; padding: 0.8rem 1.5rem;"><i class="fa-solid fa-cogs"></i> Xem Tra Cứu Mechanics</a>
+                        </div>
+
+                        <!-- Targeting System -->
+                        <h2 id="targeting">🎯 Targeting System</h2>
+<pre><code>@self                           # Bản thân
+@crosshair{range=20.0}         # Mục tiêu đang nhắm
+@radius{r=8.0}                 # Tất cả trong phạm vi 8 blocks
+@radius{r=5.0; maxTargets=3}   # Tối đa 3 mục tiêu gần nhất
+@line{r=15.0; w=2.0}           # Đường thẳng dài 15, rộng 2 blocks
+@cone{range=12.0; angle=60.0}  # Hình nón 60 độ, tầm 12 blocks</code></pre>
+
+                        <!-- Skill Examples -->
+                        <h2 id="examples">🔥 Skill Examples</h2>
+
+                        <h3>1. Skill Sát Thương Đơn Giản</h3>
+<pre><code>basic_attack:
+  display-name: "&amp;eBasic Attack"
+  icon: "IRON_SWORD"
+  cooldown: 3.0
+  mana-cost: 10.0
+  
+  mechanics:
+    - "damage{amount=25.0} @crosshair{range=8.0}"
+    - "sound{type=ENTITY_PLAYER_ATTACK_SWEEP; volume=1.0} @self"</code></pre>
+
+                        <h3>2. Skill Hồi Máu</h3>
+<pre><code>healing_light:
+  display-name: "&amp;aHealing Light"
+  icon: "GOLDEN_APPLE"
+  cooldown: 12.0
+  mana-cost: 40.0
+  
+  mechanics:
+    - "heal{amount=50.0} @self"
+    - "particle{type=HEART; amount=10; speed=0.5} @self"
+    - "sound{type=ENTITY_EXPERIENCE_ORB_PICKUP; pitch=1.5} @self"</code></pre>
+
+                        <h3>3. Skill AOE (Area of Effect)</h3>
+<pre><code>ice_storm:
+  display-name: "&amp;bIce Storm"
+  icon: "PACKED_ICE"
+  cooldown: 15.0
+  mana-cost: 60.0
+  
+  mechanics:
+    - "damage{amount=35.0; type=COLD} @radius{r=6.0}"
+    - "potion{type=SLOWNESS; duration=100; amplifier=2} @radius{r=6.0}"
+    - "particle{type=SNOWBALL; amount=50; speed=1.0} @radius{r=6.0}"
+    - "sound{type=ENTITY_PLAYER_SPLASH; volume=2.0} @self"</code></pre>
+
+                        <h3>4. Skill Projectile</h3>
+<pre><code>lightning_bolt:
+  display-name: "&amp;9Lightning Bolt"
+  icon: "TRIDENT"
+  cooldown: 6.0
+  mana-cost: 35.0
+  
+  mechanics:
+    - "projectile{type=TRIDENT; velocity=3.0; maxDistance=30.0} @crosshair{range=30.0}"
+    - "damage{amount=45.0; type=LIGHTNING} @impact"
+    - "particle{type=ELECTRIC_SPARK; amount=20} @impact"
+    - "sound{type=ENTITY_LIGHTNING_BOLT_IMPACT; volume=2.0} @impact"</code></pre>
+
+                        <h3>5. Skill Teleport</h3>
+<pre><code>blink:
+  display-name: "&amp;dBlink"
+  icon: "ENDER_PEARL"
+  cooldown: 8.0
+  mana-cost: 20.0
+  
+  mechanics:
+    - "particle{type=PORTAL; amount=15} @self"
+    - "teleport{type=FORWARD; distance=10.0} @self"
+    - "particle{type=PORTAL; amount=15} @self"
+    - "sound{type=ENTITY_ENDERMAN_TELEPORT; volume=1.0} @self"</code></pre>
+
+                        <!-- Advanced Features -->
+                        <h2 id="advanced">⚡ Advanced Features</h2>
+
+                        <h3>Multi-Hit Skills</h3>
+<pre><code>triple_strike:
+  display-name: "&amp;6Triple Strike"
+  mechanics:
+    - "damage{amount=20.0} @crosshair{range=8.0}"
+    - "delay{ticks=5} @self"              # Đợi 0.25 giây
+    - "damage{amount=20.0} @crosshair{range=8.0}"
+    - "delay{ticks=5} @self"
+    - "damage{amount=20.0} @crosshair{range=8.0}"</code></pre>
+
+                        <h3>Conditional Skills</h3>
+<pre><code>execute:
+  display-name: "&amp;4Execute"
+  mechanics:
+    # Nếu mục tiêu có ít hơn 25% HP, gây 999 sát thương
+    - "conditional{
+        condition=target-health &lt; 25%;
+        trueActions=['damage{amount=999.0}'];
+        falseActions=['damage{amount=30.0}']
+      } @crosshair{range=10.0}"</code></pre>
+
+                        <h3>Chain Skills</h3>
+<pre><code>chain_lightning:
+  display-name: "&amp;bChain Lightning"  
+  mechanics:
+    - "chain{
+        damage=25.0;
+        maxTargets=5;
+        jumpRange=8.0
+      } @crosshair{range=20.0}"</code></pre>
+
+                        <!-- Skill Trees -->
+                        <h2 id="skill-trees">🌳 Skill Trees</h2>
+                        <h3>Tạo Skill Tree</h3>
+                        <p>File: <code>skilltrees/warrior_tree.yml</code></p>
+<pre><code># Cây kỹ năng Warrior
+strength_boost:
+  display-name: "&amp;cStrength Boost"
+  description:
+    - "&amp;7Tăng sức mạnh +2"
+  icon: "IRON_SWORD"
+  slot: 10
+  cost: 1                    # Skill points cần thiết
+  requirements: []           # Không cần skill trước đó
+  
+  # Bonus khi unlock
+  stats:
+    attack-damage: 2.0
+
+berserker_mode:
+  display-name: "&amp;4Berserker Mode"
+  icon: "NETHERITE_AXE"
+  slot: 19
+  cost: 3
+  requirements: ["strength_boost"]  # Cần unlock strength_boost trước
+  
+  # Skill được unlock khi mua node này
+  unlocks-skill: "berserker_rage"</code></pre>
+
+                        <!-- Configuration -->
+                        <h2 id="cau-hinh">🔧 Configuration Options</h2>
+                        <h3>config.yml Settings</h3>
+<pre><code>sushilib:
+  skills:
+    enabled: true
+    default-mana: 100.0           # Mana mặc định
+    mana-regen-rate: 2.0          # Hồi mana/giây
+    cooldown-reduction: 0.0       # Giảm cooldown toàn bộ (%)
+    
+  gui:
+    skills-title: "&amp;9Your Skills"
+    skill-tree-title: "&amp;6Skill Tree"
+    
+  messages:
+    insufficient-mana: "&amp;cKhông đủ mana! Cần %required%, hiện có %current%"
+    skill-on-cooldown: "&amp;cSkill đang hồi chiêu! Còn %time% giây"
+    skill-learned: "&amp;aĐã học skill: &amp;f%skill%"</code></pre>
+
+                        <!-- Particle & Sound -->
+                        <h2 id="effects">🎨 Particle & Sound Effects</h2>
+                        <h3>Particle Types (Phổ biến)</h3>
+<pre><code># Visual Effects
+FLAME, SMOKE_NORMAL, EXPLOSION_LARGE, EXPLOSION_NORMAL
+HEART, CRIT, CRIT_MAGIC, ENCHANTMENT_TABLE
+PORTAL, SNOWBALL, ELECTRIC_SPARK, END_ROD
+DRAGON_BREATH, DAMAGE_INDICATOR, SWEEP_ATTACK</code></pre>
+
+                        <h3>Sound Types (Phổ biến)</h3>
+<pre><code># Combat Sounds
+ENTITY_PLAYER_ATTACK_SWEEP, ENTITY_PLAYER_ATTACK_STRONG
+ENTITY_GENERIC_EXPLODE, ENTITY_LIGHTNING_BOLT_IMPACT
+
+# Magic Sounds  
+ENTITY_BLAZE_SHOOT, ENTITY_ENDERMAN_TELEPORT
+ENTITY_EXPERIENCE_ORB_PICKUP, BLOCK_ENCHANTMENT_TABLE_USE
+
+# Environmental
+ENTITY_PLAYER_SPLASH, BLOCK_WATER_AMBIENT</code></pre>
+
+                        <!-- Troubleshooting -->
+                        <h2 id="troubleshoot">🐛 Troubleshooting</h2>
+
+                        <h3>1. Skill không load được</h3>
+<pre><code># Kiểm tra syntax YAML
+/skill validate
+
+# Check console logs
+tail -f logs/latest.log | grep SushiLib</code></pre>
+
+                        <h3>2. Skill không gây sát thương</h3>
+<pre><code># Đảm bảo có @target hoặc @radius
+- "damage{amount=30.0} @crosshair{range=10.0}"  # ✅ Correct
+- "damage{amount=30.0}"                         # ❌ Missing target</code></pre>
+
+                        <h3>3. Particle không hiện</h3>
+<pre><code># Đảm bảo có target location
+- "particle{type=FLAME; amount=20} @self"       # ✅ Correct
+- "particle{type=FLAME; amount=20}"            # ❌ Missing location</code></pre>
+
+                        <h3>4. Permission Issues</h3>
+<pre><code># Cấp permission đúng cách
+/luckperms user &lt;player&gt; permission set sushilib.skill.use true
+/luckperms user &lt;player&gt; permission set sushilib.skill.fireball true</code></pre>
+
+                        <!-- Tips -->
+                        <h2 id="tips">💡 Tips & Best Practices</h2>
+
+                        <h3>Performance Tips</h3>
+                        <ul>
+                            <li>Giới hạn particle amount (&lt; 50 trong AOE skills)</li>
+                            <li>Sử dụng delay hợp lý giữa các mechanics</li>
+                            <li>Tránh targeting radius quá lớn (&lt; 15 blocks)</li>
+                        </ul>
+
+                        <h3>Balance Tips</h3>
+                        <ul>
+                            <li>Skill mạnh = cooldown cao + mana cost cao</li>
+                            <li>AOE skills nên có cast time</li>
+                            <li>Single target skills có thể instant cast</li>
+                        </ul>
+
+                        <h3>User Experience</h3>
+                        <ul>
+                            <li>Luôn có âm thanh và visual feedback</li>
+                            <li>Mô tả skill rõ ràng trong description</li>
+                            <li>Icon phù hợp với theme của skill</li>
+                        </ul>
+
+                        <!-- Integration -->
+                        <h2 id="integration">🔗 Integration với Plugins Khác</h2>
+
+                        <h3>Vault (Economy)</h3>
+<pre><code>expensive_skill:
+  economics-cost: 1000.0        # Tốn 1000$ để cast
+  mechanics:
+    - "damage{amount=100.0} @target"</code></pre>
+
+                        <h3>PlaceholderAPI</h3>
+<pre><code>level_based_skill:
+  mechanics:
+    # Sát thương scale theo level
+    - "damage{amount=%player_level% * 5} @target"</code></pre>
+
+                        <h3>WorldGuard</h3>
+<pre><code>region_skill:
+  allowed-regions: ["arena", "pvp_zone"]  # Chỉ dùng được trong regions này</code></pre>
+
+                        <hr>
+                        <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem;">
+                            <strong>🎮 Happy Gaming!</strong><br>
+                            <em>Plugin được thiết kế để dễ sử dụng và customize. Hãy thử nghiệm với các combinations khác nhau để tạo ra những skills độc đáo cho server của bạn!</em>
+                        </p>
+
+                    </div>
+
+                    <!-- Table of Contents -->
+                    <div class="wiki-toc">
+                        <div class="toc-container">
+                            <div class="toc-header">
+                                <h4>Mục Lục</h4>
+                                <div class="toc-toggle-btn"><i class="fa-solid fa-chevron-up"></i></div>
+                            </div>
+                            <div class="toc-list-wrapper">
+                                <ul class="toc-list">
+                                    <li><a href="#tong-quan">🌟 Tổng Quan</a></li>
+                                    <li><a href="#cai-dat">📦 Cài Đặt Plugin</a></li>
+                                    <li><a href="#commands">⚙️ Commands & Permissions</a></li>
+                                    <li><a href="#tao-skill">📝 Tạo Skills Đầu Tiên</a></li>
+                                    <li><a href="#config">🎯 Skill Configuration</a></li>
+                                    <li><a href="#mechanic-list">⚙️ Danh Sách Mechanics</a></li>
+                                    <li><a href="#targeting">🎯 Targeting System</a></li>
+                                    <li><a href="#examples">🔥 Skill Examples</a></li>
+                                    <li><a href="#advanced">⚡ Advanced Features</a></li>
+                                    <li><a href="#skill-trees">🌳 Skill Trees</a></li>
+                                    <li><a href="#cau-hinh">🔧 Configuration</a></li>
+                                    <li><a href="#effects">🎨 Particle & Sound</a></li>
+                                    <li><a href="#troubleshoot">🐛 Troubleshooting</a></li>
+                                    <li><a href="#tips">💡 Tips & Best Practices</a></li>
+                                    <li><a href="#integration">🔗 Integration</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form id="login-form">
+                <div class="input-group"><label for="username">Tên</label><input type="text" id="username" required></div>
+                <div class="input-group"><label for="password">Mật khẩu</label><input type="password" id="password" required></div>
+                <button type="submit" class="btn-primary w-100">Đăng Nhập</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

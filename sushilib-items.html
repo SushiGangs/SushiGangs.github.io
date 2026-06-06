@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SushiLib Items | SushiGang Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .items-landing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .landing-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .landing-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff9933;
+            box-shadow: 0 10px 30px rgba(255, 153, 51, 0.1);
+        }
+        .landing-icon {
+            font-size: 3rem;
+            color: #ff9933;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 153, 51, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+        .landing-title {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+        .landing-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-left">
+            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+            <nav class="topbar-nav">
+                <a href="sushilib.html" class="topbar-nav-link active"><i class="fa-solid fa-book"></i> SushiLib</a>
+            </nav>
+        </div>
+        <div class="topbar-right">
+            <div class="search-container">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm wiki...">
+            </div>
+            <button id="login-btn" class="btn-primary">
+                <i class="fa-solid fa-user"></i> Đăng nhập
+            </button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <nav id="sidebar" class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
+                <li class="nav-divider"></li>
+                <div class="nav-section-header">
+                    <span class="nav-section-label">SushiLib</span>
+                    <button class="nav-section-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                <div class="nav-section-items">
+                    <li><a href="sushilib.html"><i class="fa-solid fa-book"></i> Tổng Quan</a></li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-skills.html"><i class="fa-solid fa-bolt"></i> Skills</a>
+                            <button class="nav-subsection-toggle collapsed"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items collapsed">
+                            <li><a href="sushilib-mechanics.html"><i class="fa-solid fa-cogs"></i> Mechanics</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-items.html" class="active"><i class="fa-solid fa-khanda"></i> Items</a>
+                            <button class="nav-subsection-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items">
+                            <li><a href="sushilib-item-types.html"><i class="fa-solid fa-box"></i> Các Loại Item</a></li>
+                            <li><a href="sushilib-item-stats.html"><i class="fa-solid fa-chart-simple"></i> Chỉ Số & Độ Bền</a></li>
+                            <li><a href="sushilib-item-skills.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Kỹ Năng Trang Bị</a></li>
+                            <li><a href="sushilib-item-upgrades.html"><i class="fa-solid fa-hammer"></i> Nâng Cấp & Khảm</a></li>
+                        </ul>
+                    </li>
+                </div>
+                <li class="nav-divider"></li>
+                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
+                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="plugin-header">
+                <div class="plugin-title">
+                    <div class="plugin-icon" style="background: rgba(255, 153, 51, 0.1);"><i class="fa-solid fa-khanda" style="color: #ff9933;"></i></div>
+                    <div>
+                        <h2>SushiLib Items System</h2>
+                        <p class="subtitle">Hệ thống trang bị RPG toàn diện - Tùy chỉnh chỉ số, cấp độ, đá quý và ép skill trực tiếp vào vật phẩm!</p>
+                    </div>
+                </div>
+                <div class="plugin-actions-box">
+                    <div class="plugin-info-box">
+                        <div class="info-row"><span class="info-label">Minecraft:</span><span class="info-value highlight-badge">1.16+</span></div>
+                        <div class="info-row"><span class="info-label">Bảo mật:</span><span class="info-value">PersistentDataContainer</span></div>
+                        <div class="info-row"><span class="info-label">Tính Năng:</span><span class="info-value">Stats, Durability, Upgrades</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wiki-container">
+                <div class="wiki-header">
+                    <h3><i class="fa-solid fa-compass"></i> Khám Phá Hệ Thống Items</h3>
+                    <p>Hệ thống Items của SushiLib được chia thành nhiều module độc lập, giúp bạn dễ dàng quản lý và cân bằng sức mạnh của server.</p>
+                </div>
+                
+                <div class="items-landing-grid">
+                    <a href="sushilib-item-types.html" class="landing-card">
+                        <div class="landing-icon"><i class="fa-solid fa-box"></i></div>
+                        <h3 class="landing-title">Các Loại Vật Phẩm</h3>
+                        <p class="landing-desc">Kiếm, Cung, Giáp, Đồ Tiêu Hao... Cách thiết lập file YAML cho từng loại và cơ chế hoạt động riêng biệt.</p>
+                    </a>
+                    
+                    <a href="sushilib-item-stats.html" class="landing-card">
+                        <div class="landing-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                        <h3 class="landing-title">Chỉ Số & Độ Bền</h3>
+                        <p class="landing-desc">Tổng hợp các chỉ số chiến đấu, cơ chế xử lý độ bền tùy chỉnh (Custom Durability) không phụ thuộc Vanilla.</p>
+                    </a>
+                    
+                    <a href="sushilib-item-skills.html" class="landing-card">
+                        <div class="landing-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h3 class="landing-title">Kỹ Năng Trang Bị</h3>
+                        <p class="landing-desc">Hướng dẫn gán các kỹ năng (Skills) vào thẳng bên trong trang bị với hệ thống Trigger độc đáo (Đánh, Bị Đánh, ...).</p>
+                    </a>
+                    
+                    <a href="sushilib-item-upgrades.html" class="landing-card">
+                        <div class="landing-icon"><i class="fa-solid fa-hammer"></i></div>
+                        <h3 class="landing-title">Nâng Cấp & Khảm Ngọc</h3>
+                        <p class="landing-desc">Hệ thống cường hóa sức mạnh theo %, quản lý cấp độ tối đa và tạo lỗ khảm ngọc (Gem Sockets) cho trang bị.</p>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

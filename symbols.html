@@ -15,6 +15,9 @@
         <div class="topbar-left">
             <button id="sidebar-toggle"><i class="fa-solid fa-bars"></i></button>
             <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+            <nav class="topbar-nav">
+                <a href="sushilib.html" class="topbar-nav-link"><i class="fa-solid fa-book"></i> SushiLib</a>
+            </nav>
         </div>
         <div class="topbar-right">
             <button id="login-btn" class="btn-primary"><i class="fa-solid fa-user"></i> Đăng nhập</button>
@@ -25,12 +28,38 @@
         <nav id="sidebar" class="sidebar">
             <ul class="nav-links">
                 <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
-                <li><a href="plugins.html"><i class="fa-solid fa-cube"></i> Plugin</a></li>
                 <li><a href="about.html"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
-                <li><a href="#"><i class="fa-solid fa-star"></i> Đánh Giá</a></li>
+                <li class="nav-divider"></li>
+                <div class="nav-section-header">
+                    <span class="nav-section-label">SushiLib</span>
+                    <button class="nav-section-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                <div class="nav-section-items">
+                    <li><a href="sushilib.html"><i class="fa-solid fa-book"></i> Tổng Quan</a></li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-skills.html"><i class="fa-solid fa-bolt"></i> Skills</a>
+                            <button class="nav-subsection-toggle collapsed"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items collapsed">
+                            <li><a href="sushilib-mechanics.html"><i class="fa-solid fa-cogs"></i> Mechanics</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-items.html"><i class="fa-solid fa-khanda"></i> Items</a>
+                            <button class="nav-subsection-toggle collapsed"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items collapsed">
+                            <li><a href="sushilib-item-types.html"><i class="fa-solid fa-box"></i> Các Loại Item</a></li>
+                            <li><a href="sushilib-item-stats.html"><i class="fa-solid fa-chart-simple"></i> Chỉ Số & Độ Bền</a></li>
+                            <li><a href="sushilib-item-skills.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Kỹ Năng Trang Bị</a></li>
+                            <li><a href="sushilib-item-upgrades.html"><i class="fa-solid fa-hammer"></i> Nâng Cấp & Khảm</a></li>
+                        </ul>
+                    </li>
+                </div>
                 <li class="nav-divider"></li>
                 <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
-                <li><a href="#"><i class="fa-solid fa-language"></i> Tool Việt Hóa</a></li>
                 <li class="active"><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
             </ul>
         </nav>

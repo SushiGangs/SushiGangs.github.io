@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nâng Cấp & Khảm Ngọc | SushiGang Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-left">
+            <button id="sidebar-toggle"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
+            <nav class="topbar-nav">
+                <a href="sushilib.html" class="topbar-nav-link active"><i class="fa-solid fa-book"></i> SushiLib</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <nav id="sidebar" class="sidebar">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
+                <li class="nav-divider"></li>
+                <div class="nav-section-header">
+                    <span class="nav-section-label">SushiLib</span>
+                    <button class="nav-section-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                <div class="nav-section-items">
+                    <li><a href="sushilib.html"><i class="fa-solid fa-book"></i> Tổng Quan</a></li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-skills.html"><i class="fa-solid fa-bolt"></i> Skills</a>
+                            <button class="nav-subsection-toggle collapsed"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items collapsed">
+                            <li><a href="sushilib-mechanics.html"><i class="fa-solid fa-cogs"></i> Mechanics</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="nav-subsection-header">
+                            <a href="sushilib-items.html" class="active"><i class="fa-solid fa-khanda"></i> Items</a>
+                            <button class="nav-subsection-toggle"><i class="fa-solid fa-chevron-down"></i></button>
+                        </div>
+                        <ul class="nav-subsection-items">
+                            <li><a href="sushilib-item-types.html"><i class="fa-solid fa-box"></i> Các Loại Item</a></li>
+                            <li><a href="sushilib-item-stats.html"><i class="fa-solid fa-chart-simple"></i> Chỉ Số & Độ Bền</a></li>
+                            <li><a href="sushilib-item-skills.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Kỹ Năng Trang Bị</a></li>
+                            <li class="active"><a href="sushilib-item-upgrades.html"><i class="fa-solid fa-hammer"></i> Nâng Cấp & Khảm</a></li>
+                        </ul>
+                    </li>
+                </div>
+                <li class="nav-divider"></li>
+                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
+                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="wiki-container">
+                <div class="wiki-header">
+                    <h2><i class="fa-solid fa-hammer"></i> Nâng Cấp & Khảm Ngọc (Upgrades & Gem Sockets)</h2>
+                    <p>Khai phá sức mạnh tiềm ẩn của trang bị thông qua hệ thống rèn đúc (Cường Hóa) và đục lỗ khảm Đá Quý (Gems).</p>
+                </div>
+                
+                <div class="wiki-layout">
+                    <div class="wiki-main">
+                        <h2 id="nang-cap">📈 Cơ Chế Nâng Cấp (Cường Hóa)</h2>
+                        <p>Admin có thể quy định mỗi vật phẩm riêng biệt có thể được cường hóa tối đa lên cấp mấy, và mỗi cấp độ nâng cấp sẽ tăng thêm bao nhiêu % sức mạnh gốc của trang bị.</p>
+                        
+                        <h3>Các Chỉ Số (Stats) Liên Quan:</h3>
+                        <table class="table-responsive" style="width:100%; border-collapse:collapse; margin-bottom: 20px;">
+                            <tr style="background: rgba(255,255,255,0.05);"><th style="padding:10px; border:1px solid #333;">Tên Chỉ Số</th><th style="padding:10px; border:1px solid #333;">Kiểu</th><th style="padding:10px; border:1px solid #333;">Giải thích</th></tr>
+                            <tr><td style="padding:10px; border:1px solid #333;"><code>UPGRADE_LEVEL</code></td><td style="padding:10px; border:1px solid #333;">Integer</td><td style="padding:10px; border:1px solid #333;">Cấp cường hóa hiện tại của vật phẩm (Khi vừa nhận sẽ là 0). Hiển thị sau tên (VD: Kiếm Thép +1).</td></tr>
+                            <tr><td style="padding:10px; border:1px solid #333;"><code>MAX_UPGRADE_LEVEL</code></td><td style="padding:10px; border:1px solid #333;">Integer</td><td style="padding:10px; border:1px solid #333;">Giới hạn cường hóa tối đa (VD: 15 là max +15).</td></tr>
+                            <tr><td style="padding:10px; border:1px solid #333;"><code>UPGRADE_SCALE</code></td><td style="padding:10px; border:1px solid #333;">Double</td><td style="padding:10px; border:1px solid #333;">Hệ số sức mạnh tăng mỗi cấp. (VD: <code>0.1</code> nghĩa là tăng 10% sát thương gốc mỗi 1 cấp +).</td></tr>
+                            <tr><td style="padding:10px; border:1px solid #333;"><code>UPGRADE_CHANCE</code></td><td style="padding:10px; border:1px solid #333;">Double</td><td style="padding:10px; border:1px solid #333;">Tỷ lệ thành công cơ bản khi nâng cấp.</td></tr>
+                        </table>
+
+                        <h3>Ví Dụ Thiết Lập:</h3>
+                        <div class="mechanic-example" style="background: #1e1e24; padding: 1rem; border-left: 4px solid var(--accent-primary);">
+<pre><code>MAGIC_STAFF:
+  material: "STICK"
+  name: "&dTrượng Phép Thuật"
+  stats:
+    ATTACK_DAMAGE: 100.0
+    MAX_UPGRADE_LEVEL: 10     # Có thể nâng cấp tối đa +10
+    UPGRADE_SCALE: 0.15       # Mỗi cấp cộng thêm 15% (Lên +10 sẽ có 100 + 150% = 250 DMG)
+    UPGRADE_CHANCE: 80.0      # 80% thành công ban đầu</code></pre>
+                        </div>
+
+                        <h2 id="kham-ngoc">💎 Đục Lỗ & Khảm Ngọc (Gems)</h2>
+                        <p>Trang bị có thể có các <strong>"Lỗ Khảm" (Sockets)</strong> trống. Người chơi có thể tìm kiếm Đá Quý (Gems) - cũng là một dạng item đặc biệt - để khảm vào các lỗ này, cung cấp thêm chỉ số phụ.</p>
+                        
+                        <h3>Khai báo Lỗ Khảm Trống (Empty Sockets)</h3>
+                        <p>Chỉ cần sử dụng Stat <code>EMPTY_SOCKETS: [số lượng]</code> trong config trang bị.</p>
+                        
+                        <div class="mechanic-example" style="background: #1e1e24; padding: 1rem; border-left: 4px solid var(--accent-primary);">
+<pre><code>LEGENDARY_ARMOR:
+  material: "DIAMOND_CHESTPLATE"
+  name: "&6Giáp Huyền Thoại"
+  stats:
+    DEFENSE: 120.0
+    EMPTY_SOCKETS: 3    # Có 3 lỗ trống để người chơi khảm ngọc</code></pre>
+                        </div>
+                        
+                        <h3>Cách Hoạt Động (Backend)</h3>
+                        <p>Khi khảm thành công một viên ngọc, thẻ <code>EMPTY_SOCKETS</code> sẽ giảm đi 1, và một thẻ mới mang tên <code>GEM_STATS</code> sẽ được lưu vào PersistentDataContainer (NBT) của đồ vật. Thẻ này lưu danh sách các chỉ số từ ngọc khảm cộng dồn vào tổng chỉ số của trang bị.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

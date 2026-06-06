@@ -24,7 +24,7 @@
     --shadow-accent: 0 0 20px rgba(255, 51, 102, 0.3);
 
     /* Dimensions */
-    --sidebar-width: 260px;
+    --sidebar-width: 220px;
     --topbar-height: 70px;
 }
 
@@ -214,6 +214,22 @@ button {
     left: 0;
     transition: transform 0.3s ease;
     z-index: 90;
+    overflow-y: auto;
+}
+
+/* Sidebar Scrollbar Customization */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 51, 102, 0.5);
 }
 
 .nav-links {
@@ -233,6 +249,7 @@ button {
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
+    border-left: 3px solid transparent;
 }
 
 .nav-links a i {
@@ -529,6 +546,332 @@ button {
 
 .modal-footer a:hover {
     text-decoration: underline;
+}
+
+/* =========================================
+   Topbar Navigation
+   ========================================= */
+.topbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1.5rem;
+}
+
+.topbar-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.topbar-nav-link:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-color);
+}
+
+.topbar-nav-link.active {
+    color: var(--accent-primary);
+    background: rgba(255, 51, 102, 0.1);
+    border-color: rgba(255, 51, 102, 0.2);
+}
+
+/* =========================================
+   Sidebar Section Title
+   ========================================= */
+.nav-section-title {
+    padding: 0.5rem 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+/* =========================================
+   SushiLib Badge & Feature Tags
+   ========================================= */
+.sushilib-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 51, 102, 0.1);
+    border: 1px solid rgba(255, 51, 102, 0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.feature-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: rgba(0, 210, 255, 0.08);
+    color: var(--accent-secondary);
+    border: 1px solid rgba(0, 210, 255, 0.15);
+}
+
+.module-card:hover .feature-tag {
+    background: rgba(0, 210, 255, 0.15);
+}
+
+/* Ordered List Styling */
+.wiki-main ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.wiki-main ol li {
+    margin-bottom: 0.5rem;
+}
+/* =========================================
+   Collapsible TOC
+   ========================================= */
+.toc-container {
+    position: sticky;
+    top: 90px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toc-header h4 {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.toc-toggle-btn {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.toc-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.toc-toggle-btn.collapsed {
+    transform: rotate(180deg);
+}
+
+.toc-list-wrapper {
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 0.8rem;
+}
+
+.toc-list-wrapper.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.toc-container .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-container .toc-list li {
+    margin-bottom: 0.4rem;
+}
+
+.toc-container .toc-list a {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    transition: color 0.3s, padding-left 0.3s;
+    display: block;
+    padding: 0.2rem 0;
+    line-height: 1.4;
+}
+
+.toc-container .toc-list a:hover {
+    color: var(--accent-primary);
+    padding-left: 5px;
+}
+
+.wiki-toc {
+    min-width: 200px;
+    max-width: 220px;
+}
+
+/* =========================================
+   Sidebar Collapsible Section
+   ========================================= */
+.nav-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.nav-section-header .nav-section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+
+.nav-section-toggle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-section-toggle:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-section-toggle.collapsed {
+    transform: rotate(-90deg);
+}
+
+.nav-section-items {
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.nav-section-items.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+.nav-subsection-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-subsection-header > a {
+    flex-grow: 1;
+}
+
+.nav-subsection-toggle {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-subsection-toggle:hover {
+    color: var(--text-primary);
+}
+
+.nav-subsection-toggle.collapsed {
+    transform: rotate(-90deg);
+}
+
+.nav-subsection-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 1000px;
+    opacity: 1;
+    background: rgba(0,0,0,0.1);
+}
+
+.nav-subsection-items.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+.nav-subsection-items a {
+    padding-left: 3rem !important;
+    font-size: 0.85rem;
 }
 
 /* =========================================
@@ -1135,4 +1478,51 @@ button {
     .tool-textarea {
         height: 250px;
     }
+}
+
+/* =========================================
+   Smooth SPA & Advanced Animations
+   ========================================= */
+
+/* Smooth scroll for anchors */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Page Transitions */
+.main-content {
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.main-content.page-fade-out {
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.main-content.page-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Entry Animation (applied via JS) */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Interactive Hover Enhancements */
+.mechanic-card, .landing-card, .module-card, .symbol-card {
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.mechanic-card:hover, .landing-card:hover, .module-card:hover {
+    transform: translateY(-8px) scale(1.01);
 }
