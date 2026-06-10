@@ -27,12 +27,14 @@ code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:rgba(255,1
 #navToggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
-.hero{position:relative;padding:160px 0 100px;overflow:hidden}
+.hero{position:relative;padding:160px 0 100px;overflow:hidden;background:url('sushi-banner.png') center/cover no-repeat;}
+.hero::before{content:'';position:absolute;inset:0;background:rgba(10,6,18,0.85);z-index:0;}
+.hero > * {position:relative;z-index:2;}
 .hero__bg{position:absolute;inset:0;background:
  radial-gradient(circle at 20% 30%,rgba(255,119,170,.25),transparent 50%),
  radial-gradient(circle at 80% 70%,rgba(170,119,255,.25),transparent 50%),
  radial-gradient(circle at 50% 100%,rgba(119,170,255,.18),transparent 60%);
- filter:blur(40px);z-index:-1;animation:float 12s ease-in-out infinite}
+ filter:blur(40px);z-index:1;animation:float 12s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-20px) scale(1.05)}}
 .badge{display:inline-block;padding:6px 16px;border:1px solid rgba(255,119,170,.4);border-radius:999px;font-size:.85rem;color:#ff9ec7;margin-bottom:24px;font-weight:500}
 .hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.15;margin-bottom:20px;letter-spacing:-.02em}
@@ -882,4 +884,77 @@ textarea::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-rad
   .wiki-layout { flex-direction: column; }
   .wiki-toc-wrapper { width: 100%; }
   .wiki-toc { position: static; }
+}
+
+/* =========================================
+   BADGES (OWNER STATUS) IMPROVEMENTS
+========================================= */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 15px 0 25px 0;
+}
+.badge-tag {
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: default;
+}
+.badge-tag::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: all 0.6s ease;
+}
+.badge-tag:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+.badge-tag:hover::before {
+  left: 200%;
+}
+
+.badge-tag.corelink {
+  background: linear-gradient(135deg, rgba(24, 88, 204, 0.2), rgba(10, 42, 99, 0.5));
+  border-color: rgba(64, 156, 255, 0.4);
+  color: #88c0ff;
+  text-shadow: 0 0 10px rgba(136, 192, 255, 0.5);
+}
+.badge-tag.corelink:hover {
+  border-color: rgba(64, 156, 255, 0.8);
+  box-shadow: 0 8px 25px rgba(24, 88, 204, 0.4);
+}
+
+.badge-tag.sushi {
+  background: linear-gradient(135deg, rgba(255, 119, 170, 0.2), rgba(153, 20, 80, 0.5));
+  border-color: rgba(255, 119, 170, 0.4);
+  color: #ffb8d2;
+  text-shadow: 0 0 10px rgba(255, 119, 170, 0.5);
+}
+.badge-tag.sushi:hover {
+  border-color: rgba(255, 119, 170, 0.8);
+  box-shadow: 0 8px 25px rgba(255, 119, 170, 0.4);
+}
+
+.badge-tag.swordland {
+  background: linear-gradient(135deg, rgba(144, 44, 219, 0.2), rgba(67, 13, 107, 0.5));
+  border-color: rgba(183, 107, 242, 0.4);
+  color: #d6a1ff;
+  text-shadow: 0 0 10px rgba(183, 107, 242, 0.5);
+}
+.badge-tag.swordland:hover {
+  border-color: rgba(183, 107, 242, 0.8);
+  box-shadow: 0 8px 25px rgba(144, 44, 219, 0.4);
 }

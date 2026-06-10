@@ -34,7 +34,7 @@ window.addEventListener('scroll', () => {
 
 // SPA, Hash Routing, and Auto-TOC logic
 const pages = document.querySelectorAll('.page');
-const allLinks = document.querySelectorAll('.sidebar__link, .sidebar__sublink, .nav a, .logo');
+const allLinks = document.querySelectorAll('a[data-target]');
 
 function switchPage(targetId) {
   if (!targetId) return;
