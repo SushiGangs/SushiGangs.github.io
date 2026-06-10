@@ -375,10 +375,57 @@ if (siIpInput && siSuggestions) {
   });
 }
 
+const siBedrockToggle = document.getElementById('siBedrockToggle');
+const siForcePingToggle = document.getElementById('siForcePingToggle');
+
+function parseMinecraftColors(text) {
+  const colorMap = {
+    '0': '#000000', '1': '#0000AA', '2': '#00AA00', '3': '#00AAAA',
+    '4': '#AA0000', '5': '#AA00AA', '6': '#FFAA00', '7': '#AAAAAA',
+    '8': '#555555', '9': '#5555FF', 'a': '#55FF55', 'b': '#55FFFF',
+    'c': '#FF5555', 'd': '#FF55FF', 'e': '#FFFF55', 'f': '#FFFFFF'
+  };
+  let html = '';
+  let openTags = 0;
+  
+  if (typeof text !== 'string') return '';
+  text = text.replace(/\\n/g, '\n');
+  let tokens = text.split(/(§[0-9a-fk-or]|&[0-9a-fk-or])/i);
+  
+  for (let token of tokens) {
+    if (!token) continue;
+    if (token.startsWith('§') || token.startsWith('&')) {
+      let code = token[1].toLowerCase();
+      if (colorMap[code]) {
+        while(openTags > 0) { html += '</span>'; openTags--; }
+        html += `<span style="color: ${colorMap[code]};">`;
+        openTags++;
+      } else if (code === 'l') { html += `<span style="font-weight: bold;">`; openTags++; }
+      else if (code === 'o') { html += `<span style="font-style: italic;">`; openTags++; }
+      else if (code === 'n') { html += `<span style="text-decoration: underline;">`; openTags++; }
+      else if (code === 'm') { html += `<span style="text-decoration: line-through;">`; openTags++; }
+      else if (code === 'r') { while(openTags > 0) { html += '</span>'; openTags--; } }
+    } else {
+      html += token.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
+    }
+  }
+  while(openTags > 0) { html += '</span>'; openTags--; }
+  return html;
+}
+
 if (siSubmitBtn) {
   siSubmitBtn.addEventListener('click', async () => {
-    const ip = siIpInput.value.trim();
-    if (!ip) return;
+    let inputStr = siIpInput.value.trim();
+    if (!inputStr) return;
+    
+    // Parse IP and Port
+    let ip = inputStr;
+    let port = '';
+    if (inputStr.includes(':')) {
+      const parts = inputStr.split(':');
+      ip = parts[0];
+      port = parts[1];
+    }
     
     siSuggestions.style.display = 'none';
     siLoading.style.display = 'block';
@@ -389,64 +436,112 @@ if (siSubmitBtn) {
       let apiData = null;
       let ping = 0;
       let isMcstatus = false;
+      
+      const isBedrock = siBedrockToggle && siBedrockToggle.checked;
+      const isForcePing = siForcePingToggle && siForcePingToggle.checked;
+      
+      const mcstatusType = isBedrock ? 'bedrock' : 'java';
+      const mcsrvstatType = isBedrock ? 'bedrock/3' : '3';
+      const nocache = isForcePing ? `?t=${Date.now()}` : '';
 
-      // 1. Thử dùng mcstatus.io trước (Ping chuẩn hơn)
-      try {
-        const res1 = await fetch(`https://api.mcstatus.io/v2/status/java/${encodeURIComponent(ip)}`);
-        const data1 = await res1.json();
-        if (data1.online) {
-          apiData = data1;
-          ping = data1.roundTripLatency || 0;
-          isMcstatus = true;
+      if (isForcePing) {
+        // Strategy 1: minetools.eu (if Java)
+        if (!isBedrock) {
+          try {
+            const portStr = port ? `/${port}` : '/25565';
+            const res = await fetch(`https://api.minetools.eu/ping/${encodeURIComponent(ip)}${portStr}${nocache}`);
+            const data = await res.json();
+            if (!data.error) {
+              apiData = {
+                online: true,
+                host: ip,
+                port: port || 25565,
+                players: { online: data.players.online, max: data.players.max },
+                version: data.version.name,
+                motd: { html: [data.description] },
+                icon: data.favicon
+              };
+              ping = data.latency || 0;
+            }
+          } catch(e) {}
         }
-      } catch (err) {
-        console.warn('mcstatus.io failed, trying fallback...');
-      }
-
-      // 2. Nếu mcstatus.io thất bại hoặc báo offline, dùng mcsrvstat.us làm phương án dự phòng
-      if (!apiData) {
-        const res2 = await fetch(`https://api.mcsrvstat.us/3/${encodeURIComponent(ip)}`);
-        const data2 = await res2.json();
-        if (data2.online) {
-          apiData = data2;
-          if (data2.debug && typeof data2.debug.ping === 'number') {
-            ping = data2.debug.ping;
+        
+        // Strategy 2: mcstatus.io with nocache
+        if (!apiData) {
+          try {
+            const res = await fetch(`https://api.mcstatus.io/v2/status/${mcstatusType}/${encodeURIComponent(inputStr)}${nocache}`);
+            const data = await res.json();
+            if (data.online) {
+              apiData = data;
+              ping = data.roundTripLatency || 0;
+              isMcstatus = true;
+            }
+          } catch(e) {}
+        }
+      } else {
+        // Normal Fallback Route
+        try {
+          const res1 = await fetch(`https://api.mcstatus.io/v2/status/${mcstatusType}/${encodeURIComponent(inputStr)}`);
+          const data1 = await res1.json();
+          if (data1.online) {
+            apiData = data1;
+            ping = data1.roundTripLatency || 0;
+            isMcstatus = true;
           }
+        } catch (err) {}
+
+        if (!apiData) {
+          try {
+            const res2 = await fetch(`https://api.mcsrvstat.us/${mcsrvstatType}/${encodeURIComponent(inputStr)}`);
+            const data2 = await res2.json();
+            if (data2.online) {
+              apiData = data2;
+              if (data2.debug && typeof data2.debug.ping === 'number') ping = data2.debug.ping;
+            }
+          } catch(e) {}
         }
       }
 
-      // Nếu cả 2 đều báo Offline
       if (!apiData) {
-        throw new Error('Server đang Offline hoặc IP không tồn tại!');
+        throw new Error('Server đang Offline hoặc Tường lửa (TCPShield) quá mạnh! Hãy thử bật chế độ Ép Ping.');
       }
 
-      // Ánh xạ dữ liệu vì 2 API có cấu trúc trả về khác nhau
+      // Mapping variables correctly
       const hostName = isMcstatus ? apiData.host : (apiData.hostname || apiData.ip);
       const onlinePlayers = apiData.players?.online || 0;
       const maxPlayers = apiData.players?.max || 0;
       const percent = maxPlayers > 0 ? Math.round((onlinePlayers / maxPlayers) * 100) : 0;
-      const version = isMcstatus ? (apiData.version?.name_clean || apiData.version?.name_raw || 'Unknown') : (apiData.version || 'Unknown');
+      let version = isMcstatus ? (apiData.version?.name_clean || apiData.version?.name_raw || 'Unknown') : (apiData.version || 'Unknown');
+      if (typeof version === 'object') version = version.name || 'Unknown'; // safety for minetools
       const software = apiData.software || 'Unknown';
       
-      let iconUrl = isMcstatus ? apiData.icon : `https://api.mcsrvstat.us/icon/${encodeURIComponent(ip)}`;
+      let iconUrl = isMcstatus ? apiData.icon : (apiData.icon || `https://api.mcsrvstat.us/icon/${encodeURIComponent(inputStr)}`);
       if (!iconUrl) iconUrl = 'https://via.placeholder.com/64';
 
       let motdHtml = 'A Minecraft Server';
-      if (isMcstatus && apiData.motd?.html) {
-        motdHtml = apiData.motd.html.replace(/\\n/g, '<br>');
-      } else if (!isMcstatus && apiData.motd?.html) {
-        motdHtml = apiData.motd.html.join('<br>');
+      if (apiData.motd?.html) {
+        if (Array.isArray(apiData.motd.html)) {
+          motdHtml = apiData.motd.html.join('<br>');
+        } else {
+          motdHtml = apiData.motd.html.replace(/\\n/g, '<br>');
+        }
+        
+        // Nếu html trả về vẫn còn ký tự §, tiến hành parse thủ công
+        if (motdHtml.includes('§')) {
+          motdHtml = parseMinecraftColors(motdHtml);
+        }
+      } else if (typeof apiData.description === 'string') {
+        motdHtml = parseMinecraftColors(apiData.description);
       }
-
-      // Điền thông tin lên UI
+      
+      // Update UI
       document.getElementById('siHeaderIp').textContent = hostName;
-      document.getElementById('siConnect').textContent = `${hostName}:${apiData.port}`;
+      document.getElementById('siConnect').textContent = `${hostName}:${apiData.port || port || (isBedrock ? 19132 : 25565)}`;
       document.getElementById('siPing').textContent = ping > 0 ? `${ping}ms` : 'Không xác định';
       document.getElementById('siPlayers').textContent = `${onlinePlayers}/${maxPlayers} (${percent}%)`;
       document.getElementById('siVersion').textContent = version;
       document.getElementById('siSoftware').textContent = software;
-
-      // Khối hiển thị MOTD
+      
       document.getElementById('siIcon').src = iconUrl;
       document.getElementById('siMotdName').textContent = hostName;
       
@@ -465,24 +560,20 @@ if (siSubmitBtn) {
 
       document.getElementById('siMotdPlayers').innerHTML = `${onlinePlayers}/${maxPlayers} ${pingSvg}`;
       document.getElementById('siMotdDesc').innerHTML = motdHtml;
-
-      // Lấy IP thật của host để tra cứu vị trí (luôn dùng mcsrvstat.us để lấy resolved IP)
+      
+      // GeoIP resolving
       let realIp = ip;
-      if (isMcstatus) {
-         try {
+      try {
+        if (!ip.match(/\d+\.\d+\.\d+\.\d+/)) {
            const rawIpRes = await fetch(`https://api.mcsrvstat.us/3/${encodeURIComponent(ip)}`);
            const rawIpData = await rawIpRes.json();
            if (rawIpData.ip) realIp = rawIpData.ip;
-         } catch(e) {}
-      } else {
-         realIp = apiData.ip || ip;
-      }
-
-      // Dùng ipwho.is hỗ trợ HTTPS không bị lỗi Mixed Content (bị chặn)
+        }
+      } catch(e) {}
+      
       try {
         const geoRes = await fetch(`https://ipwho.is/${encodeURIComponent(realIp)}`);
         const geoData = await geoRes.json();
-        
         if (geoData.success) {
           document.getElementById('siLocation').innerHTML = `🚩 ${geoData.country} — ${geoData.city}, ${geoData.region}`;
           document.getElementById('siIsp').textContent = geoData.connection?.isp || geoData.connection?.org || 'Không rõ';
@@ -497,6 +588,7 @@ if (siSubmitBtn) {
 
       siLoading.style.display = 'none';
       siResultContainer.style.display = 'block';
+
     } catch (error) {
       siLoading.style.display = 'none';
       siError.textContent = error.message || 'Có lỗi xảy ra khi lấy dữ liệu server. Vui lòng thử lại sau.';
