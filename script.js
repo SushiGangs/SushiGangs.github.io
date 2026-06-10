@@ -32,9 +32,9 @@ window.addEventListener('scroll', () => {
   else nav.style.boxShadow = 'none';
 });
 
-// SPA and Sidebar logic
+// SPA, Hash Routing, and Auto-TOC logic
 const pages = document.querySelectorAll('.page');
-const allLinks = document.querySelectorAll('.sidebar__link, .nav a, .logo');
+const allLinks = document.querySelectorAll('.sidebar__link, .sidebar__sublink, .nav a, .logo');
 
 function switchPage(targetId) {
   if (!targetId) return;
@@ -42,9 +42,9 @@ function switchPage(targetId) {
   const target = document.getElementById(targetId);
   if (target) target.classList.add('active');
   
-  document.querySelectorAll('.sidebar__link').forEach(l => {
-    if (l.dataset.target === targetId) l.classList.add('active');
-    else l.classList.remove('active');
+  document.querySelectorAll('.sidebar__link, .sidebar__sublink').forEach(l => {
+    l.classList.remove('active');
+    if (l.dataset.target === targetId && !l.dataset.wiki) l.classList.add('active');
   });
   window.scrollTo(0, 0);
   
@@ -53,14 +53,119 @@ function switchPage(targetId) {
   }
 }
 
+function loadWiki(pluginName) {
+  const contentArea = document.getElementById('wikiContentArea');
+  const tocArea = document.getElementById('tocLinks');
+  if (!contentArea || !tocArea) return;
+  
+  if (typeof wikiData !== 'undefined' && wikiData[pluginName]) {
+    contentArea.innerHTML = wikiData[pluginName];
+  } else {
+    contentArea.innerHTML = `<h2>Đang xây dựng...</h2><p>Tài liệu cho ${pluginName} chưa được cập nhật.</p>`;
+  }
+  
+  // Highlight active sidebar sublink
+  document.querySelectorAll('.sidebar__sublink').forEach(l => {
+    if(l.dataset.wiki === pluginName) l.classList.add('active');
+    else l.classList.remove('active');
+  });
+  
+  // Auto-TOC Generation
+  tocArea.innerHTML = '';
+  const headings = contentArea.querySelectorAll('h2, h3');
+  headings.forEach((heading, index) => {
+    if(!heading.id) heading.id = 'heading-' + index;
+    const a = document.createElement('a');
+    a.href = '#' + heading.id;
+    a.textContent = heading.textContent;
+    if (heading.tagName.toLowerCase() === 'h3') {
+      a.classList.add('toc-h3');
+    }
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetOffset = heading.offsetTop - 80;
+      window.scrollTo({ top: targetOffset, behavior: 'smooth' });
+    });
+    tocArea.appendChild(a);
+  });
+  
+  // Re-attach Copy events
+  const copyBtns = contentArea.querySelectorAll('.copy-btn');
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const codeBlock = btn.parentElement.nextElementSibling?.querySelector('code');
+      if (codeBlock) {
+        navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+          const originalText = btn.innerText;
+          btn.innerText = '✅ Đã Copy';
+          setTimeout(() => { btn.innerText = originalText; }, 2000);
+        });
+      }
+    });
+  });
+}
+
+function handleRouting() {
+  const hash = window.location.hash;
+  if (!hash || hash === '#') {
+    switchPage('page-home');
+    return;
+  }
+  
+  if (hash.startsWith('#wiki/')) {
+    const pluginName = hash.replace('#wiki/', '');
+    switchPage('page-wiki');
+    loadWiki(pluginName);
+  } else {
+    // Normal tools
+    const target = hash.replace('#', 'page-');
+    if (document.getElementById(target)) {
+      switchPage(target);
+    } else {
+      switchPage('page-home');
+    }
+  }
+}
+
+// Intercept link clicks
 allLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     const target = link.dataset.target;
-    if (target) {
+    const wiki = link.dataset.wiki;
+    if (wiki) {
       e.preventDefault();
-      switchPage(target);
+      window.location.hash = 'wiki/' + wiki;
+    } else if (target) {
+      e.preventDefault();
+      window.location.hash = target.replace('page-', '');
     }
   });
+});
+
+window.addEventListener('hashchange', handleRouting);
+document.addEventListener('DOMContentLoaded', handleRouting);
+
+// ScrollSpy for TOC
+window.addEventListener('scroll', () => {
+  if (document.getElementById('page-wiki')?.classList.contains('active')) {
+    const headings = document.getElementById('wikiContentArea')?.querySelectorAll('h2, h3');
+    const tocLinks = document.querySelectorAll('#tocLinks a');
+    if (!headings || !tocLinks) return;
+    
+    let current = '';
+    headings.forEach(h => {
+      if (window.pageYOffset >= h.offsetTop - 150) {
+        current = h.id;
+      }
+    });
+    
+    tocLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) {
+        a.classList.add('active');
+      }
+    });
+  }
 });
 
 const appToggle = document.getElementById('appToggle');
@@ -191,205 +296,7 @@ authTabs.forEach(tab => {
   });
 });
 
-// ==========================================
-// MOCK AUTH & PROFILE LOGIC
-// ==========================================
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-const loginUsername = document.getElementById('loginUsername');
-const registerUsername = document.getElementById('registerUsername');
 
-const userMenuToggle = document.getElementById('userMenuToggle');
-const userDropdown = document.getElementById('userDropdown');
-const navUserName = document.getElementById('navUserName');
-const navUserAvatar = document.getElementById('navUserAvatar');
-const btnLogout = document.getElementById('btnLogout');
-const goProfileBtn = document.getElementById('goProfileBtn');
-
-// Default user data structure
-const defaultUser = {
-  username: '',
-  id: '',
-  avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80',
-  banner: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80',
-  desc: 'Chào mừng đến với hệ sinh thái SushiGangs. Đây là mô tả cá nhân của bạn.',
-  joinDate: new Date().toLocaleDateString('vi-VN')
-};
-
-// Khởi tạo Auth State
-function checkAuth() {
-  const userStr = localStorage.getItem('sushi_user');
-  const btnAuth = document.getElementById('btnAuth');
-  if (userStr && btnAuth && userMenuToggle) {
-    const user = JSON.parse(userStr);
-    btnAuth.style.display = 'none';
-    userMenuToggle.style.display = 'flex';
-    navUserName.textContent = user.username;
-    navUserAvatar.src = user.avatar;
-    updateProfilePage(user);
-  } else if (btnAuth && userMenuToggle) {
-    btnAuth.style.display = 'block';
-    userMenuToggle.style.display = 'none';
-  }
-}
-
-// Sinh ID ngẫu nhiên (#ABCD)
-function generateRandomId() {
-  const chars = '0123456789ABCDEF';
-  let id = '#';
-  for (let i = 0; i < 4; i++) {
-    id += chars[Math.floor(Math.random() * chars.length)];
-  }
-  return id;
-}
-
-// Xử lý Form Đăng Nhập
-if (loginForm) {
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = loginUsername.value.trim();
-    if (username) {
-      let user = localStorage.getItem('sushi_user');
-      if (!user) {
-        user = { ...defaultUser, username: username, id: generateRandomId() };
-      } else {
-        user = JSON.parse(user);
-        user.username = username;
-      }
-      localStorage.setItem('sushi_user', JSON.stringify(user));
-      document.getElementById('authOverlay').classList.remove('active');
-      loginForm.reset();
-      checkAuth();
-    }
-  });
-}
-
-// Xử lý Form Đăng Ký
-if (registerForm) {
-  registerForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = registerUsername.value.trim();
-    if (username) {
-      const user = { ...defaultUser, username: username, id: generateRandomId() };
-      localStorage.setItem('sushi_user', JSON.stringify(user));
-      document.getElementById('authOverlay').classList.remove('active');
-      registerForm.reset();
-      checkAuth();
-    }
-  });
-}
-
-// Nút Dropdown
-if (userMenuToggle) {
-  userMenuToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    userDropdown.classList.toggle('show');
-  });
-  
-  document.addEventListener('click', (e) => {
-    if (userDropdown && userDropdown.classList.contains('show') && !userMenuToggle.contains(e.target)) {
-      userDropdown.classList.remove('show');
-    }
-  });
-}
-
-// Nút Đăng Xuất
-if (btnLogout) {
-  btnLogout.addEventListener('click', (e) => {
-    e.preventDefault();
-    localStorage.removeItem('sushi_user');
-    userDropdown.classList.remove('show');
-    switchPage('page-home'); // Quay về trang chủ
-    checkAuth();
-  });
-}
-
-// Nút chuyển tới Profile
-if (goProfileBtn) {
-  goProfileBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    userDropdown.classList.remove('show');
-    switchPage('page-profile');
-  });
-}
-
-// ==========================================
-// EDIT PROFILE LOGIC
-// ==========================================
-const btnEditProfile = document.getElementById('btnEditProfile');
-const editOverlay = document.getElementById('editOverlay');
-const editClose = document.getElementById('editClose');
-const editProfileForm = document.getElementById('editProfileForm');
-
-const editNameInput = document.getElementById('editNameInput');
-const editAvatarInput = document.getElementById('editAvatarInput');
-const editBannerInput = document.getElementById('editBannerInput');
-const editDescInput = document.getElementById('editDescInput');
-
-if (btnEditProfile && editOverlay && editClose) {
-  btnEditProfile.addEventListener('click', () => {
-    const userStr = localStorage.getItem('sushi_user');
-    if (userStr) {
-      const user = JSON.parse(userStr);
-      editNameInput.value = user.username;
-      editAvatarInput.value = user.avatar;
-      editBannerInput.value = user.banner;
-      editDescInput.value = user.desc;
-    }
-    editOverlay.classList.add('active');
-  });
-
-  editClose.addEventListener('click', () => editOverlay.classList.remove('active'));
-  editOverlay.addEventListener('click', (e) => {
-    if (e.target === editOverlay) editOverlay.classList.remove('active');
-  });
-}
-
-if (editProfileForm) {
-  editProfileForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const userStr = localStorage.getItem('sushi_user');
-    if (userStr) {
-      const user = JSON.parse(userStr);
-      user.username = editNameInput.value.trim() || user.username;
-      user.avatar = editAvatarInput.value.trim() || user.avatar;
-      user.banner = editBannerInput.value.trim() || user.banner;
-      user.desc = editDescInput.value.trim() || user.desc;
-      
-      localStorage.setItem('sushi_user', JSON.stringify(user));
-      updateProfilePage(user);
-      
-      // Update nav info
-      if(navUserName) navUserName.textContent = user.username;
-      if(navUserAvatar) navUserAvatar.src = user.avatar;
-      
-      editOverlay.classList.remove('active');
-    }
-  });
-}
-
-// Cập nhật giao diện Profile
-function updateProfilePage(user) {
-  const profileName = document.getElementById('profileName');
-  const profileId = document.getElementById('profileId');
-  const profileDesc = document.getElementById('profileDesc');
-  const profileAvatarImg = document.getElementById('profileAvatarImg');
-  const profileBannerImg = document.getElementById('profileBannerImg');
-  const statJoinDate = document.getElementById('statJoinDate');
-
-  if (profileName) profileName.textContent = user.username;
-  if (profileId) profileId.textContent = user.id;
-  if (profileDesc) profileDesc.textContent = user.desc;
-  if (profileAvatarImg) profileAvatarImg.src = user.avatar;
-  if (profileBannerImg) profileBannerImg.src = user.banner;
-  if (statJoinDate) statJoinDate.textContent = user.joinDate;
-}
-
-// Initial check
-document.addEventListener('DOMContentLoaded', () => {
-  checkAuth();
-});
-checkAuth();
 
 // ==========================================
 // SERVER INFO (MOTD VIEWER)

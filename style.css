@@ -1,6 +1,12 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Be Vietnam Pro',sans-serif;background:#0a0612;color:#e8e3f0;line-height:1.6;overflow-x:hidden}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0a0612; }
+::-webkit-scrollbar-thumb { background: #3a2b58; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #ff77aa; }
 a{color:inherit;text-decoration:none}
 .container{max-width:1180px;margin:0 auto;padding:0 24px}
 code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:rgba(255,119,170,.12);color:#ff9ec7;padding:2px 8px;border-radius:6px}
@@ -780,4 +786,100 @@ textarea::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-rad
   word-break: break-word;
   line-height: 1.5;
   text-shadow: 2px 2px 0px #3f3f3f;
+}
+
+/* =========================================
+   WIKI SPA STYLES
+========================================= */
+.wiki-layout {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  min-height: 100vh;
+}
+
+.wiki-content {
+  flex: 1;
+  color: #b8aece;
+  line-height: 1.7;
+  min-width: 0;
+}
+
+.wiki-content h1 { font-size: 2.5rem; color: #fff; margin-bottom: 20px; }
+.wiki-content h2 { font-size: 1.8rem; color: #fff; margin-top: 50px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.wiki-content h3 { font-size: 1.3rem; color: #ff77aa; margin-top: 30px; margin-bottom: 15px; }
+.wiki-content p { margin-bottom: 15px; }
+.wiki-content ul, .wiki-content ol { margin-bottom: 15px; padding-left: 20px; }
+.wiki-content li { margin-bottom: 8px; }
+
+/* Code Blocks */
+.code-wrapper { position: relative; margin-bottom: 20px; border-radius: 8px; overflow: hidden; background: rgba(15, 8, 32, 0.6); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+.code-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 15px; background: rgba(0,0,0,0.3); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #8a7da5; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.copy-btn { background: none; border: none; color: #b8aece; cursor: pointer; transition: color 0.2s; display: flex; align-items: center; gap: 5px; font-size: 0.85rem; }
+.copy-btn:hover { color: #fff; }
+.code-wrapper pre { padding: 15px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #e0d8f0; margin: 0; tab-size: 4; }
+
+/* Table */
+.wiki-table-wrapper { overflow-x: auto; margin-bottom: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+.wiki-table { width: 100%; border-collapse: collapse; text-align: left; background: rgba(15, 8, 32, 0.4); }
+.wiki-table th, .wiki-table td { padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.wiki-table th { background: rgba(0,0,0,0.3); color: #fff; font-weight: 600; }
+.wiki-table tr:last-child td { border-bottom: none; }
+
+/* Auto TOC (Mục Lục Nổi) */
+.wiki-toc-wrapper {
+  width: 250px;
+  flex-shrink: 0;
+  position: relative;
+}
+.wiki-toc {
+  position: sticky;
+  top: 100px;
+  background: rgba(15, 8, 32, 0.4);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+.toc-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #8a7da5;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+#tocLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#tocLinks a {
+  font-size: 0.9rem;
+  color: #b8aece;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-left: 2px solid transparent;
+  padding-left: 10px;
+  line-height: 1.4;
+}
+#tocLinks a:hover {
+  color: #fff;
+  border-left-color: rgba(255,119,170, 0.5);
+}
+#tocLinks a.active {
+  color: #ff77aa;
+  font-weight: 600;
+  border-left-color: #ff77aa;
+}
+#tocLinks a.toc-h3 {
+  padding-left: 20px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .wiki-layout { flex-direction: column; }
+  .wiki-toc-wrapper { width: 100%; }
+  .wiki-toc { position: static; }
 }
