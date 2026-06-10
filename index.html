@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SushiGangs Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍣</text></svg>">
 </head>
@@ -12,13 +13,14 @@
 <aside class="sidebar" id="sidebar">
   <div class="sidebar__logo"><span>🍣</span> SushiGangs</div>
   <nav class="sidebar__nav">
-    <a href="#" data-target="page-home" class="sidebar__link active">✦ Trang Chủ</a>
+    <div style="color: #666; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin: 15px 15px 5px 15px;">SushiGangs</div>
+    <a href="#" data-target="page-home" class="sidebar__link active">› Trang Chủ</a>
     <div class="sidebar__group" id="wikiGroup">
       <div class="sidebar__group-title" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
-        <span>🧩 Wiki Plugin</span>
-        <span class="wiki-toggle-icon">▼</span>
+        <span>› Wiki Plugin</span>
+        <span class="wiki-toggle-icon collapsed">▼</span>
       </div>
-      <div class="sidebar__sublinks-container">
+      <div class="sidebar__sublinks-container collapsed">
         <a href="#" data-target="page-wiki" data-wiki="sushicore" class="sidebar__sublink">SushiCore</a>
         <a href="#" data-target="page-wiki" data-wiki="sushidecor" class="sidebar__sublink">SushiDecor</a>
         <a href="#" data-target="page-wiki" data-wiki="sushilove" class="sidebar__sublink">SushiLove</a>
@@ -27,12 +29,29 @@
         <a href="#" data-target="page-wiki" data-wiki="sushitags" class="sidebar__sublink">SushiTags</a>
       </div>
     </div>
-    <a href="#" data-target="page-about" class="sidebar__link">👥 Về Chúng Tôi</a>
-    <div class="sidebar__divider"></div>
-    <a href="#" data-target="page-translation" class="sidebar__link">🌐 Việt Hóa</a>
-    <a href="#" data-target="page-smallcap" class="sidebar__link">🔠 SmallCap</a>
-    <a href="#" data-target="page-serverinfo" class="sidebar__link">📊 Thông Tin Server</a>
-    <a href="#" data-target="page-colorgen" class="sidebar__link">🎨 Tạo Màu RGB</a>
+    <a href="#" data-target="page-about" class="sidebar__link">› Về Chúng Tôi</a>
+
+    <div style="color: #666; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin: 25px 15px 5px 15px;">Công Cụ</div>
+    <a href="#" data-target="page-translation" class="sidebar__link">› Dịch Ngôn Ngữ</a>
+    <a href="#" data-target="page-scanner" class="sidebar__link">› Quét Mã Độc</a>
+    <a href="#" data-target="page-smallcap" class="sidebar__link">› Chữ Nhỏ (SmallCap)</a>
+    <a href="#" data-target="page-colorgen" class="sidebar__link">› Tạo Màu RGB</a>
+    <a href="#" data-target="page-serverinfo" class="sidebar__link">› Thông Tin MC</a>
+
+    <div style="color: #666; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin: 25px 15px 5px 15px;">Builder YAML</div>
+    <a href="#" data-target="page-menugen" class="sidebar__link">› DeluxeMenus</a>
+    <div class="sidebar__group" id="mythicGroup">
+      <div class="sidebar__group-title" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+        <span>› MythicMobs</span>
+        <span class="wiki-toggle-icon collapsed">▼</span>
+      </div>
+      <div class="sidebar__sublinks-container collapsed">
+        <a href="#" data-target="page-mythicmobs" data-mm="mobs" class="sidebar__sublink">Mobs (Quái Vật)</a>
+        <a href="#" data-target="page-mythicmobs-skills" class="sidebar__sublink">Skills (Kỹ Năng)</a>
+        <a href="#" data-target="page-mythicmobs" data-mm="ai" class="sidebar__sublink">AI (Trí Tuệ)</a>
+      </div>
+    </div>
+    <a href="#" data-target="page-papi" class="sidebar__link">› PAPI Library</a>
   </nav>
 </aside>
 
@@ -46,6 +65,13 @@
     </div>
     <a href="#" class="logo" data-target="page-home"><span>🍣</span> SushiGangs <em>Studio</em></a>
     <nav id="navLinks" style="flex: 1; display: flex; align-items: center; justify-content: flex-end;">
+      <div id="themeSwitcherWrapper" style="position: relative; margin-left: 20px;">
+        <button id="themeToggleBtn" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-main); padding: 5px; transition: transform 0.2s;" title="Đổi Giao Diện">🎨</button>
+        <div id="themePalette" style="display: none; position: absolute; right: 0; top: 40px; background: var(--bg-panel-solid); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; width: 160px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 999; flex-direction: column; gap: 5px;">
+          <button class="theme-btn" data-set-theme="cyberpunk" style="background: transparent; border: none; color: var(--text-main); text-align: left; padding: 8px; cursor: pointer; border-radius: 4px; transition: background 0.2s;">🌆 Cyberpunk</button>
+          <button class="theme-btn" data-set-theme="ocean" style="background: transparent; border: none; color: var(--text-main); text-align: left; padding: 8px; cursor: pointer; border-radius: 4px; transition: background 0.2s;">🌊 Ocean</button>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -65,11 +91,11 @@
       </div>
       <div class="cta-group">
         <a href="https://discord.gg/hFGwwRPhYR" target="_blank" class="btn btn--discord">
-          <svg style="width:20px;height:20px;" viewBox="0 0 127.14 96.36" fill="#fff"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a67.58,67.58,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.1,46,96,53,91.08,65.69,84.69,65.69Z"/></svg>
+          <svg style="width:20px;height:20px;" viewBox="0 0 127.14 96.36" fill="var(--text-main)"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a67.58,67.58,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.1,46,96,53,91.08,65.69,84.69,65.69Z"/></svg>
           SushiGangs Studio
         </a>
         <a href="https://discord.gg/BPkcksgV53" target="_blank" class="btn btn--discord">
-          <svg style="width:20px;height:20px;" viewBox="0 0 127.14 96.36" fill="#fff"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a67.58,67.58,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.1,46,96,53,91.08,65.69,84.69,65.69Z"/></svg>
+          <svg style="width:20px;height:20px;" viewBox="0 0 127.14 96.36" fill="var(--text-main)"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a67.58,67.58,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.1,46,96,53,91.08,65.69,84.69,65.69Z"/></svg>
           SwordLand Network
         </a>
       </div>
@@ -118,17 +144,71 @@
 <section class="section" id="translation">
   <div class="container">
     <span class="eyebrow">Công Cụ</span>
-    <h2>Việt Hóa Ngôn Ngữ</h2>
+    <h2>Dịch Ngôn Ngữ</h2>
     <div class="tool-card">
-      <div class="tool-card__header">
-        <div class="tool-card__lang">Tự động phát hiện</div>
+      <div class="tool-card__header" style="justify-content: center; gap: 15px;">
+        <select id="transSrcLang" style="background: rgba(0,0,0,0.3); color: var(--text-main); border: 1px solid var(--border-light); padding: 8px 15px; border-radius: 8px; outline: none; font-family: inherit; font-size: 1rem; cursor: pointer;">
+          <option value="auto">Tự động phát hiện</option>
+          <option value="en">Tiếng Anh</option>
+          <option value="vi">Tiếng Việt</option>
+          <option value="zh-CN">Tiếng Trung</option>
+          <option value="ko">Tiếng Hàn</option>
+          <option value="ja">Tiếng Nhật</option>
+          <option value="ru">Tiếng Nga</option>
+        </select>
         <div class="tool-card__arrow">➔</div>
-        <div class="tool-card__lang active">Tiếng Việt</div>
+        <select id="transTgtLang" style="background: rgba(0,0,0,0.3); color: var(--text-main); border: 1px solid var(--border-light); padding: 8px 15px; border-radius: 8px; outline: none; font-family: inherit; font-size: 1rem; cursor: pointer;">
+          <option value="vi">Tiếng Việt</option>
+          <option value="en">Tiếng Anh</option>
+          <option value="zh-CN">Tiếng Trung</option>
+          <option value="ko">Tiếng Hàn</option>
+          <option value="ja">Tiếng Nhật</option>
+          <option value="ru">Tiếng Nga</option>
+        </select>
       </div>
       <div class="tool-card__body translation-grid">
-        <textarea id="transInput" placeholder="Nhập văn bản cần dịch..."></textarea>
+        <div style="display: flex; flex-direction: column;">
+          <textarea id="transInput" placeholder="Nhập văn bản cần dịch..."></textarea>
+          <div style="text-align: right; margin-top: 10px;">
+            <button id="transClearBtn" class="btn" style="background: rgba(255,85,85,0.2); color: #ff5555; padding: 8px 15px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600;">🗑️ Xóa Tất Cả</button>
+          </div>
+        </div>
         <div class="translation-divider"></div>
-        <textarea id="transOutput" placeholder="Bản dịch sẽ xuất hiện ở đây..." readonly></textarea>
+        <div style="display: flex; flex-direction: column;">
+          <textarea id="transOutput" placeholder="Bản dịch sẽ xuất hiện ở đây..." readonly></textarea>
+          <div style="text-align: right; margin-top: 10px;">
+            <button id="transCopyBtn" class="btn" style="background: rgba(119,170,255,0.2); color: #77aaff; padding: 8px 15px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600;">📋 Sao Chép Tất Cả</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KHU VỰC DỊCH FILE CẤU HÌNH -->
+    <h2 style="margin-top: 60px; margin-bottom: 30px;">Dịch File Cấu Hình <span style="font-size: 1rem; color: var(--text-dark); font-weight: normal;">(YML/JSON/PROPERTIES/LANG)</span></h2>
+    <div class="tool-card" style="padding: 30px; text-align: center;">
+      <p style="color: #d8d0e8; margin-bottom: 20px;">Hệ thống sẽ giữ nguyên Code (Keys) & Chú thích (Comments), <strong>chỉ dịch nội dung Value</strong> và bảo vệ an toàn các biến <code style="background: var(--border-light); padding: 2px 6px; border-radius: 4px;">%player%</code>, mã màu <code style="background: var(--border-light); padding: 2px 6px; border-radius: 4px;">&a</code>.</p>
+      
+      <div style="border: 2px dashed rgba(255,119,170,0.5); border-radius: 12px; padding: 40px 20px; background: rgba(0,0,0,0.2); cursor: pointer; transition: all 0.3s ease;" id="ftDropZone" onclick="document.getElementById('ftFileInput').click()">
+         <div style="font-size: 3rem; margin-bottom: 10px;">📄</div>
+         <div style="font-size: 1.2rem; font-weight: bold; color: var(--accent-1); margin-bottom: 10px;">Bấm để chọn file hoặc Kéo thả file vào đây</div>
+         <div style="color: var(--text-dark); font-size: 0.9rem;">Hỗ trợ: .yml, .yaml, .json, .properties, .lang</div>
+         <input type="file" id="ftFileInput" style="display: none;" accept=".yml,.yaml,.json,.properties,.lang,.txt">
+      </div>
+
+      <div id="ftProgressBox" style="display: none; margin-top: 30px; text-align: left;">
+         <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <strong style="color: #77aaff;" id="ftStatusText">Đang phân tích file...</strong>
+            <span style="color: #d8d0e8;" id="ftProgressText">0%</span>
+         </div>
+         <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden;">
+            <div id="ftProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #77aaff, var(--accent-1)); transition: width 0.2s ease;"></div>
+         </div>
+      </div>
+
+      <div id="ftResultBox" style="display: none; margin-top: 30px; padding: 20px; background: rgba(85,255,85,0.1); border: 1px solid rgba(85,255,85,0.3); border-radius: 12px;">
+         <div style="font-size: 1.5rem; color: #55ff55; margin-bottom: 15px; font-weight: bold;">✅ Dịch File Hoàn Tất!</div>
+         <div style="color: #d8d0e8; margin-bottom: 20px;">Đã dịch thành công <strong id="ftTransCount" style="color: var(--text-main);">0</strong> dòng văn bản. Các biến và cấu trúc đã được giữ nguyên vẹn.</div>
+         <a id="ftDownloadBtn" href="#" class="btn btn--gradient" style="display: inline-block; padding: 12px 30px; font-weight: bold; text-decoration: none; border-radius: 12px;">⬇️ Tải File Đã Dịch</a>
       </div>
     </div>
   </div>
@@ -197,19 +277,24 @@
 </div> <!-- END PAGE: ABOUT US -->
 
 
-<!-- PAGE: SERVER INFO -->
+<!-- PAGE: MINECRAFT INFO (SERVER & PLAYER) -->
 <div id="page-serverinfo" class="page">
   <section class="section" style="padding-top: 120px; min-height: 100vh;">
     <div class="container" style="max-width: 800px;">
+      
+      <!-- PHẦN THÔNG TIN SERVER -->
       <span class="eyebrow">Trình tra cứu</span>
       <h2 style="margin-bottom: 30px;">Thông Tin Server</h2>
       
-      <div style="display: flex; gap: 15px; margin-bottom: 40px;">
-        <input type="text" id="siIpInput" placeholder="Nhập IP Server (VD: mc.hypixel.net)..." style="flex: 1; padding: 15px 20px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 1.1rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#ff77aa'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-        <button id="siSubmitBtn" class="btn btn--gradient" style="padding: 0 30px; border-radius: 12px; font-weight: bold; border: none; cursor: pointer; font-size: 1.1rem;">Kiểm tra</button>
+      <div style="position: relative; display: flex; gap: 15px; margin-bottom: 40px;">
+        <div style="flex: 1; position: relative;">
+          <input type="text" id="siIpInput" autocomplete="off" placeholder="Nhập IP Server (VD: mc.hypixel.net)..." style="width: 100%; padding: 15px 20px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-light); color: var(--text-main); font-size: 1.1rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--accent-1)'" onblur="this.style.borderColor='var(--border-light)'">
+          <div id="siSuggestions" class="si-suggestions"></div>
+        </div>
+        <button id="siSubmitBtn" class="btn btn--gradient" style="padding: 0 30px; border-radius: 12px; font-weight: bold; border: none; cursor: pointer; font-size: 1.1rem; flex-shrink: 0;">Kiểm tra</button>
       </div>
       
-      <div id="siLoading" style="display: none; text-align: center; color: #ff77aa; font-weight: bold; margin-bottom: 30px;">Đang tải thông tin...</div>
+      <div id="siLoading" style="display: none; text-align: center; color: var(--accent-1); font-weight: bold; margin-bottom: 30px;">Đang tải thông tin...</div>
       <div id="siError" style="display: none; text-align: center; color: #ff5555; font-weight: bold; margin-bottom: 30px; padding: 15px; background: rgba(255,0,0,0.1); border-radius: 12px;"></div>
 
       <div id="siResultContainer" style="display: none;">
@@ -242,72 +327,103 @@
         </div>
       </div>
 
+      <!-- PHẦN THÔNG TIN NGƯỜI CHƠI -->
+      <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <h2 style="margin-bottom: 30px;">Thông Tin Người Chơi</h2>
+        
+        <div style="position: relative; display: flex; gap: 15px; margin-bottom: 30px;">
+          <input type="text" id="piNameInput" autocomplete="off" placeholder="Nhập tên nhân vật (VD: SushiOhYah)..." style="flex: 1; padding: 15px 20px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-light); color: var(--text-main); font-size: 1.1rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#77aaff'" onblur="this.style.borderColor='var(--border-light)'" onkeydown="if(event.key === 'Enter') document.getElementById('piSubmitBtn').click()">
+          <button id="piSubmitBtn" class="btn btn--primary" style="padding: 0 30px; border-radius: 12px; font-weight: bold; border: none; cursor: pointer; font-size: 1.1rem; flex-shrink: 0;">Tra Cứu</button>
+        </div>
+        
+        <div id="piLoading" style="display: none; text-align: center; color: #77aaff; font-weight: bold; margin-bottom: 30px;">Đang tìm người chơi...</div>
+        <div id="piError" style="display: none; text-align: center; color: #ff5555; font-weight: bold; margin-bottom: 30px; padding: 15px; background: rgba(255,0,0,0.1); border-radius: 12px;"></div>
+
+        <div id="piResultContainer" style="display: none; background: rgba(35,20,55,.4); border: 1px solid rgba(119,170,255,.15); border-radius: 16px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,.3); gap: 30px; align-items: center; flex-wrap: wrap;">
+          <div style="flex-shrink: 0; width: 100%; max-width: 250px; text-align: center; margin: 0 auto;">
+             <img id="piSkin3D" src="" alt="Skin 3D" style="max-width: 100%; height: auto; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5)); border-radius: 10px;">
+          </div>
+          <div style="flex: 1; min-width: 250px;">
+             <h3 style="font-size: 2.5rem; margin-bottom: 5px; font-weight: 800;" id="piUsername" class="grad"></h3>
+             <div style="color: var(--text-dark); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin-bottom: 25px; word-break: break-all;" id="piUUID"></div>
+             
+             <div class="si-card" style="margin: 0;">
+               <div class="si-body" style="grid-template-columns: 1fr;">
+                 <div class="si-row"><strong>Loại tài khoản:</strong> <span id="piAccountType" class="si-badge" style="background: rgba(0,255,0,0.15); color: #55ff55;">Premium (Bản Quyền)</span></div>
+                 <div class="si-row"><strong>Skin Texture:</strong> 
+                   <a href="#" id="piSkinDownload" target="_blank" style="color: #77aaff; text-decoration: none; font-weight: bold;">Tải Xuống ⬇️</a>
+                 </div>
+                 <div class="si-row" id="piCapeRow" style="display: none;"><strong>Áo Choàng (Cape):</strong> 
+                   <a href="#" id="piCapeDownload" target="_blank" style="color: var(--accent-1); text-decoration: none; font-weight: bold;">Tải Xuống ⬇️</a>
+                 </div>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </div>
 
-<!-- PAGE: COLOR GEN -->
+<!-- PAGE: COLOR GENERATOR -->
 <div id="page-colorgen" class="page">
   <section class="section" style="padding-top: 120px; min-height: 100vh;">
-    <div class="container" style="max-width: 900px;">
-      <span class="eyebrow">Trình tạo màu</span>
-      <h2 style="margin-bottom: 30px;">RGB Gradient Generator</h2>
+    <div class="container" style="max-width: 800px;">
+      <span class="eyebrow" style="display: block; text-align: center;">Trình tạo màu</span>
+      <h2 style="margin-bottom: 30px; text-align: center;">RGB Gradient Generator</h2>
       
-      <div class="cg-layout">
-        <!-- Controls Column -->
-        <div class="cg-controls">
-          <div class="cg-group">
-            <label class="cg-label">Nhập Text</label>
-            <textarea id="cgTextInput" class="cg-input" rows="2" placeholder="Ví dụ: SushiGangs Studio">SushiGangs Studio</textarea>
+      <!-- Live Preview Area -->
+      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px 20px; text-align: center; margin-bottom: 30px; min-height: 150px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 30px rgba(0,0,0,0.5);">
+         <div id="cgPreviewBox" style="font-size: 3rem; font-family: 'MinecraftBirdflop', 'Minecraft', sans-serif; -webkit-font-smoothing: none; font-smooth: never; word-break: break-word;">SushiGangs Studio</div>
+      </div>
+
+      <div style="background: var(--bg-panel-solid); padding: 30px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,119,170,0.1);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+          <!-- Controls -->
+          <div>
+            <label style="display:block; color: var(--accent-1); font-weight:bold; margin-bottom: 8px; font-size: 0.95rem;">Nhập Văn Bản</label>
+            <input type="text" id="cgTextInput" value="SushiGangs Studio" style="width: 100%; padding: 12px 15px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-light); color: var(--text-main); font-size: 1rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--accent-1)'" onblur="this.style.borderColor='var(--border-light)'">
           </div>
-          
-          <div class="cg-group">
-            <label class="cg-label">Định dạng Output</label>
-            <select id="cgFormatSelect" class="cg-input cg-select">
+          <div>
+            <label style="display:block; color: var(--accent-1); font-weight:bold; margin-bottom: 8px; font-size: 0.95rem;">Định Dạng Code</label>
+            <select id="cgFormatSelect" style="width: 100%; padding: 12px 15px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-light); color: var(--text-main); font-size: 1rem; outline: none; appearance: none; cursor: pointer; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--accent-1)'" onblur="this.style.borderColor='var(--border-light)'">
               <option value="minimessage">MiniMessage (&lt;#RRGGBB&gt;)</option>
               <option value="legacy">Legacy (&amp;#RRGGBB)</option>
               <option value="hex">Hex (&lt;color:#RRGGBB&gt;)</option>
             </select>
           </div>
-          
-          <div class="cg-group">
-            <label class="cg-label">Định dạng chữ (Format)</label>
-            <div class="cg-format-toggles">
-              <label class="cg-checkbox"><input type="checkbox" id="cgBold"> <b>In đậm</b></label>
-              <label class="cg-checkbox"><input type="checkbox" id="cgItalic"> <i>In nghiêng</i></label>
-              <label class="cg-checkbox"><input type="checkbox" id="cgUnderline"> <u>Gạch dưới</u></label>
-              <label class="cg-checkbox"><input type="checkbox" id="cgStrikethrough"> <s>Gạch ngang</s></label>
-            </div>
-          </div>
-          
-          <div class="cg-group">
-            <label class="cg-label">Dải màu Gradient</label>
-            <div id="cgColorStops" class="cg-color-stops">
-              <!-- JS will populate default 2 colors here -->
-            </div>
-            <button id="cgAddColorBtn" class="btn btn--secondary" style="width: 100%; padding: 10px; border-radius: 8px; margin-top: 10px;">+ Thêm màu</button>
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <label style="display:block; color: var(--accent-1); font-weight:bold; margin-bottom: 12px; font-size: 0.95rem;">Hiệu Ứng Chữ</label>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+             <label class="cg-toggle-btn"><input type="checkbox" id="cgBold" style="display:none;"><span><b>B</b> Đậm</span></label>
+             <label class="cg-toggle-btn"><input type="checkbox" id="cgItalic" style="display:none;"><span><i>I</i> Nghiêng</span></label>
+             <label class="cg-toggle-btn"><input type="checkbox" id="cgUnderline" style="display:none;"><span><u>U</u> Gạch Dưới</span></label>
+             <label class="cg-toggle-btn"><input type="checkbox" id="cgStrikethrough" style="display:none;"><span><s>S</s> Gạch Ngang</span></label>
           </div>
         </div>
-        
-        <!-- Result Column -->
-        <div class="cg-result">
-          <div class="cg-group">
-            <label class="cg-label">Xem trước (Preview)</label>
-            <div class="cg-preview-box" id="cgPreviewBox">
-              <!-- Live preview -->
-            </div>
+
+        <div style="margin-bottom: 30px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <label style="color: var(--accent-1); font-weight:bold; margin:0; font-size: 0.95rem;">Dải Màu Gradient</label>
+            <button id="cgAddColorBtn" class="btn btn--secondary" style="padding: 6px 15px; font-size: 0.85rem; border-radius: 8px; font-weight: bold;">+ Thêm Màu</button>
           </div>
-          
-          <div class="cg-group">
-            <label class="cg-label">Kết quả (Output)</label>
-            <div style="position: relative;">
-              <textarea id="cgOutputBox" class="cg-input" rows="6" readonly style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; resize: none;"></textarea>
-              <button id="cgCopyBtn" class="btn btn--gradient" style="position: absolute; bottom: 15px; right: 15px; padding: 6px 15px; font-size: 0.9rem; border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;">📋 Copy</button>
-            </div>
+          <div id="cgColorStops" style="display: flex; gap: 12px; flex-wrap: wrap;">
+             <!-- populated by JS -->
+          </div>
+        </div>
+
+        <div>
+          <label style="display:block; color: var(--accent-1); font-weight:bold; margin-bottom: 8px; font-size: 0.95rem;">Mã Cấu Hình Kết Quả</label>
+          <div style="position: relative;">
+            <textarea id="cgOutputBox" rows="4" readonly style="width: 100%; padding: 15px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); color: #d8d0e8; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; resize: none; outline: none;"></textarea>
+            <button id="cgCopyBtn" class="btn btn--gradient" style="position: absolute; bottom: 15px; right: 15px; padding: 8px 20px; font-size: 0.95rem; font-weight: bold; border-radius: 8px; border: none; cursor: pointer;">📋 Sao Chép Code</button>
           </div>
         </div>
       </div>
-
+      
     </div>
   </section>
 </div>
@@ -327,9 +443,378 @@
   </div>
 </div>
 
+<!-- PAGE: SCANNER -->
+<div id="page-scanner" class="page">
+  <section class="section" style="padding-top: 120px; min-height: 100vh;">
+    <div class="container" style="max-width: 900px;">
+      <span class="eyebrow">Bảo mật Server</span>
+      <h2 style="margin-bottom: 20px;">Kiểm tra Mã độc Plugin</h2>
+      <p style="color: var(--text-muted); margin-bottom: 30px;">Hệ thống sẽ giải nén ngay trên trình duyệt (không upload file lên máy chủ) và phân tích các tệp .class để tìm kiếm các dấu hiệu của Backdoor, Force-OP, và Shell. Định dạng hỗ trợ: <b>.jar</b>, <b>.zip</b>.</p>
+      
+      <div class="scan-upload-zone" id="scanDropZone">
+        <div style="font-size: 3rem; margin-bottom: 15px;">📁</div>
+        <h3 style="margin-bottom: 10px;">Kéo & Thả file .jar vào đây</h3>
+        <p style="color: var(--text-dark); margin-bottom: 20px;">Hoặc</p>
+        <label class="btn btn--gradient" style="cursor: pointer; display: inline-block; padding: 12px 24px; border-radius: 8px;">
+          Chọn File
+          <input type="file" id="scanFileInput" accept=".jar,.zip" style="display: none;">
+        </label>
+      </div>
+      
+      <div id="scanWarningBox" style="background: rgba(255,170,0,0.1); border-left: 4px solid #ffaa00; padding: 15px; margin-top: 25px; border-radius: 4px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <span style="color: #ffaa00; font-weight: bold;">⚠️ LƯU Ý QUAN TRỌNG:</span>
+        <p style="color: #ddd; font-size: 0.9rem; margin-top: 5px; line-height: 1.4;">Kết quả quét chỉ mang tính chất tham khảo dựa trên nhận diện chuỗi tĩnh (Signature Pattern). Công cụ này <b>không thể thay thế</b> cho các phần mềm diệt virus chuyên dụng hoặc kiểm tra mã nguồn thủ công. Kết quả "An Toàn" không đồng nghĩa với việc plugin sạch 100% (ví dụ: bị mã hóa nặng).</p>
+      </div>
+
+      <!-- Khối hiển thị tiến trình -->
+      <div id="scanProgressBox" style="display: none; margin-top: 30px; background: rgba(30,15,45,.5); border: 1px solid rgba(255,119,170,.15); border-radius: 16px; padding: 24px; text-align: center;">
+        <div style="font-weight: bold; color: var(--accent-1); margin-bottom: 10px;" id="scanStatusText">Đang phân tích...</div>
+        <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.3); border-radius: 4px; overflow: hidden;">
+          <div id="scanProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); transition: width 0.3s;"></div>
+        </div>
+      </div>
+
+      <!-- Bảng Kết Quả -->
+      <div id="scanResultBox" style="display: none; margin-top: 30px; background: rgba(35,20,55,.4); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: 0 8px 30px rgba(0,0,0,.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; margin-bottom: 20px;">
+          <h3 style="font-size: 1.5rem;">Kết Quả Quét</h3>
+          <div id="scanRiskBadge" class="scan-badge">Đang xử lý</div>
+        </div>
+        
+        <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+          <div style="flex: 1; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; text-align: center;">
+            <div style="font-size: 2rem; font-weight: bold; color: var(--text-main);" id="scanTotalClasses">0</div>
+            <div style="color: var(--text-dark); font-size: 0.9rem;">File Class</div>
+          </div>
+          <div style="flex: 1; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; text-align: center;">
+            <div style="font-size: 2rem; font-weight: bold; color: #ff5555;" id="scanTotalThreats">0</div>
+            <div style="color: var(--text-dark); font-size: 0.9rem;">Dấu Hiệu Đáng Ngờ</div>
+          </div>
+        </div>
+
+        <!-- Bảng Tổng Hợp Categorized -->
+        <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 20px; margin-bottom: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; line-height: 1.6;">
+          <div style="display: flex; margin-bottom: 8px;"><div style="color: #ff5555; width: 110px;">Nguy hiểm:</div> <div style="flex: 1; color: #d8d0e8;" id="scanCatDanger">-</div></div>
+          <div style="display: flex; margin-bottom: 8px;"><div style="color: #ffaa00; width: 110px;">Nghi ngờ:</div> <div style="flex: 1; color: #d8d0e8;" id="scanCatWarning">-</div></div>
+          <div style="display: flex;"><div style="color: #77aaff; width: 110px;">Thông tin:</div> <div style="flex: 1; color: #d8d0e8;" id="scanCatInfo">-</div></div>
+        </div>
+
+        <h4 style="margin-bottom: 15px; color: #d8d0e8;">Chi Tiết Các File:</h4>
+        <div id="scanLogArea" style="background: var(--bg-panel-solid); border: 1px solid rgba(170,119,255,.3); border-radius: 12px; padding: 20px; max-height: 400px; overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6; margin-bottom: 25px;">
+          <!-- JS sẽ điền logs vào đây -->
+        </div>
+
+        <button id="scanResetBtn" class="btn btn--secondary" style="width: 100%; font-size: 1.1rem; padding: 15px; border: 1px solid #77aaff; color: #77aaff;">🔄 Quét File Khác</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PAGE: MENU GENERATOR -->
+<div id="page-menugen" class="page">
+  <section class="section" style="padding-top: 120px; min-height: 100vh;">
+    <div class="container" style="max-width: 1200px;">
+      <span class="eyebrow" style="display: block; text-align: center;">Trình Tạo Menu</span>
+      <h2 style="margin-bottom: 30px; text-align: center;">DeluxeMenus GUI Generator</h2>
+      
+      <div class="menugen-layout" style="display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: start;">
+        
+        <!-- Left: Inventory Grid -->
+        <div class="menugen-grid-container" style="background: #c6c6c6; padding: 15px; border: 2px solid #000; border-radius: 4px; box-shadow: inset -2px -2px 0px #555, inset 2px 2px 0px var(--text-main); display: inline-block;">
+          <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="color: #404040; font-family: 'MinecraftBirdflop', sans-serif; font-weight: bold; font-size: 1.2rem;">Inventory Size</span>
+            <select id="mgRowsSelect" style="padding: 5px; font-family: 'MinecraftBirdflop', sans-serif; background: #8b8b8b; color: var(--text-main); border: 2px solid #373737; outline: none; cursor: pointer;">
+              <option value="1">9x1 (9 Slots)</option>
+              <option value="2">9x2 (18 Slots)</option>
+              <option value="3" selected>9x3 (27 Slots)</option>
+              <option value="4">9x4 (36 Slots)</option>
+              <option value="5">9x5 (45 Slots)</option>
+              <option value="6">9x6 (54 Slots)</option>
+            </select>
+          </div>
+          
+          <div id="mgGrid" class="mc-inventory">
+            <!-- Slots generated by JS -->
+          </div>
+          
+          <div style="margin-top: 20px;">
+             <button id="mgGenerateBtn" class="btn btn--gradient" style="width: 100%; font-size: 1.1rem; padding: 12px; margin-bottom: 10px;">🚀 TẠO MÃ DELUXEMENUS YML</button>
+             <textarea id="mgOutputYml" class="cg-input" rows="8" readonly style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a1e8a1; background: var(--bg-panel-solid); white-space: pre; border-color: var(--border-light);"></textarea>
+          </div>
+        </div>
+
+        <!-- Right: Properties Panel -->
+        <div class="menugen-properties" style="background: var(--bg-panel-solid); padding: 25px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,119,170,0.1);">
+          <h3 style="margin-bottom: 20px; color: var(--accent-1); border-bottom: 1px solid var(--border-light); padding-bottom: 10px;">Cài Đặt Slot <span id="mgCurrentSlotDisplay" style="color: var(--text-main);">0</span></h3>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+              <label class="cg-label">Material (ID Vật Phẩm)</label>
+              <input type="text" id="mgPropMaterial" class="cg-input" list="mcMaterials" placeholder="VD: DIAMOND_SWORD" value="STONE">
+              <datalist id="mcMaterials"></datalist>
+            </div>
+            <div>
+              <label class="cg-label">Display Name</label>
+              <input type="text" id="mgPropName" class="cg-input" placeholder="&aTên Vật Phẩm">
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 15px;">
+            <label class="cg-label">Lore (Mô Tả)</label>
+            <textarea id="mgPropLore" class="cg-input" rows="4" placeholder="&7Dòng 1&#10;&7Dòng 2" style="resize: vertical;"></textarea>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+            <div>
+              <label class="cg-label">Left Click Commands</label>
+              <textarea id="mgPropLeftCmd" class="cg-input" rows="3" placeholder="[player] spawn&#10;[close]" style="resize: vertical;"></textarea>
+            </div>
+            <div>
+              <label class="cg-label">Right Click Commands</label>
+              <textarea id="mgPropRightCmd" class="cg-input" rows="3" placeholder="[console] eco give %player_name% 100" style="resize: vertical;"></textarea>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 20px; border-top: 1px solid var(--border-light); padding-top: 20px;">
+             <button id="mgClearSlotBtn" class="btn btn--secondary" style="flex: 1; border: 1px solid #ff5555; color: #ff5555;">🗑️ Xóa Dữ Liệu Slot Đang Chọn</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PAGE: PLACEHOLDER API -->
+<div id="page-papi" class="page">
+  <section class="section" style="padding-top: 120px; min-height: 100vh;">
+    <div class="container" style="max-width: 1000px;">
+      <span class="eyebrow" style="display: block; text-align: center;">Từ Điển & Thư Viện</span>
+      <h2 style="margin-bottom: 30px; text-align: center;">PlaceholderAPI Library</h2>
+      <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Nhấp vào bất kỳ Placeholder nào để Sao Chép ngay lập tức!</p>
+      
+      <div style="margin-bottom: 40px; position: relative; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <span style="position: absolute; left: 15px; top: 14px; font-size: 1.2rem;">🔍</span>
+        <input type="text" id="papiSearchBox" class="cg-input" placeholder="Tìm kiếm theo từ khóa (VD: player, vault, ping...)" style="padding-left: 45px; border-radius: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);">
+      </div>
+
+      <div id="papiGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+         <!-- Populated by JS -->
+      </div>
+      <div id="papiPagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px; flex-wrap: wrap;"></div>
+      
+    </div>
+  </section>
+</div>
+
+<!-- PAGE: MYTHICMOBS -->
+<div id="page-mythicmobs" class="page">
+  <section class="section" style="padding-top: 120px; min-height: 100vh;">
+    <div class="container" style="max-width: 1200px;">
+      <span class="eyebrow" style="display: block; text-align: center;">Trình Tạo Quái Vật</span>
+      <h2 style="margin-bottom: 30px; text-align: center;">MythicMobs Generator</h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+        
+        <!-- Left: Properties Panel -->
+        <div style="background: var(--bg-panel-solid); padding: 20px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,119,170,0.1);">
+          <h3 style="margin-bottom: 15px; color: var(--accent-1); border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">Chỉ Số Cơ Bản (Mobs)</h3>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <div>
+              <label class="cg-label">Internal Name (ID) <span class="cg-info" data-tooltip="Tên ID dùng trong hệ thống lệnh&#10;(Viết thường, không dấu cách)">!</span></label>
+              <input type="text" id="mmId" class="cg-input" placeholder="VD: skeleton_king" value="skeleton_king">
+            </div>
+            <div>
+              <label class="cg-label">Mob Type <span class="cg-info" data-tooltip="Loại Entity gốc của Minecraft&#10;(ZOMBIE, SKELETON, COW...)">!</span></label>
+              <input type="text" id="mmType" class="cg-input" placeholder="VD: SKELETON" value="SKELETON">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label class="cg-label">Display Name <span class="cg-info" data-tooltip="Tên hiển thị trên đầu quái vật&#10;Hỗ trợ mã màu (&c, &l...)">!</span></label>
+            <input type="text" id="mmDisplay" class="cg-input" placeholder="VD: &cMị Châu" value="&cSkeleton King">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <div>
+              <label class="cg-label">Health <span class="cg-info" data-tooltip="Lượng máu tối đa">!</span></label>
+              <input type="number" id="mmHealth" class="cg-input" value="100">
+            </div>
+            <div>
+              <label class="cg-label">Damage <span class="cg-info" data-tooltip="Sát thương cơ bản khi đánh tay">!</span></label>
+              <input type="number" id="mmDamage" class="cg-input" value="10">
+            </div>
+            <div>
+              <label class="cg-label">Armor <span class="cg-info" data-tooltip="Lượng giáp giảm sát thương vật lý">!</span></label>
+              <input type="number" id="mmArmor" class="cg-input" value="0">
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+             <div>
+              <label class="cg-label">Faction <span class="cg-info" data-tooltip="Phe phái của quái vật.&#10;Quái vật cùng phe sẽ không tự đánh nhau.">!</span></label>
+              <input type="text" id="mmFaction" class="cg-input" placeholder="VD: Undead">
+            </div>
+            <div>
+              <label class="cg-label">BossBar <span class="cg-info" data-tooltip="Hiển thị thanh máu lớn ở trên cùng màn hình">!</span></label>
+              <select id="mmBossBar" class="cg-input">
+                <option value="">Không dùng</option>
+                <option value="true">Bật BossBar</option>
+              </select>
+            </div>
+          </div>
+          
+          <h3 style="margin-bottom: 15px; color: var(--accent-1); border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">Các Tùy Chọn (Options)</h3>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <div>
+              <label class="cg-label">Despawn <span class="cg-info" data-tooltip="Quái vật có tự động biến mất khi người chơi đi xa không?">!</span></label>
+              <select id="mmOptDespawn" class="cg-input"><option value="true">True</option><option value="false">False</option></select>
+            </div>
+            <div>
+              <label class="cg-label">Silent <span class="cg-info" data-tooltip="Tắt toàn bộ âm thanh mặc định của quái vật">!</span></label>
+              <select id="mmOptSilent" class="cg-input"><option value="false">False</option><option value="true">True</option></select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <div>
+              <label class="cg-label">No AI (Vô hồn)</label>
+              <select id="mmOptNoAI" class="cg-input"><option value="false">False</option><option value="true">True</option></select>
+            </div>
+            <div>
+              <label class="cg-label">Invincible (Bất tử)</label>
+              <select id="mmOptInvincible" class="cg-input"><option value="false">False</option><option value="true">True</option></select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <div>
+              <label class="cg-label">Prevent Sunburn</label>
+              <select id="mmOptSunburn" class="cg-input"><option value="false">False</option><option value="true">True</option></select>
+            </div>
+            <div>
+              <label class="cg-label">Collidable (Va chạm)</label>
+              <select id="mmOptCollidable" class="cg-input"><option value="true">True</option><option value="false">False</option></select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <div>
+              <label class="cg-label">Max Combat Dist</label>
+              <input type="number" id="mmOptCombatDist" class="cg-input" value="256">
+            </div>
+            <div>
+              <label class="cg-label">Attack Speed</label>
+              <input type="number" id="mmOptAtkSpeed" class="cg-input" value="1.0" step="0.1">
+            </div>
+          </div>
+
+          <h3 style="margin-top: 25px; margin-bottom: 15px; color: var(--accent-1); border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">Trang Bị (Equipment)</h3>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <div><label class="cg-label">Mũ (HEAD)</label><input type="text" id="mmEqHead" class="cg-input" placeholder="VD: GOLDEN_HELMET"></div>
+            <div><label class="cg-label">Áo (CHEST)</label><input type="text" id="mmEqChest" class="cg-input" placeholder="VD: GOLDEN_CHESTPLATE"></div>
+            <div><label class="cg-label">Quần (LEGS)</label><input type="text" id="mmEqLegs" class="cg-input" placeholder="VD: IRON_LEGGINGS"></div>
+            <div><label class="cg-label">Giày (FEET)</label><input type="text" id="mmEqFeet" class="cg-input" placeholder="VD: CHAINMAIL_BOOTS"></div>
+            <div><label class="cg-label">Tay Trái (OFF)</label><input type="text" id="mmEqOffhand" class="cg-input" placeholder="VD: SHIELD"></div>
+            <div><label class="cg-label">Tay Phải (MAIN)</label><input type="text" id="mmEqHand" class="cg-input" placeholder="VD: BLAZE_ROD"></div>
+          </div>
+
+          <h3 style="margin-top: 25px; margin-bottom: 15px; color: var(--accent-1); border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">AI Builder (Hành vi)</h3>
+          
+          <div style="margin-bottom: 15px;">
+            <div id="mmAIContainer"></div>
+            <button id="mmBtnAddAI" class="btn btn--ghost" style="padding: 6px 12px; font-size: 0.85rem; margin-top: 5px;">+ Thêm Mục Tiêu AI</button>
+          </div>
+
+          <h3 style="margin-top: 25px; margin-bottom: 15px; color: var(--accent-1); border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">Skills Builder (Kỹ Năng)</h3>
+          
+          <div style="margin-bottom: 10px;">
+            <div id="mmSkillsContainer"></div>
+            <button id="mmBtnAddSkill" class="btn btn--ghost" style="padding: 6px 12px; font-size: 0.85rem; margin-top: 5px;">+ Thêm Kỹ Năng</button>
+          </div>
+          
+        </div>
+
+        <!-- Right: Output Panel -->
+        <div style="background: var(--bg-panel-solid); padding: 20px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); border: 1px solid var(--border-color); position: sticky; top: 90px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+             <h3 style="color: #a1e8a1;">Mã YAML</h3>
+             <button id="mmCopyBtn" class="btn btn--secondary" style="padding: 5px 15px; font-size: 0.9rem;">📋 Copy</button>
+          </div>
+          <textarea id="mmOutput" class="cg-input" rows="20" readonly style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a1e8a1; background: transparent; border: none; outline: none; resize: none;"></textarea>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- MYTHICMOBS SKILLS GENERATOR -->
+    <div id="page-mythicmobs-skills" class="page">
+      <section class="section" style="padding-top: 120px; min-height: 100vh;">
+        <div class="container" style="max-width: 1200px;">
+          <span class="eyebrow" style="display: block; text-align: center;">Trình Tạo Kỹ Năng Độc Lập</span>
+          <h2 style="margin-bottom: 30px; text-align: center;">MythicMobs Skills Generator</h2>
+      
+      <div class="cg-layout">
+        <div class="cg-panel cg-left">
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-bottom: 20px;">
+            <div>
+              <label class="cg-label">Skill Name (Tên Kỹ Năng) <span class="cg-info" data-tooltip="Tên ID dùng trong hệ thống&#10;(Viết liền, không dấu cách)">!</span></label>
+              <input type="text" id="mmsName" class="cg-input" placeholder="VD: DarkLongslash1" value="DarkLongslash1">
+            </div>
+            <div>
+              <label class="cg-label">Cooldown <span class="cg-info" data-tooltip="Thời gian hồi chiêu (tính bằng giây)">!</span></label>
+              <input type="number" id="mmsCooldown" class="cg-input" placeholder="VD: 10" step="0.1">
+            </div>
+          </div>
+
+          <h3 style="margin-top: 25px; margin-bottom: 15px; color: var(--accent-1); border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">Điều Kiện (Conditions)</h3>
+          
+          <div style="margin-bottom: 5px;">
+            <div id="mmsCondContainer"></div>
+            <button id="mmsBtnAddCond" class="btn btn--ghost" style="padding: 6px 12px; font-size: 0.85rem; margin-top: 5px;">+ Thêm Điều Kiện</button>
+          </div>
+          <div class="cg-tip-box" style="margin-bottom: 15px; padding: 10px 15px; background: rgba(255, 119, 170, 0.1); border-left: 3px solid var(--accent-1); border-radius: 4px; font-size: 0.85rem; color: #e0d8f0;">
+            <strong>💡 Mẹo cho Điều Kiện:</strong> Thường dùng <code>onground</code> (đứng trên đất), <code>hasaura{aura=TênAura}</code> (có Aura buff), <code>crouching</code> (đang ngồi).
+          </div>
+
+          <h3 style="margin-top: 25px; margin-bottom: 15px; color: var(--accent-1); border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">Cơ Chế (Mechanics)</h3>
+          
+          <div style="margin-bottom: 5px;">
+            <div id="mmsMechContainer"></div>
+            <button id="mmsBtnAddMech" class="btn btn--ghost" style="padding: 6px 12px; font-size: 0.85rem; margin-top: 5px;">+ Thêm Cơ Chế</button>
+          </div>
+          <div class="cg-tip-box" style="margin-bottom: 10px; padding: 10px 15px; background: var(--border-color); border-left: 3px solid var(--accent-2); border-radius: 4px; font-size: 0.85rem; color: #e0d8f0;">
+            <strong>💡 Mẹo Cấu Hình (Arguments):</strong><br>
+            - <span style="color:#a1e8a1">sound</span>: <code>s=tên_âm_thanh;v=âm_lượng;p=độ_cao</code> (VD: <code>s=entity.zombie.ambient;v=1;p=1</code>)<br>
+            - <span style="color:#a1e8a1">mmodamage</span>: <code>amount="<stat.attack_damage>";types=PHYSICAL</code><br>
+            - <span style="color:#a1e8a1">slash</span>: <code>y=1.5;w=5;h=4;oP=[...];oH=[...]</code> (Đòn chém)<br>
+            - <span style="color:#a1e8a1">Aura</span>: <code>auraName=TênAura;interval=10;duration=60</code><br>
+            - <span style="color:#a1e8a1">lunge</span>: <code>v=1.5;vY=0.5</code> (Lướt tới mục tiêu)
+          </div>
+          
+        </div>
+
+        <div class="cg-panel cg-right">
+          <div style="background: var(--bg-panel-solid); padding: 20px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); border: 1px solid var(--border-color); position: sticky; top: 90px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+               <h3 style="color: #a1e8a1;">Mã YAML</h3>
+               <button id="mmsCopyBtn" class="btn btn--secondary" style="padding: 5px 15px; font-size: 0.9rem;">📋 Copy</button>
+            </div>
+            <textarea id="mmsOutput" class="cg-input" rows="20" readonly style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a1e8a1; background: transparent; border: none; outline: none; resize: none;"></textarea>
+          </div>
+        </div>
+      </div> <!-- cg-layout -->
+        </div> <!-- container -->
+      </section>
+    </div> <!-- page-mythicmobs-skills -->
 </div> <!-- end pages-container -->
+
 <footer class="footer">
-  <div class="container" style="text-align: center; color: #8a7da5;">
+  <div class="container" style="text-align: center; color: var(--text-dark);">
     &copy; 2026 SushiGangs Studio. All rights reserved.
   </div>
 </footer>
@@ -337,6 +822,7 @@
 
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="wiki-data.js"></script>
 <script src="script.js"></script>
 </body>
