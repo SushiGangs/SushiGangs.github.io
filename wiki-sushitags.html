@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SushiTags Wiki - SushiGangs</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.wiki-main { padding: 100px 20px 40px; max-width: 900px; margin: 0 auto; width: 100%; color: #b8aece; line-height: 1.6; }
+.wiki-main h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+.wiki-main h2 { font-size: 1.8rem; color: #fff; margin-top: 40px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.wiki-main h3 { font-size: 1.3rem; color: #ff77aa; margin-top: 20px; margin-bottom: 10px; }
+.wiki-main p { margin-bottom: 15px; }
+.wiki-main ul, .wiki-main ol { margin-bottom: 15px; padding-left: 20px; }
+.wiki-main li { margin-bottom: 8px; }
+
+.code-wrapper { position: relative; margin-bottom: 20px; border-radius: 8px; overflow: hidden; background: rgba(15, 8, 32, 0.6); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+.code-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 15px; background: rgba(0,0,0,0.3); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #8a7da5; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.copy-btn { background: none; border: none; color: #b8aece; cursor: pointer; transition: color 0.2s; display: flex; align-items: center; gap: 5px; font-size: 0.85rem; }
+.copy-btn:hover { color: #fff; }
+.code-wrapper pre { padding: 15px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #e0d8f0; margin: 0; tab-size: 4; }
+code { font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #ffaa77; }
+
+.wiki-table-wrapper { overflow-x: auto; margin-bottom: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+.wiki-table { width: 100%; border-collapse: collapse; text-align: left; background: rgba(15, 8, 32, 0.4); }
+.wiki-table th, .wiki-table td { padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.wiki-table th { background: rgba(0,0,0,0.3); color: #fff; font-weight: 600; }
+.wiki-table tr:last-child td { border-bottom: none; }
+
+.nav__inner { display: flex; align-items: center; gap: 16px; justify-content: space-between; }
+.wiki-nav-links { display: flex; gap: 20px; align-items: center; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; }
+.wiki-nav-links::-webkit-scrollbar { height: 4px; }
+.wiki-nav-links::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+.wiki-nav-links a { color: #b8aece; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.3s; padding: 4px 0; }
+.wiki-nav-links a:hover, .wiki-nav-links a.active { color: #fff; border-bottom: 2px solid #ff77aa; }
+@media (max-width: 768px) {
+  .wiki-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar__logo"><span>🍣</span> SushiGangs</div>
+  <nav class="sidebar__nav">
+    <a href="index.html" class="sidebar__link">✦ Trang Chủ</a>
+    <div class="sidebar__group" id="wikiGroup">
+      <div class="sidebar__group-title" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+        <span>🧩 Wiki Plugin</span>
+        <span class="wiki-toggle-icon">▼</span>
+      </div>
+      <div class="sidebar__sublinks-container">
+        <a href="wiki-sushicore.html" class="sidebar__sublink">SushiCore</a>
+        <a href="wiki-sushidecor.html" class="sidebar__sublink">SushiDecor</a>
+        <a href="wiki-sushilove.html" class="sidebar__sublink">SushiLove</a>
+        <a href="wiki-sushimanager.html" class="sidebar__sublink">SushiManager</a>
+        <a href="wiki-sushimarket.html" class="sidebar__sublink">SushiMarket</a>
+        <a href="wiki-sushitags.html" class="sidebar__sublink" style="color: #fff; font-weight: 600;">SushiTags</a>
+      </div>
+    </div>
+    <a href="index.html" class="sidebar__link">👥 Về Chúng Tôi</a>
+    <div class="sidebar__divider"></div>
+    <a href="index.html" class="sidebar__link">🌐 Việt Hóa</a>
+    <a href="index.html" class="sidebar__link">🔠 SmallCap</a>
+  </nav>
+</aside>
+
+<main class="main" style="width: 100%;">
+<header class="nav">
+  <div class="container nav__inner">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <div class="app-toggle" id="appToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="index.html" class="logo"><span>🍣</span> SushiGangs <em>Studio</em></a>
+    </div>
+    
+    <nav class="wiki-nav-links" id="wikiNavLinks">
+      <a href="index.html">← Về Trang Chủ</a>
+      <a href="#overview" class="active">Tổng Quan</a>
+      <a href="#mythiclib">Chỉ số MythicLib</a>
+      <a href="#permissions">Quyền Hạn</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wiki-main">
+  <h1 class="grad-pink">SushiTags Wiki</h1>
+  <p>Chào mừng đến với tài liệu cấu hình <strong>SushiTags</strong>. Khác với các plugin Danh hiệu (Tags) thông thường chỉ để trang trí Chat, SushiTags cho phép bạn gán <strong>Chỉ số sức mạnh (Stats)</strong> vào Danh hiệu thông qua sự kết hợp hoàn hảo với MythicLib, tạo động lực to lớn cho người chơi cày cuốc.</p>
+  
+  <section id="overview" class="wiki-section">
+    <h2>1. Tổng Quan & Cài Đặt Chung</h2>
+    <p>Người chơi có thể mở GUI quản lý Danh hiệu cực kỳ trực quan thông qua lệnh <code>/tags</code>. Trong giao diện này, họ có thể xem danh sách tất cả các thẻ đang tồn tại, thẻ nào đã mở khóa và thẻ nào chưa.</p>
+    <ul>
+      <li>Yêu cầu: <code>MythicLib</code>.</li>
+      <li>Softdepend: <code>MMOCore</code>, <code>PlaceholderAPI</code>.</li>
+    </ul>
+    
+    <div class="code-wrapper">
+      <div class="code-header">
+        <span>config.yml (Giới hạn Tag & Data)</span>
+        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+      </div>
+      <pre><code># Số tag tối đa có thể đeo cùng lúc (-1 = vô hạn)
+max-tags-equipped: 3
+
+# Khoảng cách giữa các tag khi đeo nhiều
+tag-separator: " "
+
+database:
+  file: "data/sushitags.db"</code></pre>
+    </div>
+  </section>
+
+  <section id="gui" class="wiki-section">
+    <h2>2. Tùy Chỉnh Giao Diện (GUI) & Âm Thanh</h2>
+    <p>SushiTags cung cấp một giao diện hoàn toàn tùy biến được (Customizable). Admin có thể thay đổi Item viền (Border), nút chuyển trang, cũng như hiệu ứng âm thanh sống động khi người chơi tương tác.</p>
+    
+    <div class="code-wrapper">
+      <div class="code-header">
+        <span>config.yml (GUI & Sounds)</span>
+        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+      </div>
+      <pre><code>gui:
+  title: "&8✦ &6&lSushi&e&lTags &8✦"
+  rows: 4
+  tag-slots: [10, 11, 12, 13, 14, 15, 16]
+  tag-select-glow: true # Phát sáng khi đang đeo
+
+sounds:
+  equip: "ENTITY_PLAYER_LEVELUP" # Khi đeo tag thành công
+  unequip: "UI_BUTTON_CLICK"     # Khi gỡ tag
+  gui-open: "BLOCK_CHEST_OPEN"   # Âm thanh mở Menu</code></pre>
+    </div>
+  </section>
+
+  <section id="mythiclib" class="wiki-section">
+    <h2>3. Hệ Thống Độ Hiếm (Rarity) & Chỉ Số Sức Mạnh</h2>
+    <h3>Độ Hiếm & Màu Sắc (Rarity System)</h3>
+    <p>Các danh hiệu không chỉ mang tính thẩm mỹ mà còn được phân cấp độ hiếm (Từ Phổ Thông tới Thần Thoại). Mỗi độ hiếm sẽ có màu sắc và hiển thị khác nhau trong GUI.</p>
+    <p>Ví dụ: <code>COMMON</code> (Màu xám), <code>LEGENDARY</code> (Màu vàng huyền thoại), <code>MYTHIC</code> (Màu hồng).</p>
+    
+    <h3>Tích hợp MythicLib Stats</h3>
+    <p>Admin có thể tạo một Danh hiệu (Ví dụ: <strong>Kẻ Hủy Diệt</strong>) và gán thêm thuộc tính <code>+10% Sát thương vật lý</code> hoặc <code>+50 Máu tối đa</code>. Khi người chơi trang bị Tag này, họ không chỉ có một Prefix đẹp mắt trên đầu / trong Chat, mà còn thực sự nhận được Buff sức mạnh theo đúng nghĩa đen.</p>
+  </section>
+
+  <section id="permissions" class="wiki-section">
+    <h2>4. Lệnh & Quyền Hạn (Permissions)</h2>
+    
+    <div class="wiki-table-wrapper">
+      <table class="wiki-table">
+        <thead>
+          <tr>
+            <th>Quyền (Permission)</th>
+            <th>Mô tả chức năng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code onclick="copyText(this)">sushitags.use</code></td>
+            <td>Cho phép người chơi sử dụng lệnh <code>/tags</code> để mở GUI.</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushitags.admin</code></td>
+            <td>Lệnh admin (<code>/stagadmin</code>) để quản lý (Tạo, Sửa, Xóa tags, Reload cấu hình).</td>
+          </tr>
+          <tr>
+            <td><code>sushitags.tag.&lt;id&gt;</code></td>
+            <td>(Ví dụ) Cấp quyền sử dụng một Tag cụ thể cho người chơi. Bạn có thể bán Quyền này trong Shop hoặc thưởng Event.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<script>
+const appToggle = document.getElementById('appToggle');
+if (appToggle) {
+  appToggle.addEventListener('click', () => {
+    document.body.classList.toggle('sidebar-closed');
+  });
+}
+
+const wikiGroup = document.getElementById('wikiGroup');
+if (wikiGroup) {
+  const title = wikiGroup.querySelector('.sidebar__group-title');
+  const container = wikiGroup.querySelector('.sidebar__sublinks-container');
+  const icon = wikiGroup.querySelector('.wiki-toggle-icon');
+  
+  title.addEventListener('click', () => {
+    container.classList.toggle('collapsed');
+    icon.classList.toggle('collapsed');
+  });
+}
+
+const links = document.querySelectorAll('.wiki-nav-links a[href^="#"]');
+const sections = document.querySelectorAll('.wiki-section');
+
+links.forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 150) {
+      current = '#' + section.getAttribute('id');
+    }
+  });
+
+  links.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+function copyCode(btn) {
+  const codeBlock = btn.parentElement.nextElementSibling.querySelector('code');
+  if (codeBlock) {
+    navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+      const originalText = btn.innerText;
+      btn.innerText = '✅ Đã Copy';
+      setTimeout(() => { btn.innerText = originalText; }, 2000);
+    });
+  }
+}
+
+function copyText(el) {
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const originalText = el.innerText;
+    el.innerText = 'Đã Copy!';
+    el.style.background = 'rgba(255,119,170,0.3)';
+    setTimeout(() => { 
+      el.innerText = originalText; 
+      el.style.background = '';
+    }, 1500);
+  });
+}
+</script>
+</body>
+</html>

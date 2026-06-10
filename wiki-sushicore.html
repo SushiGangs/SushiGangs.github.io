@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SushiCore Wiki - SushiGangs</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* WIKI SPECIFIC STYLES */
+.wiki-main { padding: 100px 20px 40px; max-width: 900px; margin: 0 auto; width: 100%; color: #b8aece; line-height: 1.6; }
+.wiki-main h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+.wiki-main h2 { font-size: 1.8rem; color: #fff; margin-top: 40px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.wiki-main h3 { font-size: 1.3rem; color: #ff77aa; margin-top: 20px; margin-bottom: 10px; }
+.wiki-main p { margin-bottom: 15px; }
+.wiki-main ul, .wiki-main ol { margin-bottom: 15px; padding-left: 20px; }
+.wiki-main li { margin-bottom: 8px; }
+
+/* CODE BLOCKS */
+.code-wrapper { position: relative; margin-bottom: 20px; border-radius: 8px; overflow: hidden; background: rgba(15, 8, 32, 0.6); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+.code-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 15px; background: rgba(0,0,0,0.3); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #8a7da5; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.copy-btn { background: none; border: none; color: #b8aece; cursor: pointer; transition: color 0.2s; display: flex; align-items: center; gap: 5px; font-size: 0.85rem; }
+.copy-btn:hover { color: #fff; }
+.code-wrapper pre { padding: 15px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #e0d8f0; margin: 0; tab-size: 4; }
+code { font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #ffaa77; }
+
+/* TABLE */
+.wiki-table-wrapper { overflow-x: auto; margin-bottom: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+.wiki-table { width: 100%; border-collapse: collapse; text-align: left; background: rgba(15, 8, 32, 0.4); }
+.wiki-table th, .wiki-table td { padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.wiki-table th { background: rgba(0,0,0,0.3); color: #fff; font-weight: 600; }
+.wiki-table tr:last-child td { border-bottom: none; }
+
+/* WIKI NAV OVERRIDES */
+.nav__inner { display: flex; align-items: center; gap: 16px; justify-content: space-between; }
+.wiki-nav-links { display: flex; gap: 20px; align-items: center; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; }
+.wiki-nav-links::-webkit-scrollbar { height: 4px; }
+.wiki-nav-links::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+.wiki-nav-links a { color: #b8aece; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.3s; padding: 4px 0; }
+.wiki-nav-links a:hover, .wiki-nav-links a.active { color: #fff; border-bottom: 2px solid #ff77aa; }
+@media (max-width: 768px) {
+  .wiki-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar__logo"><span>🍣</span> SushiGangs</div>
+  <nav class="sidebar__nav">
+    <a href="index.html" class="sidebar__link">✦ Trang Chủ</a>
+    <div class="sidebar__group" id="wikiGroup">
+      <div class="sidebar__group-title" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+        <span>🧩 Wiki Plugin</span>
+        <span class="wiki-toggle-icon">▼</span>
+      </div>
+      <div class="sidebar__sublinks-container">
+        <a href="wiki-sushicore.html" class="sidebar__sublink" style="color: #fff; font-weight: 600;">SushiCore</a>
+        <a href="wiki-sushidecor.html" class="sidebar__sublink">SushiDecor</a>
+        <a href="wiki-sushilove.html" class="sidebar__sublink">SushiLove</a>
+        <a href="wiki-sushimanager.html" class="sidebar__sublink">SushiManager</a>
+        <a href="wiki-sushimarket.html" class="sidebar__sublink">SushiMarket</a>
+        <a href="wiki-sushitags.html" class="sidebar__sublink">SushiTags</a>
+      </div>
+    </div>
+    <a href="index.html" class="sidebar__link">👥 Về Chúng Tôi</a>
+    <div class="sidebar__divider"></div>
+    <a href="index.html" class="sidebar__link">🌐 Việt Hóa</a>
+    <a href="index.html" class="sidebar__link">🔠 SmallCap</a>
+  </nav>
+</aside>
+
+<main class="main" style="width: 100%;">
+<header class="nav">
+  <div class="container nav__inner">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <div class="app-toggle" id="appToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="index.html" class="logo"><span>🍣</span> SushiGangs <em>Studio</em></a>
+    </div>
+    
+    <nav class="wiki-nav-links" id="wikiNavLinks">
+      <a href="index.html">← Về Trang Chủ</a>
+      <a href="#overview" class="active">Tổng Quan</a>
+      <a href="#teleport">Teleport & RTP</a>
+      <a href="#features">Tiện ích</a>
+      <a href="#permissions">Quyền Hạn</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wiki-main">
+  <h1 class="grad-pink">SushiCore Wiki</h1>
+  <p>Chào mừng đến với tài liệu hướng dẫn cấu hình và sử dụng <strong>SushiCore</strong>. Đây là plugin cốt lõi chứa hầu hết mọi hệ thống cơ bản cần thiết cho một Server Survival, thay thế hoàn toàn cho EssentialsX với độ nhẹ nhàng và tối ưu vượt trội.</p>
+  
+  <section id="overview" class="wiki-section">
+    <h2>1. Tổng Quan Hệ Sinh Thái</h2>
+    <p>SushiCore tích hợp hơn 15 module tiện ích khác nhau, mỗi module đều có thể Bật/Tắt độc lập trong `config.yml`. Các module nổi bật bao gồm:</p>
+    <ul>
+      <li><strong>Teleportation:</strong> TPA, Home, RTP (Smart RTP tránh Lava/Nước), Spawn, Back.</li>
+      <li><strong>Tiện ích người chơi:</strong> Remote Craft/Anvil, Trash GUI, AFK, Stats, Death Penalty.</li>
+      <li><strong>Giao tiếp:</strong> Hệ thống Chat button (`[item]`, `[ping:player]`), Mail offline, Msg spy.</li>
+      <li><strong>Tích hợp:</strong> Hỗ trợ hoàn toàn <code>Vault</code> (trừ tiền khi tp/rtp), <code>PlaceholderAPI</code>, và <code>WorldGuard</code> (tránh kẹt vùng cấm).</li>
+    </ul>
+  </section>
+
+  <section id="teleport" class="wiki-section">
+    <h2>2. Teleport, TPA & Smart RTP</h2>
+    <h3>Warmup & Combat Tag</h3>
+    <p>Tất cả các lệnh Teleport đều tuân thủ luật <strong>Warmup</strong> (Thời gian chờ). Khi đang chờ, nếu người chơi di chuyển hoặc bị nhận sát thương, lệnh Teleport sẽ lập tức bị hủy.</p>
+    <p>Hệ thống <strong>Combat Tag</strong>: Khi người chơi đánh nhau, họ sẽ bị đánh dấu Combat trong 15 giây. Trong lúc này, mọi lệnh dịch chuyển (`/tpa`, `/home`, `/rtp`, `/spawn`,...) sẽ bị chặn đứng để tránh trốn tránh PvP.</p>
+    
+    <h3>Hệ Thống Smart RTP</h3>
+    <p>SushiCore cung cấp hệ thống <strong>RTP Thông Minh</strong> với khả năng quét block an toàn. Bạn có thể định nghĩa nhiều khu vực đích khác nhau trong `config.yml`.</p>
+    <div class="code-wrapper">
+      <div class="code-header">
+        <span>config.yml (Mẫu cấu hình Zone)</span>
+        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+      </div>
+      <pre><code>rtp:
+  blocked-biomes: [OCEAN, DEEP_OCEAN, RIVER]
+  blocked-blocks: [LAVA, WATER, CACTUS, FIRE, MAGMA_BLOCK]
+  destinations:
+    overworld:
+      world: world
+      min-x: -3000
+      max-x: 3000
+      min-z: -3000
+      max-z: 3000</code></pre>
+    </div>
+    
+    <h3>RTP Trigger Zones</h3>
+    <p>Thay vì phải gõ lệnh, Admin có thể tạo ra các <strong>vùng Trigger</strong>. Khi người chơi bước chân vào tọa độ này, họ sẽ bị RTP đi tự động, cực kỳ phù hợp cho cổng dịch chuyển ở Spawn.</p>
+  </section>
+
+  <section id="features" class="wiki-section">
+    <h2>3. Hệ Thống Tiện Ích</h2>
+    
+    <h3>Nút bấm trong Chat (Chat Buttons)</h3>
+    <p>Người chơi có thể tương tác trực tiếp với chat bằng cách gõ cú pháp đặc biệt. Ví dụ: gõ <code>[item]</code> để khoe món đồ đang cầm trên tay, hoặc <code>[pos]</code> để chia sẻ tọa độ hiện tại.</p>
+    <p>Sử dụng lệnh `/cmdbutton` (Dành cho Admin) để tạo các nút bấm thực thi lệnh tùy chỉnh.</p>
+    
+    <h3>Tiện Ích Từ Xa (Remote) & Thùng Rác</h3>
+    <p>Bao gồm các lệnh `/craft`, `/anvil`, `/echest`, `/fix`. Có thể đặt mức phí Vault cho từng thao tác. Người chơi có thể mở `/trash` (thùng rác) để tiêu hủy đồ đạc không dùng tới một cách an toàn.</p>
+    
+    <h3>Death Penalty (Phạt Sinh Tồn)</h3>
+    <p>Khi người chơi chết, SushiCore có thể cấu hình để họ bị mất ngẫu nhiên 1 (hoặc nhiều) vật phẩm. Admin có thể tùy chỉnh danh sách `blacklist-lore` để không bao giờ rớt các vật phẩm "Bound" hoặc "Không thể phá hủy".</p>
+  </section>
+
+  <section id="permissions" class="wiki-section">
+    <h2>4. Lệnh & Quyền Hạn (Permissions)</h2>
+    <p>Dưới đây là một số lệnh và quyền hạn chính để dán vào LuckPerms hoặc cấu hình Group cho thành viên.</p>
+    
+    <div class="wiki-table-wrapper">
+      <table class="wiki-table">
+        <thead>
+          <tr>
+            <th>Quyền (Permission)</th>
+            <th>Mô tả chức năng</th>
+            <th>Mặc định</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code onclick="copyText(this)">sushicore.admin</code></td>
+            <td>Quyền tối cao, bỏ qua mọi cooldown/limit. Bấm để Copy.</td>
+            <td>OP</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushicore.tpa.use</code></td>
+            <td>Quyền sử dụng lệnh TPA.</td>
+            <td>True (Mọi người)</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushicore.home.limit.5</code></td>
+            <td>Cho phép người chơi tạo tối đa 5 Home.</td>
+            <td>False</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushicore.rtp.bypass.cooldown</code></td>
+            <td>RTP không bị thời gian chờ.</td>
+            <td>OP</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushicore.chateffect.rainbow</code></td>
+            <td>Cho phép sử dụng hiệu ứng màu 7 sắc cầu vồng trong chat.</td>
+            <td>True</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushicore.playtime.others</code></td>
+            <td>Quyền được xem thời gian chơi của người khác.</td>
+            <td>OP</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushicore.remote.craft</code></td>
+            <td>Cho phép sử dụng lệnh <code>/craft</code> mở bàn chế tạo mọi lúc.</td>
+            <td>True</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushicore.deathpenalty.bypass</code></td>
+            <td>Khi chết sẽ KHÔNG bị phạt rớt ngẫu nhiên đồ.</td>
+            <td>False</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<script>
+// Sidebar Toggle Logic
+const appToggle = document.getElementById('appToggle');
+if (appToggle) {
+  appToggle.addEventListener('click', () => {
+    document.body.classList.toggle('sidebar-closed');
+  });
+}
+
+// Wiki Plugin Group Toggle
+const wikiGroup = document.getElementById('wikiGroup');
+if (wikiGroup) {
+  const title = wikiGroup.querySelector('.sidebar__group-title');
+  const container = wikiGroup.querySelector('.sidebar__sublinks-container');
+  const icon = wikiGroup.querySelector('.wiki-toggle-icon');
+  
+  title.addEventListener('click', () => {
+    container.classList.toggle('collapsed');
+    icon.classList.toggle('collapsed');
+  });
+}
+
+// Wiki ScrollSpy & Smooth Scroll
+const links = document.querySelectorAll('.wiki-nav-links a[href^="#"]');
+const sections = document.querySelectorAll('.wiki-section');
+
+links.forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - 80, // Offset for navbar
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 150) {
+      current = '#' + section.getAttribute('id');
+    }
+  });
+
+  links.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Copy to Clipboard
+function copyCode(btn) {
+  const codeBlock = btn.parentElement.nextElementSibling.querySelector('code');
+  if (codeBlock) {
+    navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+      const originalText = btn.innerText;
+      btn.innerText = '✅ Đã Copy';
+      setTimeout(() => { btn.innerText = originalText; }, 2000);
+    });
+  }
+}
+
+function copyText(el) {
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const originalText = el.innerText;
+    el.innerText = 'Đã Copy!';
+    el.style.background = 'rgba(255,119,170,0.3)';
+    setTimeout(() => { 
+      el.innerText = originalText; 
+      el.style.background = '';
+    }, 1500);
+  });
+}
+</script>
+</body>
+</html>

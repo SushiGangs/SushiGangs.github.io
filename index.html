@@ -1,129 +1,454 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SushiGang Studio</title>
-    <meta name="description" content="SushiGang Studio - Nơi cung cấp các plugin Minecraft và wiki cao cấp.">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SushiGangs Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Top Bar -->
-    <header class="topbar">
-        <div class="topbar-left">
-            <button id="sidebar-toggle" aria-label="Hiện Menu Bên"><i class="fa-solid fa-bars"></i></button>
-            <a href="index.html" class="logo">Sushi<span>Gang</span></a>
-            <nav class="topbar-nav">
-                <a href="sushilib.html" class="topbar-nav-link"><i class="fa-solid fa-book"></i> SushiLib</a>
-            </nav>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar__logo"><span>🍣</span> SushiGangs</div>
+  <nav class="sidebar__nav">
+    <a href="#" data-target="page-home" class="sidebar__link active">✦ Trang Chủ</a>
+    <div class="sidebar__group" id="wikiGroup">
+      <div class="sidebar__group-title" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+        <span>🧩 Wiki Plugin</span>
+        <span class="wiki-toggle-icon">▼</span>
+      </div>
+      <div class="sidebar__sublinks-container">
+        <a href="wiki-sushicore.html" class="sidebar__sublink">SushiCore</a>
+        <a href="wiki-sushidecor.html" class="sidebar__sublink">SushiDecor</a>
+        <a href="wiki-sushilove.html" class="sidebar__sublink">SushiLove</a>
+        <a href="wiki-sushimanager.html" class="sidebar__sublink">SushiManager</a>
+        <a href="wiki-sushimarket.html" class="sidebar__sublink">SushiMarket</a>
+        <a href="wiki-sushitags.html" class="sidebar__sublink">SushiTags</a>
+      </div>
+    </div>
+    <a href="#" data-target="page-about" class="sidebar__link">👥 Về Chúng Tôi</a>
+    <div class="sidebar__divider"></div>
+    <a href="#" data-target="page-translation" class="sidebar__link">🌐 Việt Hóa</a>
+    <a href="#" data-target="page-smallcap" class="sidebar__link">🔠 SmallCap</a>
+    <a href="#" data-target="page-serverinfo" class="sidebar__link">📊 Thông Tin Server</a>
+    <a href="#" data-target="page-colorgen" class="sidebar__link">🎨 Tạo Màu RGB</a>
+  </nav>
+</aside>
+
+<button class="sidebar__toggle" id="sidebarToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+
+<main class="main">
+<header class="nav">
+  <div class="container nav__inner" style="display: flex; gap: 16px;">
+    <div class="app-toggle" id="appToggle">
+      <span></span><span></span><span></span>
+    </div>
+    <a href="#" class="logo" data-target="page-home"><span>🍣</span> SushiGangs <em>Studio</em></a>
+    <nav id="navLinks" style="flex: 1; display: flex; align-items: center; justify-content: flex-end;">
+      <div id="authContainer" style="position: relative;">
+        <button class="btn btn--gradient" id="btnAuth" style="padding: 8px 24px; border-radius: 20px; font-weight: bold; border: none; cursor: pointer;">Đăng Nhập</button>
+        <div id="userMenuToggle" style="display: none; align-items: center; gap: 10px; cursor: pointer; padding: 5px 15px; border-radius: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;">
+          <img id="navUserAvatar" src="https://via.placeholder.com/30" style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+          <span id="navUserName" style="font-weight: bold; color: #fff;">User</span>
+          <span style="font-size: 0.8rem; color: #b8aece;">▼</span>
         </div>
-        <div class="topbar-right">
-            <div class="search-container">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm wiki...">
+        <div id="userDropdown" class="user-dropdown">
+          <a href="#" data-target="page-profile" id="goProfileBtn" style="display: block; padding: 10px 15px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;">👤 Trang cá nhân</a>
+          <a href="#" id="btnLogout" style="display: block; padding: 10px 15px; color: #ff77aa; text-decoration: none; transition: background 0.2s;">🚪 Đăng xuất</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="pages-container">
+<!-- PAGE: HOME -->
+<div id="page-home" class="page active">
+<section class="hero" id="top">
+  <div class="hero__bg"></div>
+  <div class="container">
+    <span class="badge">✦ Paper 1.20.4 · JDK 21</span>
+    <h1>Hệ sinh thái <span class="grad">plugin Minecraft</span><br>do <span class="grad-pink">SushiGangs</span> phát triển</h1>
+    <p class="sub">Bộ 6 plugin gắn kết — trang trí, vật phẩm, thị trường, quản lý — tất cả nói chung một ngôn ngữ.</p>
+    <div class="cta">
+      <div class="cta-group">
+        <a href="#plugins" class="btn btn--primary">Khám phá</a>
+      </div>
+      <div class="cta-group">
+        <a href="https://discord.gg/hFGwwRPhYR" target="_blank" class="btn btn--discord">
+          <svg style="width:20px;height:20px;" viewBox="0 0 127.14 96.36" fill="#fff"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a67.58,67.58,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.1,46,96,53,91.08,65.69,84.69,65.69Z"/></svg>
+          SushiGangs Studio
+        </a>
+        <a href="https://discord.gg/BPkcksgV53" target="_blank" class="btn btn--discord">
+          <svg style="width:20px;height:20px;" viewBox="0 0 127.14 96.36" fill="#fff"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a67.58,67.58,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.1,46,96,53,91.08,65.69,84.69,65.69Z"/></svg>
+          SwordLand Network
+        </a>
+      </div>
+    </div>
+    <div class="stats">
+      <div><strong>6</strong><span>plugin</span></div>
+      <div><strong>100+</strong><span>tính năng độc đáo</span></div>
+      <div><strong>100%</strong><span>tiếng Việt</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="plugins">
+  <div class="container">
+    <span class="eyebrow">Sản phẩm</span>
+    <h2>Bộ 6 plugin</h2>
+    <div class="grid">
+      <a href="wiki-sushidecor.html" style="text-decoration: none; color: inherit;"><article class="card" data-accent="pink" style="cursor: pointer; height: 100%;"><div class="icon">🎨</div><h3>SushiDecor</h3><p>Hologram, Tab, Scoreboard, BossBar, Particle, Trail, Footstep.</p></article></a>
+      <a href="wiki-sushicore.html" style="text-decoration: none; color: inherit;"><article class="card" data-accent="violet" style="cursor: pointer; height: 100%;"><div class="icon">⚙️</div><h3>SushiCore</h3><p>Hạt nhân chung, utility, API nội bộ.</p></article></a>
+      <a href="wiki-sushilove.html" style="text-decoration: none; color: inherit;"><article class="card" data-accent="red" style="cursor: pointer; height: 100%;"><div class="icon">❤️</div><h3>SushiLove</h3><p>Hệ thống hẹn hò, kết hôn, buff chỉ số cho cặp đôi.</p></article></a>
+      <a href="wiki-sushimanager.html" style="text-decoration: none; color: inherit;"><article class="card" data-accent="orange" style="cursor: pointer; height: 100%;"><div class="icon">🛠️</div><h3>SushiManager</h3><p>Tối ưu server, quản lý hình phạt (Ban/Mute/Jail).</p></article></a>
+      <a href="wiki-sushimarket.html" style="text-decoration: none; color: inherit;"><article class="card" data-accent="yellow" style="cursor: pointer; height: 100%;"><div class="icon">🏪</div><h3>SushiMarket</h3><p>Chợ đấu giá tối ưu MMOItems, chống đầu cơ Anti-flip.</p></article></a>
+      <a href="wiki-sushitags.html" style="text-decoration: none; color: inherit;"><article class="card" data-accent="green" style="cursor: pointer; height: 100%;"><div class="icon">🏷️</div><h3>SushiTags</h3><p>Danh hiệu Chat kèm Buff sức mạnh MythicLib.</p></article></a>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="features">
+  <div class="container">
+    <span class="eyebrow">Vì sao SushiGangs</span>
+    <h2>Tính năng nổi bật</h2>
+    <div class="grid feats">
+      <div class="feat"><div class="num">01</div><h3>Condition Engine</h3><p><code>perm:</code>, <code>world:</code>, <code>papi:</code>, <code>all:</code>, <code>any:</code>, <code>not:</code> — lồng nhau tuỳ ý.</p></div>
+      <div class="feat"><div class="num">02</div><h3>MiniMessage + PAPI</h3><p>Gradient, rainbow, smallcaps, animation, placeholder khắp nơi.</p></div>
+      <div class="feat"><div class="num">03</div><h3>Per-player render</h3><p>Hologram, particle, cosmetic spawn per-viewer.</p></div>
+      <div class="feat"><div class="num">04</div><h3>Tích hợp soft</h3><p>PAPI, WorldGuard, LuckPerms, Vault — không có vẫn chạy.</p></div>
+      <div class="feat"><div class="num">05</div><h3>Lưu trữ kép</h3><p>YAML cho cấu hình, SQLite cho dữ liệu động.</p></div>
+      <div class="feat"><div class="num">06</div><h3>Tiếng Việt mặc định</h3><p>i18n tiếng Việt sẵn từ box.</p></div>
+    </div>
+  </div>
+</section>
+</div> <!-- END PAGE: HOME -->
+
+<!-- PAGE: TRANSLATION -->
+<div id="page-translation" class="page">
+<section class="section" id="translation">
+  <div class="container">
+    <span class="eyebrow">Công Cụ</span>
+    <h2>Việt Hóa Ngôn Ngữ</h2>
+    <div class="tool-card">
+      <div class="tool-card__header">
+        <div class="tool-card__lang">Tự động phát hiện</div>
+        <div class="tool-card__arrow">➔</div>
+        <div class="tool-card__lang active">Tiếng Việt</div>
+      </div>
+      <div class="tool-card__body translation-grid">
+        <textarea id="transInput" placeholder="Nhập văn bản cần dịch..."></textarea>
+        <div class="translation-divider"></div>
+        <textarea id="transOutput" placeholder="Bản dịch sẽ xuất hiện ở đây..." readonly></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+</div> <!-- END PAGE: TRANSLATION -->
+
+<!-- PAGE: SMALLCAP -->
+<div id="page-smallcap" class="page">
+<section class="section alt" id="smallcap">
+  <div class="container">
+    <span class="eyebrow">Công Cụ</span>
+    <h2>Chuyển Đổi SmallCap</h2>
+    <div class="tool-card">
+      <div class="tool-card__body translation-grid">
+        <textarea id="smallcapInput" placeholder="Nhập văn bản thường... (VD: hello)"></textarea>
+        <div class="translation-divider"></div>
+        <textarea id="smallcapOutput" placeholder="Văn bản SmallCap... (VD: ʜᴇʟʟᴏ)" readonly></textarea>
+      </div>
+      <div class="tool-card__footer">
+        <button id="copySmallcap" class="btn btn--primary" style="padding: 10px 20px;">Sao chép</button>
+      </div>
+    </div>
+  </div>
+</section>
+</div> <!-- END PAGE: SMALLCAP -->
+
+<!-- PAGE: ABOUT US -->
+<div id="page-about" class="page">
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Giới Thiệu</span>
+    <h2>Về <span class="grad-pink">SushiGangs</span></h2>
+    
+    <div class="about-grid">
+      <!-- Block 1 -->
+      <div class="about-card glass">
+        <div class="quote-icon">“</div>
+        <p class="about-desc">Studio nhỏ của những lập trình viên Việt đam mê Minecraft. Mục tiêu: xây hệ sinh thái plugin tiếng Việt, gọn nhẹ, dễ cấu hình — để mọi server VN đều có công cụ tốt mà không phải chắp vá hàng chục plugin nước ngoài.</p>
+      </div>
+
+      <!-- Block 2 -->
+      <div class="about-profile glass">
+        <div class="profile-header">
+          <div class="avatar">🍣</div>
+          <div>
+            <h3 class="owner-name grad">SushiOhYah</h3>
+            <span class="owner-title">Founder & Developer</span>
+          </div>
+        </div>
+        
+        <div class="badges">
+          <span class="badge-tag corelink">Staff CoreLink Studio</span>
+          <span class="badge-tag sushi">Owner SushiGangs</span>
+          <span class="badge-tag swordland">Admin SwordLand.vn</span>
+        </div>
+        
+        <div class="contact-info">
+          <h4 class="contact-title">Thông Tin Liên Hệ</h4>
+          <a href="#" class="contact-link"><span class="icon">💬</span> <strong>Discord:</strong> <span>_sushi.oy_</span></a>
+          <a href="mailto:Tungle110808@gmail.com" class="contact-link"><span class="icon">✉️</span> <strong>Gmail:</strong> <span>Tungle110808@gmail.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div> <!-- END PAGE: ABOUT US -->
+
+<!-- PAGE: PROFILE -->
+<div id="page-profile" class="page">
+  <div class="profile-banner">
+    <img id="profileBannerImg" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80" alt="Banner">
+  </div>
+  <div class="container profile-container">
+    <div class="profile-header">
+      <img id="profileAvatarImg" src="https://via.placeholder.com/120" alt="Avatar" class="profile-avatar">
+      <div class="profile-info">
+        <h1 id="profileName">Username</h1>
+        <span id="profileId" class="profile-id">#0000</span>
+        <p id="profileDesc" class="profile-desc">Chưa có mô tả.</p>
+      </div>
+      <button class="btn btn--gradient" id="btnEditProfile" style="margin-left: auto; align-self: flex-start; margin-top: 10px; height: fit-content; padding: 10px 20px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer;">Chỉnh sửa profile</button>
+    </div>
+    
+    <div class="profile-stats">
+      <div class="stat-card">
+        <div class="stat-value" id="statJoinDate">Hôm nay</div>
+        <div class="stat-label">Ngày tham gia</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">Thành viên</div>
+        <div class="stat-label">Chức vụ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Bài viết</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: SERVER INFO -->
+<div id="page-serverinfo" class="page">
+  <section class="section" style="padding-top: 120px; min-height: 100vh;">
+    <div class="container" style="max-width: 800px;">
+      <span class="eyebrow">Trình tra cứu</span>
+      <h2 style="margin-bottom: 30px;">Thông Tin Server</h2>
+      
+      <div style="display: flex; gap: 15px; margin-bottom: 40px;">
+        <input type="text" id="siIpInput" placeholder="Nhập IP Server (VD: mc.hypixel.net)..." style="flex: 1; padding: 15px 20px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 1.1rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#ff77aa'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        <button id="siSubmitBtn" class="btn btn--gradient" style="padding: 0 30px; border-radius: 12px; font-weight: bold; border: none; cursor: pointer; font-size: 1.1rem;">Kiểm tra</button>
+      </div>
+      
+      <div id="siLoading" style="display: none; text-align: center; color: #ff77aa; font-weight: bold; margin-bottom: 30px;">Đang tải thông tin...</div>
+      <div id="siError" style="display: none; text-align: center; color: #ff5555; font-weight: bold; margin-bottom: 30px; padding: 15px; background: rgba(255,0,0,0.1); border-radius: 12px;"></div>
+
+      <div id="siResultContainer" style="display: none;">
+        <div class="si-card">
+          <div class="si-header">
+            <span class="si-status">✅ Online</span> — <span id="siHeaderIp"></span>
+          </div>
+          <div class="si-body">
+            <div class="si-row"><strong>Kết nối:</strong> <span id="siConnect" class="si-badge"></span></div>
+            <div class="si-row"><strong>Độ trễ:</strong> <span id="siPing"></span></div>
+            <div class="si-row"><strong>Người chơi:</strong> <span id="siPlayers"></span></div>
+            <div class="si-row"><strong>Phiên bản:</strong> <span id="siVersion" class="si-badge"></span></div>
+            <div class="si-row"><strong>Phần mềm:</strong> <span id="siSoftware"></span></div>
+            <div class="si-row"><strong>Vị trí:</strong> <span id="siLocation"></span></div>
+            <div class="si-row"><strong>Nhà cung cấp:</strong> <span id="siIsp"></span></div>
+          </div>
+        </div>
+
+        <div class="si-motd-container">
+          <div class="si-motd-box">
+            <img id="siIcon" src="https://via.placeholder.com/64" alt="Server Icon" class="si-icon">
+            <div class="si-motd-content">
+              <div class="si-motd-top">
+                <span class="si-motd-name" id="siMotdName"></span>
+                <span class="si-motd-players" id="siMotdPlayers"></span>
+              </div>
+              <div class="si-motd-desc" id="siMotdDesc"></div>
             </div>
-            <button id="login-btn" class="btn-primary">
-                <i class="fa-solid fa-user"></i> Đăng nhập
-            </button>
+          </div>
         </div>
-    </header>
+      </div>
 
-    <!-- App Container -->
-    <div class="app-container">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="sidebar">
-            <ul class="nav-links">
-                <li class="active"><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
-                <li><a href="about.html"><i class="fa-solid fa-users"></i> Về Chúng Tôi</a></li>
-                <li class="nav-divider"></li>
-                <div class="nav-section-header">
-                    <span class="nav-section-label">SushiLib</span>
-                    <button class="nav-section-toggle"><i class="fa-solid fa-chevron-down"></i></button>
-                </div>
-                <div class="nav-section-items">
-                    <li><a href="sushilib.html"><i class="fa-solid fa-book"></i> Tổng Quan</a></li>
-                    <li>
-                        <div class="nav-subsection-header">
-                            <a href="sushilib-skills.html"><i class="fa-solid fa-bolt"></i> Skills</a>
-                            <button class="nav-subsection-toggle collapsed"><i class="fa-solid fa-chevron-down"></i></button>
-                        </div>
-                        <ul class="nav-subsection-items collapsed">
-                            <li><a href="sushilib-mechanics.html"><i class="fa-solid fa-cogs"></i> Mechanics</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="nav-subsection-header">
-                            <a href="sushilib-items.html"><i class="fa-solid fa-khanda"></i> Items</a>
-                            <button class="nav-subsection-toggle collapsed"><i class="fa-solid fa-chevron-down"></i></button>
-                        </div>
-                        <ul class="nav-subsection-items collapsed">
-                            <li><a href="sushilib-item-types.html"><i class="fa-solid fa-box"></i> Các Loại Item</a></li>
-                            <li><a href="sushilib-item-stats.html"><i class="fa-solid fa-chart-simple"></i> Chỉ Số & Độ Bền</a></li>
-                            <li><a href="sushilib-item-skills.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Kỹ Năng Trang Bị</a></li>
-                            <li><a href="sushilib-item-upgrades.html"><i class="fa-solid fa-hammer"></i> Nâng Cấp & Khảm</a></li>
-                        </ul>
-                    </li>
-                </div>
-                <li class="nav-divider"></li>
-                <li><a href="smallcap.html"><i class="fa-solid fa-font"></i> Tool SmallCap</a></li>
-                <li><a href="symbols.html"><i class="fa-solid fa-icons"></i> Symbol</a></li>
-            </ul>
-        </nav>
+    </div>
+  </section>
+</div>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Hero Section -->
-            <section class="hero">
-                <h2>Hệ Sinh Thái <span class="highlight">SushiLib</span></h2>
-                <p>Thư viện lõi mạnh mẽ cung cấp toàn bộ nền tảng RPG, Skills, Items cho máy chủ Minecraft của bạn.</p>
-                <div class="hero-actions">
-                    <a href="sushilib.html" class="btn-primary large"><i class="fa-solid fa-rocket"></i> Khám Phá SushiLib</a>
-                    <a href="https://discord.gg/5fjcJtpKc5" class="btn-discord large" target="_blank"><i class="fa-brands fa-discord"></i> Tham Gia Cộng Đồng</a>
-                </div>
-            </section>
+<!-- PAGE: COLOR GEN -->
+<div id="page-colorgen" class="page">
+  <section class="section" style="padding-top: 120px; min-height: 100vh;">
+    <div class="container" style="max-width: 900px;">
+      <span class="eyebrow">Trình tạo màu</span>
+      <h2 style="margin-bottom: 30px;">RGB Gradient Generator</h2>
+      
+      <div class="cg-layout">
+        <!-- Controls Column -->
+        <div class="cg-controls">
+          <div class="cg-group">
+            <label class="cg-label">Nhập Text</label>
+            <textarea id="cgTextInput" class="cg-input" rows="2" placeholder="Ví dụ: SushiGangs Studio">SushiGangs Studio</textarea>
+          </div>
+          
+          <div class="cg-group">
+            <label class="cg-label">Định dạng Output</label>
+            <select id="cgFormatSelect" class="cg-input cg-select">
+              <option value="minimessage">MiniMessage (&lt;#RRGGBB&gt;)</option>
+              <option value="legacy">Legacy (&amp;#RRGGBB)</option>
+              <option value="hex">Hex (&lt;color:#RRGGBB&gt;)</option>
+            </select>
+          </div>
+          
+          <div class="cg-group">
+            <label class="cg-label">Định dạng chữ (Format)</label>
+            <div class="cg-format-toggles">
+              <label class="cg-checkbox"><input type="checkbox" id="cgBold"> <b>In đậm</b></label>
+              <label class="cg-checkbox"><input type="checkbox" id="cgItalic"> <i>In nghiêng</i></label>
+              <label class="cg-checkbox"><input type="checkbox" id="cgUnderline"> <u>Gạch dưới</u></label>
+              <label class="cg-checkbox"><input type="checkbox" id="cgStrikethrough"> <s>Gạch ngang</s></label>
+            </div>
+          </div>
+          
+          <div class="cg-group">
+            <label class="cg-label">Dải màu Gradient</label>
+            <div id="cgColorStops" class="cg-color-stops">
+              <!-- JS will populate default 2 colors here -->
+            </div>
+            <button id="cgAddColorBtn" class="btn btn--secondary" style="width: 100%; padding: 10px; border-radius: 8px; margin-top: 10px;">+ Thêm màu</button>
+          </div>
+        </div>
+        
+        <!-- Result Column -->
+        <div class="cg-result">
+          <div class="cg-group">
+            <label class="cg-label">Xem trước (Preview)</label>
+            <div class="cg-preview-box" id="cgPreviewBox">
+              <!-- Live preview -->
+            </div>
+          </div>
+          
+          <div class="cg-group">
+            <label class="cg-label">Kết quả (Output)</label>
+            <div style="position: relative;">
+              <textarea id="cgOutputBox" class="cg-input" rows="6" readonly style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; resize: none;"></textarea>
+              <button id="cgCopyBtn" class="btn btn--gradient" style="position: absolute; bottom: 15px; right: 15px; padding: 6px 15px; font-size: 0.9rem; border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;">📋 Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <!-- SushiLib Modules -->
-            <section class="featured-plugins" style="margin-top: 4rem;">
-                <h3 class="section-title">Hệ Sinh Thái SushiLib</h3>
-                <div class="cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                    <div class="plugin-card" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; transition: transform 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="card-icon" style="font-size: 2.5rem; color: var(--accent-primary);"><i class="fa-solid fa-bolt"></i></div>
-                        <h4 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Skills</h4>
-                        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">Hệ thống kỹ năng RPG mạnh mẽ - tạo skills phức tạp chỉ bằng YAML.</p>
-                        <a href="sushilib-skills.html" class="btn-secondary" style="text-align: center; display: block; padding: 0.8rem;">Xem Chi Tiết</a>
-                    </div>
-                </div>
-            </section>
-        </main>
+    </div>
+  </section>
+</div>
+
+</div> <!-- end pages-container -->
+<footer class="footer">
+  <div class="container" style="text-align: center; color: #8a7da5;">
+    &copy; 2026 SushiGangs Studio. All rights reserved.
+  </div>
+</footer>
+</main>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" id="authClose">&times;</button>
+    <div class="auth-header">
+      <div class="auth-tab active" data-tab="login">Đăng Nhập</div>
+      <div class="auth-tab" data-tab="register">Đăng Ký</div>
+    </div>
+    
+    <!-- LOGIN FORM -->
+    <div class="auth-body active" id="auth-login">
+      <form class="auth-form" id="loginForm">
+        <div class="input-group">
+          <label>Tên Đăng Nhập</label>
+          <input type="text" id="loginUsername" placeholder="Nhập tên đăng nhập..." required>
+        </div>
+        <div class="input-group">
+          <label>Mật Khẩu</label>
+          <input type="password" id="loginPassword" placeholder="Nhập mật khẩu..." required>
+        </div>
+        <button class="btn btn--gradient btn--full" type="submit">Đăng Nhập</button>
+      </form>
+      <div class="auth-divider"><span>Hoặc</span></div>
+      <button class="btn btn--google">
+        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Đăng Nhập bằng Google
+      </button>
     </div>
 
-    <!-- Login Modal -->
-    <div id="login-modal" class="modal hidden">
-        <div class="modal-content">
-            <span id="close-modal" class="close-btn">&times;</span>
-            <h2>Đăng nhập</h2>
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="username">Tên người dùng</label>
-                    <input type="text" id="username" placeholder="Nhập tên của bạn..." required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" placeholder="........" required>
-                </div>
-                <button type="submit" class="btn-primary w-100">Đăng Nhập</button>
-            </form>
+    <!-- REGISTER FORM -->
+    <div class="auth-body" id="auth-register">
+      <form class="auth-form" id="registerForm">
+        <div class="input-group">
+          <label>Tên Đăng Nhập</label>
+          <input type="text" id="registerUsername" placeholder="Nhập tên đăng nhập..." required>
         </div>
+        <div class="input-group">
+          <label>Mật Khẩu</label>
+          <input type="password" id="registerPassword" placeholder="Nhập mật khẩu..." required>
+        </div>
+        <div class="input-group">
+          <label>Xác nhận Mật Khẩu</label>
+          <input type="password" id="registerPasswordConfirm" placeholder="Nhập lại mật khẩu..." required>
+        </div>
+        <button class="btn btn--gradient btn--full" type="submit">Đăng Ký</button>
+      </form>
+      <div class="auth-divider"><span>Hoặc</span></div>
+      <button class="btn btn--google">
+        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Đăng Nhập bằng Google
+      </button>
     </div>
+  </div>
+</div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+<!-- EDIT PROFILE MODAL -->
+<div class="auth-overlay" id="editOverlay">
+  <div class="auth-modal" style="max-width: 500px;">
+    <button class="auth-close" id="editClose">&times;</button>
+    <div class="auth-header">
+      <div class="auth-tab active" style="cursor: default;">Chỉnh sửa Profile</div>
+    </div>
+    <div class="auth-body active">
+      <form class="auth-form" id="editProfileForm">
+        <div class="input-group">
+          <label>Tên hiển thị</label>
+          <input type="text" id="editNameInput" placeholder="Tên hiển thị...">
+        </div>
+        <div class="input-group">
+          <label>Link Ảnh Đại Diện (Avatar)</label>
+          <input type="text" id="editAvatarInput" placeholder="https://...">
+        </div>
+        <div class="input-group">
+          <label>Link Ảnh Bìa (Banner)</label>
+          <input type="text" id="editBannerInput" placeholder="https://...">
+        </div>
+        <div class="input-group">
+          <label>Mô tả ngắn</label>
+          <textarea id="editDescInput" rows="3" placeholder="Giới thiệu bản thân..." style="width: 100%; padding: 12px 15px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-family: inherit; resize: vertical; margin-bottom: 5px; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#ff77aa'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        </div>
+        <button class="btn btn--gradient btn--full" type="submit">Lưu thay đổi</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

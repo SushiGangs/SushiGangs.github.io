@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SushiMarket Wiki - SushiGangs</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.wiki-main { padding: 100px 20px 40px; max-width: 900px; margin: 0 auto; width: 100%; color: #b8aece; line-height: 1.6; }
+.wiki-main h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+.wiki-main h2 { font-size: 1.8rem; color: #fff; margin-top: 40px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.wiki-main h3 { font-size: 1.3rem; color: #ff77aa; margin-top: 20px; margin-bottom: 10px; }
+.wiki-main p { margin-bottom: 15px; }
+.wiki-main ul, .wiki-main ol { margin-bottom: 15px; padding-left: 20px; }
+.wiki-main li { margin-bottom: 8px; }
+
+.code-wrapper { position: relative; margin-bottom: 20px; border-radius: 8px; overflow: hidden; background: rgba(15, 8, 32, 0.6); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+.code-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 15px; background: rgba(0,0,0,0.3); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #8a7da5; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.copy-btn { background: none; border: none; color: #b8aece; cursor: pointer; transition: color 0.2s; display: flex; align-items: center; gap: 5px; font-size: 0.85rem; }
+.copy-btn:hover { color: #fff; }
+.code-wrapper pre { padding: 15px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #e0d8f0; margin: 0; tab-size: 4; }
+code { font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: #ffaa77; }
+
+.wiki-table-wrapper { overflow-x: auto; margin-bottom: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+.wiki-table { width: 100%; border-collapse: collapse; text-align: left; background: rgba(15, 8, 32, 0.4); }
+.wiki-table th, .wiki-table td { padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.wiki-table th { background: rgba(0,0,0,0.3); color: #fff; font-weight: 600; }
+.wiki-table tr:last-child td { border-bottom: none; }
+
+.nav__inner { display: flex; align-items: center; gap: 16px; justify-content: space-between; }
+.wiki-nav-links { display: flex; gap: 20px; align-items: center; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; }
+.wiki-nav-links::-webkit-scrollbar { height: 4px; }
+.wiki-nav-links::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+.wiki-nav-links a { color: #b8aece; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.3s; padding: 4px 0; }
+.wiki-nav-links a:hover, .wiki-nav-links a.active { color: #fff; border-bottom: 2px solid #ff77aa; }
+@media (max-width: 768px) {
+  .wiki-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar__logo"><span>🍣</span> SushiGangs</div>
+  <nav class="sidebar__nav">
+    <a href="index.html" class="sidebar__link">✦ Trang Chủ</a>
+    <div class="sidebar__group" id="wikiGroup">
+      <div class="sidebar__group-title" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+        <span>🧩 Wiki Plugin</span>
+        <span class="wiki-toggle-icon">▼</span>
+      </div>
+      <div class="sidebar__sublinks-container">
+        <a href="wiki-sushicore.html" class="sidebar__sublink">SushiCore</a>
+        <a href="wiki-sushidecor.html" class="sidebar__sublink">SushiDecor</a>
+        <a href="wiki-sushilove.html" class="sidebar__sublink">SushiLove</a>
+        <a href="wiki-sushimanager.html" class="sidebar__sublink">SushiManager</a>
+        <a href="wiki-sushimarket.html" class="sidebar__sublink" style="color: #fff; font-weight: 600;">SushiMarket</a>
+        <a href="wiki-sushitags.html" class="sidebar__sublink">SushiTags</a>
+      </div>
+    </div>
+    <a href="index.html" class="sidebar__link">👥 Về Chúng Tôi</a>
+    <div class="sidebar__divider"></div>
+    <a href="index.html" class="sidebar__link">🌐 Việt Hóa</a>
+    <a href="index.html" class="sidebar__link">🔠 SmallCap</a>
+  </nav>
+</aside>
+
+<main class="main" style="width: 100%;">
+<header class="nav">
+  <div class="container nav__inner">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <div class="app-toggle" id="appToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="index.html" class="logo"><span>🍣</span> SushiGangs <em>Studio</em></a>
+    </div>
+    
+    <nav class="wiki-nav-links" id="wikiNavLinks">
+      <a href="index.html">← Về Trang Chủ</a>
+      <a href="#overview" class="active">Tổng Quan</a>
+      <a href="#economy">Kinh Tế</a>
+      <a href="#permissions">Quyền Hạn</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wiki-main">
+  <h1 class="grad-pink">SushiMarket Wiki</h1>
+  <p>Chào mừng đến với tài liệu cấu hình <strong>SushiMarket</strong>. Khác với các plugin Auction House thông thường, SushiMarket được thiết kế và tối ưu 100% dành riêng cho <strong>MMOItems</strong> và Vault. Hỗ trợ hệ thống kinh tế an toàn tuyệt đối, phân loại (Categories) tự động và tính năng Anti-flip (chống đầu cơ) cực kỳ độc đáo.</p>
+  
+  <section id="overview" class="wiki-section">
+    <h2>1. Tổng Quan & Cơ Sở Dữ Liệu</h2>
+    <p>SushiMarket hỗ trợ lưu trữ dữ liệu thông qua <strong>H2 (nhúng sẵn)</strong> hoặc <strong>MySQL</strong>. Điều này đảm bảo tốc độ tải chợ cực nhanh ngay cả khi server có hàng vạn vật phẩm.</p>
+    <ul>
+      <li>Yêu cầu: <code>Vault</code>, <code>MMOItems</code>.</li>
+      <li>Softdepend: <code>MythicLib</code>.</li>
+      <li>Tự động đọc <strong>Categories</strong> từ MMOItems hoặc bạn có thể tự định nghĩa thủ công trong config.</li>
+    </ul>
+    <div class="code-wrapper">
+      <div class="code-header">
+        <span>config.yml (Database & Category)</span>
+        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+      </div>
+      <pre><code># "mmoitems" = tự đọc từ MMOItems API
+category-source: mmoitems
+
+database:
+  type: H2 # Hoặc MYSQL
+  mysql:
+    host: localhost
+    port: 3306</code></pre>
+    </div>
+  </section>
+
+  <section id="economy" class="wiki-section">
+    <h2>2. Quản Lý Kinh Tế & Đấu Giá</h2>
+    <h3>Bán Ngay (Listing) & Đấu Giá (Auction)</h3>
+    <p>Người chơi có thể chọn 2 hình thức: Đăng bán với giá cố định (Buy-It-Now) hoặc Đấu giá thầu (Bid). Admin có thể thiết lập thời hạn (Duration) đa dạng từ 1 giờ đến 72 giờ.</p>
+    
+    <h3>Thu Thuế (Tax) & Phí Đăng Bán</h3>
+    <p>Hỗ trợ cấu hình mức phần trăm Thuế (<code>tax-percent</code>) để thu hồi tiền tệ khỏi máy chủ, ngăn chặn lạm phát (Inflation). Bạn có thể thu phí cả khi đăng bài (<code>listing-fee</code>).</p>
+
+    <h3>Bảo vệ Snipe (Snipe Protection)</h3>
+    <p>Trong Đấu Giá, người mua thường có thói quen chờ 1 giây cuối cùng mới đặt giá để cướp hàng (Snipe). SushiMarket có tính năng chống Snipe: Nếu có người đặt giá ở 30 giây cuối, thời gian đấu giá sẽ <strong>tự động cộng thêm 60 giây</strong>.</p>
+    <div class="code-wrapper">
+      <div class="code-header">
+        <span>config.yml (Đấu giá)</span>
+        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+      </div>
+      <pre><code>auction:
+  min-bid-increment-percent: 5.0 # Giá đặt sau phải cao hơn 5%
+  snipe-protection-trigger-seconds: 30
+  snipe-protection-extend-seconds: 60</code></pre>
+    </div>
+  </section>
+
+  <section id="antiflip" class="wiki-section">
+    <h2>3. Hệ Thống Chống Đầu Cơ (Anti-Flip)</h2>
+    <p>Đầu cơ (Flip) là hành vi một người mua rẻ rồi bán lại ngay lập tức với giá cao để thao túng thị trường. Tính năng <strong>Anti-Flip</strong> sẽ tự động theo dõi tần suất giao dịch của từng cá nhân.</p>
+    <p>Nếu người chơi giao dịch quá 5 lần trong 5 phút (300 giây), họ sẽ bị khóa giao dịch (Cooldown) trong 5 phút. Nếu tái phạm, án phạt sẽ tự động tăng lên 30 phút!</p>
+    <div class="code-wrapper">
+      <div class="code-header">
+        <span>config.yml (Anti-Flip)</span>
+        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+      </div>
+      <pre><code>anti-flip:
+  enabled: true
+  window-seconds: 300               # Cửa sổ theo dõi (5 phút)
+  threshold-normal: 5               # Số giao dịch trước khi bị block
+  threshold-escalated: 3            # Số giao dịch nếu tái phạm
+  cooldown-normal-seconds: 300      # Phạt khóa giao dịch (5 phút)
+  cooldown-escalated-seconds: 1800  # Phạt nặng (30 phút)</code></pre>
+    </div>
+  </section>
+
+  <section id="permissions" class="wiki-section">
+    <h2>4. Lệnh & Quyền Hạn (Permissions)</h2>
+    
+    <div class="wiki-table-wrapper">
+      <table class="wiki-table">
+        <thead>
+          <tr>
+            <th>Quyền (Permission)</th>
+            <th>Mô tả chức năng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code onclick="copyText(this)">sushimarket.use</code></td>
+            <td>Cho phép truy cập lệnh <code>/market</code> (hoặc <code>/ah</code>) để xem chợ.</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushimarket.sell</code></td>
+            <td>Quyền đăng bán với giá cố định.</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushimarket.auction</code></td>
+            <td>Quyền tạo cuộc đấu thầu.</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushimarket.admin</code></td>
+            <td>Quyền gỡ vật phẩm của người khác, ép kết thúc đấu giá (Force-end) bằng lệnh <code>/marketadmin</code>.</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushimarket.bypass.fee</code></td>
+            <td>Bỏ qua phí đăng bán và thuế chợ (Dành cho Admin/VIP).</td>
+          </tr>
+          <tr>
+            <td><code onclick="copyText(this)">sushimarket.bypass.antiflip</code></td>
+            <td>Bỏ qua hệ thống theo dõi chống đầu cơ Anti-Flip.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<script>
+const appToggle = document.getElementById('appToggle');
+if (appToggle) {
+  appToggle.addEventListener('click', () => {
+    document.body.classList.toggle('sidebar-closed');
+  });
+}
+
+const wikiGroup = document.getElementById('wikiGroup');
+if (wikiGroup) {
+  const title = wikiGroup.querySelector('.sidebar__group-title');
+  const container = wikiGroup.querySelector('.sidebar__sublinks-container');
+  const icon = wikiGroup.querySelector('.wiki-toggle-icon');
+  
+  title.addEventListener('click', () => {
+    container.classList.toggle('collapsed');
+    icon.classList.toggle('collapsed');
+  });
+}
+
+const links = document.querySelectorAll('.wiki-nav-links a[href^="#"]');
+const sections = document.querySelectorAll('.wiki-section');
+
+links.forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (pageYOffset >= sectionTop - 150) {
+      current = '#' + section.getAttribute('id');
+    }
+  });
+
+  links.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === current) {
+      link.classList.add('active');
+    }
+  });
+});
+
+function copyCode(btn) {
+  const codeBlock = btn.parentElement.nextElementSibling.querySelector('code');
+  if (codeBlock) {
+    navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+      const originalText = btn.innerText;
+      btn.innerText = '✅ Đã Copy';
+      setTimeout(() => { btn.innerText = originalText; }, 2000);
+    });
+  }
+}
+
+function copyText(el) {
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    const originalText = el.innerText;
+    el.innerText = 'Đã Copy!';
+    el.style.background = 'rgba(255,119,170,0.3)';
+    setTimeout(() => { 
+      el.innerText = originalText; 
+      el.style.background = '';
+    }, 1500);
+  });
+}
+</script>
+</body>
+</html>
